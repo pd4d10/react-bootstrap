@@ -1,21 +1,39 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { Alert, Button } from './relaunch'
+import './App.css'
+
+const alertTypes = [
+  'primary',
+  'secondary',
+  'success',
+  'danger',
+  'warning',
+  'info',
+  'light',
+  'dark',
+]
+const ButtonTypes = [...alertTypes, 'link']
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <div>
+          {ButtonTypes.map(type => <Button type={type}>{type}</Button>)}
+        </div>
+        <div>
+          {alertTypes.map(type => (
+            <Button outline type={type}>
+              {type}
+            </Button>
+          ))}
+        </div>
+        {alertTypes.map(type => (
+          <Alert type={type}>A simple {type} alert—check it out!</Alert>
+        ))}
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
