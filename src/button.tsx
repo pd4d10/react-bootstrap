@@ -4,32 +4,31 @@ import { CommonProps, ButtonType } from './utils'
 
 type ButtonSize = 'lg' | 'sm'
 
-interface Props extends CommonProps {
+interface ButtonProps extends CommonProps {
   type?: ButtonType
   size?: ButtonSize
   outline?: boolean
   block?: boolean
   disabled?: boolean
-  onClick?: Function
+  active?: boolean
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-export class Button extends Component<Props> {
+export class Button extends Component<ButtonProps> {
   render() {
     const {
       type = 'primary',
       outline,
       block,
       size,
-      disabled,
-      style,
-      children,
+      active,
       className,
+      ...rest
     } = this.props
     return (
       <button
         type="button"
-        role="alert"
-        {...{ disabled, style, children }}
+        role="button"
         className={$c(
           className,
           'btn',
@@ -37,8 +36,10 @@ export class Button extends Component<Props> {
           {
             'btn-block': block,
             [`btn-${size}`]: !!size,
+            active,
           },
         )}
+        {...rest}
       />
     )
   }

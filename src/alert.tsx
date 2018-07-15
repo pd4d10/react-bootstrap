@@ -4,17 +4,17 @@ import { CommonProps, AlertType } from './utils'
 
 interface Props extends CommonProps {
   type?: AlertType
+  // [attr: string]: any
 }
 
 export class Alert extends Component<Props> {
   render() {
-    const { type = 'primary', children, style, className } = this.props
-    const alertProps = { children, style }
+    const { type = 'primary', className, ...rest } = this.props
     return (
       <div
         role="alert"
         className={$c(className, 'alert', `alert-${type}`)}
-        {...alertProps}
+        {...rest}
       />
     )
   }

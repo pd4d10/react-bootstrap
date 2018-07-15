@@ -14,3 +14,11 @@ export type AlertType =
   | 'dark'
 
 export type ButtonType = AlertType | 'link'
+
+export function isUndefined(v: any) {
+  return typeof v === 'undefined'
+}
+
+export function isNotUndefined(v: any) {
+  return !isUndefined(v)
+}
