@@ -1,5 +1,6 @@
 export { Alert } from './alert'
 export { Button } from './button'
 export { Container, Row, Col } from './layout'
-export { Navbar, Nav, NavbarBrand, NavItem, NavLink } from './navbar'
-export { Breadcrumb, BreadcrumbItem } from './breadcrumb'
+export { Navbar, NavbarNav, NavbarBrand, NavItem, NavLink } from './navbar'
+export { Breadcrumb } from './breadcrumb'
+export { Nav } from './nav'

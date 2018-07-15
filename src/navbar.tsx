@@ -37,7 +37,7 @@ export class Navbar extends Component<NavbarProps> {
   }
 }
 
-export const Nav = ({ className, ...rest }: NavProps) => (
+export const NavbarNav = ({ className, ...rest }: NavProps) => (
   <ul className={$c('navbar-nav', className)} {...rest} />
 )
 
