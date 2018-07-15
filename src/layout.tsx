@@ -12,11 +12,13 @@ type Offset = {
   sm?: OffsetValue
   md?: OffsetValue
   lg?: OffsetValue
+  xl?: OffsetValue
 }
 type Size = {
   sm?: SizeValue
   md?: SizeValue
   lg?: SizeValue
+  xl?: OffsetValue
 }
 interface ColProps extends CommonProps {
   size?: SizeValue | Size
@@ -49,7 +51,7 @@ export const Col = ({ order, size = 'auto', offset, ...rest }: ColProps) => {
   } else if (typeof size === 'number') {
     sizeClassName = `col-${size}`
   } else {
-    const { sm, md, lg } = size
+    const { sm, md, lg, xl } = size
     sizeClassName = $c(
       sm && `col-sm${getClassNameFromSize(sm)}`,
       md && `col-md${getClassNameFromSize(md)}`,
@@ -62,7 +64,7 @@ export const Col = ({ order, size = 'auto', offset, ...rest }: ColProps) => {
   } else if (typeof offset === 'number') {
     offsetClassName = `offset-${offset}`
   } else {
-    const { sm, md, lg } = offset
+    const { sm, md, lg, xl } = offset
     offsetClassName = $c(
       sm && `col-sm${getClassNameFromSize(sm)}`,
       md && `col-md${getClassNameFromSize(md)}`,
