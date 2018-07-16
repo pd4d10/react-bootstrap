@@ -9,9 +9,19 @@ export const AlertExamples = [
     component: require('./examples').default,
     code: require('!!raw-loader!./examples.js'),
   },
-  // {
-  //   name: 'Link color',
-  //   component: <div>sdf</div>,
-  //   code:
-  // },
+  {
+    name: 'Link color',
+    component: require('./link').default,
+    code: require('!!raw-loader!./link.js'),
+  },
+  {
+    name: 'Additional content',
+    component: require('./additional').default,
+    code: require('!!raw-loader!./additional'),
+  },
+  {
+    name: 'Dismissing',
+    component: require('./dismissing').default,
+    code: require('!!raw-loader!./dismissing'),
+  },
 ]
