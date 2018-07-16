@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import $c from 'classnames'
-import { CommonProps, ButtonType } from './utils'
+import { CommonProps, ButtonTheme } from './utils'
 
 type ButtonSize = 'lg' | 'sm'
 
 interface ButtonProps extends CommonProps {
-  type?: ButtonType
+  theme?: ButtonTheme
   size?: ButtonSize
   outline?: boolean
   block?: boolean
@@ -17,7 +17,7 @@ interface ButtonProps extends CommonProps {
 export class Button extends Component<ButtonProps> {
   render() {
     const {
-      type = 'primary',
+      theme = 'primary',
       outline,
       block,
       size,
@@ -32,7 +32,7 @@ export class Button extends Component<ButtonProps> {
         className={$c(
           className,
           'btn',
-          `btn-${outline ? 'outline-' : ''}${type}`,
+          `btn-${outline ? 'outline-' : ''}${theme}`,
           {
             'btn-block': block,
             [`btn-${size}`]: !!size,

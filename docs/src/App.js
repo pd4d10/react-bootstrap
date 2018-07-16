@@ -23,6 +23,7 @@ import { BreadcrumbExample } from './breadcrumb'
 import { LayoutExample } from './layout'
 import { ButtonExamples } from './button/index'
 import { Home } from './home'
+import { JumbotronExamples } from './jumbotron'
 
 const Sidebar = withRouter(p => (
   <Nav
@@ -72,6 +73,10 @@ class App extends Component {
                 <Route path="/" exact component={Home} />
                 <ExampleContainer path="/alerts" examples={AlertExamples} />
                 <ExampleContainer path="/buttons" examples={ButtonExamples} />
+                <ExampleContainer
+                  path="/jumbotron"
+                  examples={JumbotronExamples}
+                />
                 {/* <Route path="/alerts" component={AlertExample} />
                 <Route path="/breadcrumb" component={BreadcrumbExample} />
                 <Route path="/buttons" component={ButtonExample} />

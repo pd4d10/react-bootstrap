@@ -3,29 +3,29 @@ import { Button } from '../relaunch'
 
 export default () => (
   <div>
-    <Button type="primary" outline>
-      primary
+    <Button theme="primary" outline>
+      Primary
     </Button>{' '}
-    <Button type="secondary" outline>
-      secondary
+    <Button theme="secondary" outline>
+      Secondary
     </Button>{' '}
-    <Button type="success" outline>
-      success
+    <Button theme="success" outline>
+      Success
     </Button>{' '}
-    <Button type="info" outline>
-      info
+    <Button theme="info" outline>
+      Info
     </Button>{' '}
-    <Button type="warning" outline>
-      warning
+    <Button theme="warning" outline>
+      Warning
     </Button>{' '}
-    <Button type="danger" outline>
-      danger
+    <Button theme="danger" outline>
+      Danger
     </Button>{' '}
-    <Button type="light" outline>
-      light
+    <Button theme="light" outline>
+      Light
     </Button>{' '}
-    <Button type="dark" outline>
-      dark
+    <Button theme="dark" outline>
+      Dark
     </Button>
   </div>
 )
