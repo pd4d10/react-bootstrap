@@ -19,10 +19,9 @@ import {
 import { navItems } from './utils'
 import { ExampleContainer } from './example-container'
 import { AlertExamples } from './alert/index'
-// import { AlertExample } from './alert'
 import { BreadcrumbExample } from './breadcrumb'
 import { LayoutExample } from './layout'
-import { ButtonExample } from './button'
+import { ButtonExamples } from './button/index'
 import { Home } from './home'
 
 const Sidebar = withRouter(p => (
@@ -72,6 +71,7 @@ class App extends Component {
               <Col>
                 <Route path="/" exact component={Home} />
                 <ExampleContainer path="/alerts" examples={AlertExamples} />
+                <ExampleContainer path="/buttons" examples={ButtonExamples} />
                 {/* <Route path="/alerts" component={AlertExample} />
                 <Route path="/breadcrumb" component={BreadcrumbExample} />
                 <Route path="/buttons" component={ButtonExample} />
