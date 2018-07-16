@@ -24,6 +24,7 @@ import { LayoutExample } from './layout'
 import { ButtonExamples } from './button/index'
 import { Home } from './home'
 import { JumbotronExamples } from './jumbotron'
+import { BadgeExamples } from './badge'
 
 const Sidebar = withRouter(p => (
   <Nav
@@ -77,7 +78,8 @@ class App extends Component {
                   path="/jumbotron"
                   examples={JumbotronExamples}
                 />
-                {/* <Route path="/alerts" component={AlertExample} />
+                <ExampleContainer path="/badge" examples={BadgeExamples} />
+                {/*
                 <Route path="/breadcrumb" component={BreadcrumbExample} />
                 <Route path="/buttons" component={ButtonExample} />
                 <Route path="/layout" component={LayoutExample} /> */}

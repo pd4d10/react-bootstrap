@@ -25,24 +25,22 @@ export class Alert extends Component<AlertProps, AlertState> {
   render() {
     const {
       theme = 'primary',
-      className,
       closable = false,
+      onClose,
       children,
       ...rest
     } = this.props
 
+    rest.className = $c(
+      rest.className,
+      'alert',
+      `alert-${theme}`,
+      closable && 'alert-dismissible',
+    )
+
     return (
       this.state.visible && (
-        <div
-          role="alert"
-          className={$c(
-            className,
-            'alert',
-            `alert-${theme}`,
-            closable && 'alert-dismissible',
-          )}
-          {...rest}
-        >
+        <div role="alert" {...rest}>
           {children}
           {closable && (
             <button
