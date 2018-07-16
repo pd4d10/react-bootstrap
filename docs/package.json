@@ -6,6 +6,7 @@
     "bootstrap": "^4.1.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-highlight.js": "^1.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4"
   },
@@ -14,5 +15,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "raw-loader": "^0.5.1"
   }
 }

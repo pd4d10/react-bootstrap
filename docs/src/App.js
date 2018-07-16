@@ -17,7 +17,9 @@ import {
   Nav,
 } from './relaunch'
 import { navItems } from './utils'
-import { AlertExample } from './alert'
+import { ExampleContainer } from './example-container'
+import { AlertExamples } from './alert/index'
+// import { AlertExample } from './alert'
 import { BreadcrumbExample } from './breadcrumb'
 import { LayoutExample } from './layout'
 import { ButtonExample } from './button'
@@ -69,10 +71,11 @@ class App extends Component {
               </Col>
               <Col>
                 <Route path="/" exact component={Home} />
-                <Route path="/alerts" component={AlertExample} />
+                <ExampleContainer path="/alerts" examples={AlertExamples} />
+                {/* <Route path="/alerts" component={AlertExample} />
                 <Route path="/breadcrumb" component={BreadcrumbExample} />
                 <Route path="/buttons" component={ButtonExample} />
-                <Route path="/layout" component={LayoutExample} />
+                <Route path="/layout" component={LayoutExample} /> */}
               </Col>
             </Row>
           </Container>
