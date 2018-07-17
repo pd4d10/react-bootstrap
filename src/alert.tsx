@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import $c from 'classnames'
-import { CommonProps, AlertTheme } from './utils'
+import { CommonProps, Theme } from './utils'
 
 interface AlertProps extends CommonProps {
-  theme?: AlertTheme
+  theme?: Theme
   closable?: boolean
   onClose?: (event: MouseEvent) => void
 }

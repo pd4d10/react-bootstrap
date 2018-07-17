@@ -3,7 +3,9 @@ export interface CommonProps {
   className?: string
 }
 
-export type AlertTheme =
+export type Size = 'lg' | 'sm'
+
+export type Theme =
   | 'primary'
   | 'secondary'
   | 'success'
@@ -13,7 +15,7 @@ export type AlertTheme =
   | 'light'
   | 'dark'
 
-export type ButtonTheme = AlertTheme | 'link'
+export type ButtonTheme = Theme | 'link'
 
 export function isUndefined(v: any) {
   return typeof v === 'undefined'

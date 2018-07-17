@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import $c from 'classnames'
-import { CommonProps, AlertTheme } from './utils'
+import { CommonProps, Theme } from './utils'
 import { isFunction } from 'util'
 
 interface BadgeProps extends CommonProps {
-  theme: AlertTheme
+  theme: Theme
   pill?: boolean
   render?: Function
 }

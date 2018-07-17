@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import $c from 'classnames'
-import { CommonProps, ButtonTheme } from './utils'
-
-type ButtonSize = 'lg' | 'sm'
+import { CommonProps, ButtonTheme, Size } from './utils'
 
 interface ButtonProps extends CommonProps {
   theme?: ButtonTheme
-  size?: ButtonSize
+  size?: Size
   outline?: boolean
   block?: boolean
   disabled?: boolean

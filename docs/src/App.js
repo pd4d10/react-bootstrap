@@ -5,6 +5,7 @@ import {
   Link,
   withRouter,
 } from 'react-router-dom'
+import { kebabCase } from 'lodash'
 import {
   Container,
   Row,
@@ -26,6 +27,8 @@ import { ButtonExamples } from './button/index'
 import { Home } from './home'
 import { JumbotronExamples } from './jumbotron'
 import { CardExamples } from './card'
+import { ListExamples } from './list'
+import { ButtonGroupExamples } from './button-group'
 
 const Sidebar = withRouter(p => (
   <Nav
@@ -33,10 +36,10 @@ const Sidebar = withRouter(p => (
     items={navItems.map(name => ({
       content: props => (
         <Link
-          to={`/${name.toLowerCase()}`}
+          to={`/${kebabCase(name)}`}
           {...props}
           style={
-            p.location.pathname === `/${name.toLowerCase()}`
+            p.location.pathname === `/${kebabCase(name)}`
               ? {
                   color: '#555',
                   fontWeight: 'bold',
@@ -80,7 +83,12 @@ class App extends Component {
                   examples={BreadcrumbExamples}
                 />
                 <ExampleContainer path="/buttons" examples={ButtonExamples} />
+                <ExampleContainer
+                  path="/button-group"
+                  examples={ButtonGroupExamples}
+                />
                 <ExampleContainer path="/card" examples={CardExamples} />
+                <ExampleContainer path="/list-group" examples={ListExamples} />
                 <ExampleContainer
                   path="/jumbotron"
                   examples={JumbotronExamples}
