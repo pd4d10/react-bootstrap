@@ -30,6 +30,8 @@ import { CardExamples } from './card'
 import { ListExamples } from './list'
 import { ButtonGroupExamples } from './button-group'
 import { CarouselExamples } from './carousel'
+import { CollapseExamples } from './collapse'
+import { ModalExamples } from './modal'
 
 const Sidebar = withRouter(p => (
   <Nav
@@ -93,11 +95,16 @@ class App extends Component {
                   path="/carousel"
                   examples={CarouselExamples}
                 />
+                <ExampleContainer
+                  path="/collapse"
+                  examples={CollapseExamples}
+                />
                 <ExampleContainer path="/list-group" examples={ListExamples} />
                 <ExampleContainer
                   path="/jumbotron"
                   examples={JumbotronExamples}
                 />
+                <ExampleContainer path="/modal" examples={ModalExamples} />
                 {/*
                 <Route path="/layout" component={LayoutExample} /> */}
               </Col>
