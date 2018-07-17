@@ -4,26 +4,17 @@ import { CommonProps } from './utils'
 
 interface BreadcrumbItem {
   active?: boolean
-  content: string
-  href?: string
+  render: Function
 }
 interface BreadcrumbProps extends CommonProps {
   items: BreadcrumbItem[]
 }
 
-export function Breadcrumb({ className, items }: BreadcrumbProps) {
+export function Breadcrumb({ className, items, ...rest }: BreadcrumbProps) {
   return (
-    <ol className={$c('breadcrumb', className)}>
-      {items.map(({ href, active, content }) => {
-        let children
-        if (typeof content === 'function') {
-          let Content = content as any
-          // React.createElement(Breadcrumb)
-          children = <Content />
-        } else {
-          children = <a href={href}>{content}</a>
-        }
-        return <li className={$c('breadcrumb-item', { active })}>{children}</li>
+    <ol className={$c('breadcrumb', className)} {...rest}>
+      {items.map(({ render, active }) => {
+        return <li className={$c('breadcrumb-item', { active })}>{render()}</li>
       })}
     </ol>
   )

@@ -19,12 +19,13 @@ import {
 import { navItems } from './utils'
 import { ExampleContainer } from './example-container'
 import { AlertExamples } from './alert/index'
-import { BreadcrumbExample } from './breadcrumb'
+import { BadgeExamples } from './badge'
+import { BreadcrumbExamples } from './breadcrumb/index'
 import { LayoutExample } from './layout'
 import { ButtonExamples } from './button/index'
 import { Home } from './home'
 import { JumbotronExamples } from './jumbotron'
-import { BadgeExamples } from './badge'
+import { CardExamples } from './card'
 
 const Sidebar = withRouter(p => (
   <Nav
@@ -73,15 +74,18 @@ class App extends Component {
               <Col>
                 <Route path="/" exact component={Home} />
                 <ExampleContainer path="/alerts" examples={AlertExamples} />
+                <ExampleContainer path="/badge" examples={BadgeExamples} />
+                <ExampleContainer
+                  path="/breadcrumb"
+                  examples={BreadcrumbExamples}
+                />
                 <ExampleContainer path="/buttons" examples={ButtonExamples} />
+                <ExampleContainer path="/card" examples={CardExamples} />
                 <ExampleContainer
                   path="/jumbotron"
                   examples={JumbotronExamples}
                 />
-                <ExampleContainer path="/badge" examples={BadgeExamples} />
                 {/*
-                <Route path="/breadcrumb" component={BreadcrumbExample} />
-                <Route path="/buttons" component={ButtonExample} />
                 <Route path="/layout" component={LayoutExample} /> */}
               </Col>
             </Row>

@@ -22,3 +22,7 @@ export function isUndefined(v: any) {
 export function isNotUndefined(v: any) {
   return !isUndefined(v)
 }
+
+export function isFunction(v: any) {
+  return typeof v === 'function'
+}

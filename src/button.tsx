@@ -11,6 +11,7 @@ interface ButtonProps extends CommonProps {
   block?: boolean
   disabled?: boolean
   active?: boolean
+  render?: Function
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -22,25 +23,23 @@ export class Button extends Component<ButtonProps> {
       block,
       size,
       active,
-      className,
+      render,
       ...rest
     } = this.props
-    return (
-      <button
-        type="button"
-        role="button"
-        className={$c(
-          className,
-          'btn',
-          `btn-${outline ? 'outline-' : ''}${theme}`,
-          {
-            'btn-block': block,
-            [`btn-${size}`]: !!size,
-            active,
-          },
-        )}
-        {...rest}
-      />
+
+    rest.className = $c(
+      rest.className,
+      'btn',
+      `btn-${outline ? 'outline-' : ''}${theme}`,
+      block && 'btn-block',
+      size && `btn-${size}`,
+      active && 'active',
     )
+
+    if (render) {
+      return render(rest)
+    } else {
+      return <button type="button" role="button" {...rest} />
+    }
   }
 }

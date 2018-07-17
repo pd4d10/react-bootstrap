@@ -16,4 +16,9 @@ export const BadgeExamples = [
     component: require('./pill').default,
     code: require('!!raw-loader!./pill.js'),
   },
+  {
+    name: 'Links',
+    component: require('./link').default,
+    code: require('!!raw-loader!./link.js'),
+  },
 ]
