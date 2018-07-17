@@ -12,10 +12,10 @@ export const ExampleContainer = ({ path, examples }) => (
           <Fragment key={name}>
             <h3>{name}</h3>
             <Row>
-              <Col>
+              <Col size={6}>
                 <Com />
               </Col>
-              <Col>
+              <Col size={6}>
                 <Highlight language="jsx">{code}</Highlight>
               </Col>
             </Row>

@@ -29,6 +29,7 @@ import { JumbotronExamples } from './jumbotron'
 import { CardExamples } from './card'
 import { ListExamples } from './list'
 import { ButtonGroupExamples } from './button-group'
+import { CarouselExamples } from './carousel'
 
 const Sidebar = withRouter(p => (
   <Nav
@@ -74,7 +75,7 @@ class App extends Component {
               <Col size={{ md: 3, lg: 2 }}>
                 <Sidebar />
               </Col>
-              <Col>
+              <Col size={{ md: 9, lg: 10 }}>
                 <Route path="/" exact component={Home} />
                 <ExampleContainer path="/alerts" examples={AlertExamples} />
                 <ExampleContainer path="/badge" examples={BadgeExamples} />
@@ -88,6 +89,10 @@ class App extends Component {
                   examples={ButtonGroupExamples}
                 />
                 <ExampleContainer path="/card" examples={CardExamples} />
+                <ExampleContainer
+                  path="/carousel"
+                  examples={CarouselExamples}
+                />
                 <ExampleContainer path="/list-group" examples={ListExamples} />
                 <ExampleContainer
                   path="/jumbotron"
