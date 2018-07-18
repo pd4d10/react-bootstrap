@@ -1,5 +1,5 @@
 import React from 'react'
-import { Badge } from '../relaunch'
+import { Badge } from 'relaunch'
 
 export default () => (
   <div>

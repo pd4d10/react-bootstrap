@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Button } from '../relaunch'
+import { Card, Button } from 'relaunch'
 
 export default () => (
   <Card

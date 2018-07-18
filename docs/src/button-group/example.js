@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonGroup, ButtonToolbar, Button } from '../relaunch'
+import { ButtonGroup, ButtonToolbar, Button } from 'relaunch'
 
 export default () => (
   <div>

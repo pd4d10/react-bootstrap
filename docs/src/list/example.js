@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { List, ListItem, Badge } from '../relaunch'
+import { List, ListItem, Badge } from 'relaunch'
 
 export default () => (
   <Fragment>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Breadcrumb } from '../relaunch'
+import { Breadcrumb } from 'relaunch'
 
 export default () => (
   <div>

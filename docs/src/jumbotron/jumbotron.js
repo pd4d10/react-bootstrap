@@ -1,5 +1,5 @@
 import React from 'react'
-import { Jumbotron, Button } from '../relaunch'
+import { Jumbotron, Button } from 'relaunch'
 
 export default () => (
   <Jumbotron>

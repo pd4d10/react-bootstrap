@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Col, Row } from './relaunch'
+import { Container, Col, Row } from 'relaunch'
 
 export function LayoutExample() {
   return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Alert } from '../relaunch'
+import { Alert } from 'relaunch'
 
 export default () => (
   <Alert

@@ -16,7 +16,7 @@ import {
   NavItem,
   NavLink,
   Nav,
-} from './relaunch'
+} from 'relaunch'
 import { navItems } from './utils'
 import { ExampleContainer } from './example-container'
 import { AlertExamples } from './alert/index'

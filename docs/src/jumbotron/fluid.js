@@ -1,5 +1,5 @@
 import React from 'react'
-import { Jumbotron } from '../relaunch'
+import { Jumbotron } from 'relaunch'
 
 export default () => (
   <Jumbotron fluid>

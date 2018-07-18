@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from '../relaunch'
+import { Button } from 'relaunch'
 
 export default () => (
   <div>

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Route } from 'react-router-dom'
 import Highlight from 'react-highlight.js'
-import { Row, Col } from './relaunch'
+import { Row, Col } from 'relaunch'
 
 export const ExampleContainer = ({ path, examples }) => (
   <Route

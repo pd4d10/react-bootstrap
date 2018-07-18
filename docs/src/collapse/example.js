@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Collapse, Button } from '../relaunch'
+import { Collapse, Button } from 'relaunch'
 
 export default class Example extends Component {
   state = {

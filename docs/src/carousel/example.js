@@ -1,5 +1,5 @@
 import React from 'react'
-import { Carousel } from '../relaunch'
+import { Carousel } from 'relaunch'
 
 export default () => (
   <Carousel
