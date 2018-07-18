@@ -1,25 +1,50 @@
-import React from 'react'
+import React, { Component } from 'react'
 import $c from 'classnames'
 import { CommonProps } from './utils'
 
 interface NavProps extends CommonProps {
+  items: any[]
   vertical?: boolean
-  items: {
-    content: string | Function
-    href?: string
-    active?: boolean
-  }[]
+  tab?: boolean
+  fill?: boolean
+  renderItem: (item: any, index: number) => React.ReactNode
 }
 
-export function Nav({ className, vertical, items, ...rest }: NavProps) {
-  return (
-    <nav className={$c('nav', className, vertical && 'flex-column')} {...rest}>
-      {items.map(({ content: Content, href, active }) => {
-        if (typeof Content === 'string') {
-          Content = () => <a href={href}>{Content}</a>
-        }
-        return <Content className={$c('nav-link', { active })} />
-      })}
-    </nav>
-  )
+export class Nav extends Component<NavProps> {
+  // static defaultProps = {
+  //   renderItem: (item: string) => (
+  //     <a href="#" className="nav-link">
+  //       {item}
+  //     </a>
+  //   ),
+  // }
+
+  render() {
+    const {
+      className,
+      vertical,
+      tab,
+      fill,
+      items,
+      renderItem,
+      ...rest
+    } = this.props
+
+    return (
+      <nav
+        className={$c(
+          className,
+          'nav',
+          vertical && 'flex-column',
+          tab && 'nav-tabs',
+          fill && 'nav-fill',
+        )}
+        {...rest}
+      >
+        {items.map((item, index) => {
+          return renderItem(item, index)
+        })}
+      </nav>
+    )
+  }
 }

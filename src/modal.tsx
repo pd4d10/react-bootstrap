@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { Portal } from 'react-portal'
 import $c from 'classnames'
 import { CommonProps } from './utils'
 import { Button } from './button'
@@ -31,48 +32,49 @@ export class Modal extends Component<ModalProps> {
   render() {
     const { visible, className, body, footer, ...rest } = this.props
     return (
-      <div
-        className={$c(className, 'modal', 'fade', visible && 'show')}
-        role="dialog"
-        style={{
-          display: visible ? 'block' : 'none',
-        }}
-      >
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLiveLabel">
-                Modal title
-              </h5>
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div className="modal-body">{body}</div>
-            <div className="modal-footer">
-              {footer && (
-                <Fragment>
-                  <Button
-                    theme="secondary"
-                    data-dismiss="modal"
+      <Portal closeOnOutsideClick closeOnEsc>
+        <Fragment>
+          <div
+            className={$c(className, 'modal', 'fade', visible && 'show')}
+            role="dialog"
+            style={{
+              display: visible ? 'block' : 'none',
+            }}
+          >
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="exampleModalLiveLabel">
+                    Modal title
+                  </h5>
+                  <button
+                    type="button"
+                    className="close"
+                    aria-label="Close"
                     onClick={this.handleCancel}
                   >
-                    Close
-                  </Button>
-                  <Button theme="primary" onClick={this.handleFinish}>
-                    Save changes
-                  </Button>
-                </Fragment>
-              )}
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div className="modal-body">{body}</div>
+                <div className="modal-footer">
+                  {footer || (
+                    <Fragment>
+                      <Button theme="secondary" onClick={this.handleCancel}>
+                        Close
+                      </Button>
+                      <Button theme="primary" onClick={this.handleFinish}>
+                        Save changes
+                      </Button>
+                    </Fragment>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+          {visible && <div className="modal-backdrop fade show" />}
+        </Fragment>
+      </Portal>
     )
   }
 }
