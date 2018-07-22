@@ -34,6 +34,7 @@ import { CollapseExamples } from './collapse'
 import { ModalExamples } from './modal'
 import { NavExamples } from './nav'
 import { ProgressExamples } from './progress'
+import { PaginationExamples } from './pagination'
 
 const Sidebar = withRouter(p => (
   <Nav
@@ -109,6 +110,10 @@ class App extends Component {
                 <ExampleContainer
                   path="/progress"
                   examples={ProgressExamples}
+                />{' '}
+                <ExampleContainer
+                  path="/pagination"
+                  examples={PaginationExamples}
                 />
                 {/*
                 <Route path="/layout" component={LayoutExample} /> */}

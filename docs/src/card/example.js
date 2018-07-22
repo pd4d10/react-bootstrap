@@ -10,7 +10,7 @@ export default () => (
     extra={() => (
       <Button
         render={props => (
-          <a href="#" {...props}>
+          <a href="javascript:" {...props}>
             Go somewhere
           </a>
         )}

@@ -63,7 +63,7 @@ export default () => (
           active={index === 0}
           render={({ className, ...props }) => (
             <a
-              href="#"
+              href="javascript:"
               className={'flex-column align-items-start ' + className}
               {...props}
             >

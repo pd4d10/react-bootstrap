@@ -6,7 +6,7 @@ export default () => (
     <Badge
       theme="primary"
       render={props => (
-        <a href="#" {...props}>
+        <a href="javascript:" {...props}>
           Primary
         </a>
       )}
@@ -14,7 +14,7 @@ export default () => (
     <Badge
       theme="secondary"
       render={props => (
-        <a href="#" {...props}>
+        <a href="javascript:" {...props}>
           Secondary
         </a>
       )}
@@ -22,7 +22,7 @@ export default () => (
     <Badge
       theme="success"
       render={props => (
-        <a href="#" {...props}>
+        <a href="javascript:" {...props}>
           Success
         </a>
       )}
@@ -30,7 +30,7 @@ export default () => (
     <Badge
       theme="danger"
       render={props => (
-        <a href="#" {...props}>
+        <a href="javascript:" {...props}>
           Danger
         </a>
       )}

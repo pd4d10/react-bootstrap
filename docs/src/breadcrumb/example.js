@@ -14,7 +14,7 @@ export default () => (
     <Breadcrumb
       items={[
         {
-          render: () => <a href="#">Home</a>,
+          render: () => <a href="javascript:">Home</a>,
         },
         {
           render: () => 'Library',
