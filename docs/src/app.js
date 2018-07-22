@@ -33,30 +33,29 @@ import { CarouselExamples } from './carousel'
 import { CollapseExamples } from './collapse'
 import { ModalExamples } from './modal'
 import { NavExamples } from './nav'
+import { ProgressExamples } from './progress'
 
 const Sidebar = withRouter(p => (
   <Nav
     vertical
-    items={navItems.map(name => ({
-      content: props => (
-        <Link
-          to={`/${kebabCase(name)}`}
-          {...props}
-          style={
-            p.location.pathname === `/${kebabCase(name)}`
-              ? {
-                  color: '#555',
-                  fontWeight: 'bold',
-                }
-              : {
-                  color: 'rgba(0,0,0,.65)',
-                }
-          }
-        >
-          {name}
-        </Link>
-      ),
-    }))}
+    items={navItems}
+    renderItem={item => (
+      <Link
+        to={`/${kebabCase(item)}`}
+        style={
+          p.location.pathname === `/${kebabCase(item)}`
+            ? {
+                color: '#555',
+                fontWeight: 'bold',
+              }
+            : {
+                color: 'rgba(0,0,0,.65)',
+              }
+        }
+      >
+        {item}
+      </Link>
+    )}
   />
 ))
 
@@ -65,14 +64,14 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Navbar theme="light">
+          {/* <Navbar theme="light">
             <NavbarBrand href="/">Relaunch</NavbarBrand>
             <NavbarNav>
               <NavItem>
                 <NavLink href="/">Link</NavLink>
               </NavItem>
             </NavbarNav>
-          </Navbar>
+          </Navbar> */}
           <Container fluid>
             <Row>
               <Col size={{ md: 3, lg: 2 }}>
@@ -107,6 +106,10 @@ class App extends Component {
                 />
                 <ExampleContainer path="/modal" examples={ModalExamples} />
                 <ExampleContainer path="/nav" examples={NavExamples} />
+                <ExampleContainer
+                  path="/progress"
+                  examples={ProgressExamples}
+                />
                 {/*
                 <Route path="/layout" component={LayoutExample} /> */}
               </Col>

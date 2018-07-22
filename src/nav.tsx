@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, SFC } from 'react'
 import $c from 'classnames'
 import { CommonProps } from './utils'
 
@@ -20,27 +20,17 @@ export class Nav extends Component<NavProps> {
   // }
 
   render() {
-    const {
-      className,
-      vertical,
-      tab,
-      fill,
-      items,
-      renderItem,
-      ...rest
-    } = this.props
+    const { vertical, tab, fill, items, renderItem, ...rest } = this.props
+    rest.className = $c(
+      rest.className,
+      'nav',
+      vertical && 'flex-column',
+      tab && 'nav-tabs',
+      fill && 'nav-fill',
+    )
 
     return (
-      <nav
-        className={$c(
-          className,
-          'nav',
-          vertical && 'flex-column',
-          tab && 'nav-tabs',
-          fill && 'nav-fill',
-        )}
-        {...rest}
-      >
+      <nav {...rest}>
         {items.map((item, index) => {
           return renderItem(item, index)
         })}

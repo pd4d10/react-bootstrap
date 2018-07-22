@@ -1,23 +1,23 @@
-import React, { Component } from 'react'
+import React from 'react'
 import $c from 'classnames'
 import { CommonProps, Theme } from './utils'
 
 interface AlertProps extends CommonProps {
   theme?: Theme
   closable?: boolean
-  onClose?: (event: MouseEvent) => void
+  onClose?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-type AlertState = {
-  visible: boolean
+const initialState = {
+  visible: true,
 }
 
-export class Alert extends Component<AlertProps, AlertState> {
-  state = {
-    visible: true,
-  }
+type AlertState = Readonly<typeof initialState>
 
-  handleClose = (e: MouseEvent) => {
+export class Alert extends React.Component<AlertProps, AlertState> {
+  readonly state: AlertState = initialState
+
+  handleClose: AlertProps['onClose'] = e => {
     this.setState({ visible: false })
     this.props.onClose && this.props.onClose(e)
   }

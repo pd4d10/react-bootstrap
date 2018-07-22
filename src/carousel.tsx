@@ -16,16 +16,15 @@ interface CarouselProps extends CommonProps {
   controls?: boolean
 }
 
-type CarouselState = {
-  timerId: number | undefined
-  activeIndex: number
+const initialState = {
+  timerId: -1,
+  activeIndex: 0,
 }
 
+type CarouselState = Readonly<typeof initialState>
+
 export class Carousel extends Component<CarouselProps, CarouselState> {
-  state = {
-    timerId: undefined,
-    activeIndex: 0,
-  }
+  readonly state: CarouselState = initialState
 
   static defaultProps = {
     mode: 'slide',
