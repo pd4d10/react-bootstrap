@@ -1,6 +1,6 @@
 import React from 'react'
 import $c from 'classnames'
-import { CommonProps, Theme, Size } from './utils'
+import { CommonProps, Theme, Size, fill } from './utils'
 
 interface PaginationProps extends CommonProps {
   current: number
@@ -49,7 +49,6 @@ export class Pagination extends React.Component<PaginationProps> {
 
   render() {
     const { size, className, current, total } = this.props
-    const arr = Array(total).fill(0) as any[]
 
     return (
       <nav>
@@ -65,7 +64,7 @@ export class Pagination extends React.Component<PaginationProps> {
               Previous
             </a>
           </li>
-          {arr.map(this.renderLink)}
+          {fill(total).map(this.renderLink)}
           <li className={$c('page-item', current >= total && 'disabled')}>
             <a
               className="page-link"

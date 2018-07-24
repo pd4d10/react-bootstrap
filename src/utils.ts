@@ -28,3 +28,11 @@ export function isNotUndefined(v: any) {
 export function isFunction(v: any) {
   return typeof v === 'function'
 }
+
+export function fill(length: number) {
+  const arr = Array(length)
+  for (let i = 0; i < length; i++) {
+    arr[i] = 0
+  }
+  return arr
+}
