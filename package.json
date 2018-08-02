@@ -22,14 +22,15 @@
   },
   "homepage": "https://github.com/pd4d10/relaunch#readme",
   "devDependencies": {
-    "@types/react": "^16.4.6",
+    "@types/react": "^16.4.7",
     "@types/react-dom": "^16.0.6",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "typescript": "^2.9.2"
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "typescript": "^3.0.1"
   },
   "dependencies": {
-    "@types/classnames": "^2.2.4",
+    "@types/classnames": "^2.2.6",
+    "@types/react-portal": "^4.0.0",
     "classnames": "^2.2.6",
     "react-portal": "^4.1.5"
   }
