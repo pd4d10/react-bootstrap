@@ -22,7 +22,7 @@ export const navItems = [
   'Card',
   'Carousel',
   'Collapse',
-  'Dropdowns',
+  'Dropdown',
   'Forms',
   'Input group',
   'Jumbotron',

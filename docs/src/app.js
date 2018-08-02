@@ -35,6 +35,7 @@ import { ModalExamples } from './modal'
 import { NavExamples } from './nav'
 import { ProgressExamples } from './progress'
 import { PaginationExamples } from './pagination'
+import { DropdownExamples } from './dropdown'
 
 const Sidebar = withRouter(p => (
   <Nav
@@ -100,6 +101,10 @@ class App extends Component {
                   path="/collapse"
                   examples={CollapseExamples}
                 />
+                <ExampleContainer
+                  path="/dropdown"
+                  examples={DropdownExamples}
+                />
                 <ExampleContainer path="/list-group" examples={ListExamples} />
                 <ExampleContainer
                   path="/jumbotron"
@@ -110,7 +115,7 @@ class App extends Component {
                 <ExampleContainer
                   path="/progress"
                   examples={ProgressExamples}
-                />{' '}
+                />
                 <ExampleContainer
                   path="/pagination"
                   examples={PaginationExamples}
