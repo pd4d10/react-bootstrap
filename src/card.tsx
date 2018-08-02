@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import $c from 'classnames'
 import { CommonProps } from './utils'
 
@@ -10,32 +10,28 @@ interface CardProps extends CommonProps {
   extra?: Function
 }
 
-export function Card({
-  topImage,
-  title,
-  subtitle,
-  text,
-  extra,
-  ...rest
-}: CardProps) {
-  rest.className = $c(rest.className, 'card')
-  return (
-    <div {...rest}>
-      {topImage && topImage({ className: 'card-img-top' })}
-      <div className="card-body">
-        {title && <div className="card-title">{title}</div>}
-        {subtitle && <div className="card-subtitle">{subtitle}</div>}
-        {text &&
-          typeof text === 'string' && <p className="card-text">{text}</p>}
-        {text &&
-          Array.isArray(text) &&
-          text.map((t, i) => (
-            <p key={i} className="card-text">
-              {t}
-            </p>
-          ))}
-        {extra && extra()}
+export class Card extends React.Component<CardProps> {
+  render() {
+    const { topImage, title, subtitle, text, extra, ...rest } = this.props
+    rest.className = $c(rest.className, 'card')
+    return (
+      <div {...rest}>
+        {topImage && topImage({ className: 'card-img-top' })}
+        <div className="card-body">
+          {title && <div className="card-title">{title}</div>}
+          {subtitle && <div className="card-subtitle">{subtitle}</div>}
+          {text &&
+            typeof text === 'string' && <p className="card-text">{text}</p>}
+          {text &&
+            Array.isArray(text) &&
+            text.map((t, i) => (
+              <p key={i} className="card-text">
+                {t}
+              </p>
+            ))}
+          {extra && extra()}
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }

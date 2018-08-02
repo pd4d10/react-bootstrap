@@ -26,12 +26,23 @@ interface ColProps extends CommonProps {
   order?: number | 'last' | 'first'
 }
 
-export const Container = ({ fluid, ...rest }: ContainerProps) => (
-  <div className={`container${fluid ? '-fluid' : ''}`} {...rest} />
-)
+export class Container extends React.Component<ContainerProps> {
+  render() {
+    const { fluid, className, ...rest } = this.props
+    return (
+      <div
+        className={$c(className, fluid ? 'container-fluid' : 'container')}
+        {...rest}
+      />
+    )
+  }
+}
 
-export const Row = ({ className, ...rest }: RowProps) => {
-  return <div className={$c('row', className)} {...rest} />
+export class Row extends React.Component<RowProps> {
+  render() {
+    const { className, ...rest } = this.props
+    return <div className={$c('row', className)} {...rest} />
+  }
 }
 
 const getClassNameFromSize = (value: SizeValue) => {
@@ -42,45 +53,48 @@ const getClassNameFromSize = (value: SizeValue) => {
   }
 }
 
-export const Col = ({ order, size = 'auto', offset, ...rest }: ColProps) => {
-  let sizeClassName
-  let offsetClassName
+export class Col extends React.Component<ColProps> {
+  render() {
+    const { order, size = 'auto', offset, ...rest } = this.props
+    let sizeClassName
+    let offsetClassName
 
-  if (size === 'auto') {
-    sizeClassName = 'col'
-  } else if (typeof size === 'number') {
-    sizeClassName = `col-${size}`
-  } else {
-    const { sm, md, lg, xl } = size
-    sizeClassName = $c(
-      sm && `col-sm${getClassNameFromSize(sm)}`,
-      md && `col-md${getClassNameFromSize(md)}`,
-      lg && `col-lg${getClassNameFromSize(lg)}`,
+    if (size === 'auto') {
+      sizeClassName = 'col'
+    } else if (typeof size === 'number') {
+      sizeClassName = `col-${size}`
+    } else {
+      const { sm, md, lg, xl } = size
+      sizeClassName = $c(
+        sm && `col-sm${getClassNameFromSize(sm)}`,
+        md && `col-md${getClassNameFromSize(md)}`,
+        lg && `col-lg${getClassNameFromSize(lg)}`,
+      )
+    }
+
+    if (!offset) {
+      // Ignore
+    } else if (typeof offset === 'number') {
+      offsetClassName = `offset-${offset}`
+    } else {
+      const { sm, md, lg, xl } = offset
+      offsetClassName = $c(
+        sm && `col-sm${getClassNameFromSize(sm)}`,
+        md && `col-md${getClassNameFromSize(md)}`,
+        lg && `col-lg${getClassNameFromSize(lg)}`,
+      )
+    }
+
+    return (
+      <div
+        className={$c(
+          'col',
+          sizeClassName,
+          offsetClassName,
+          isNotUndefined(order) && `order-${order}`,
+        )}
+        {...rest}
+      />
     )
   }
-
-  if (!offset) {
-    // Ignore
-  } else if (typeof offset === 'number') {
-    offsetClassName = `offset-${offset}`
-  } else {
-    const { sm, md, lg, xl } = offset
-    offsetClassName = $c(
-      sm && `col-sm${getClassNameFromSize(sm)}`,
-      md && `col-md${getClassNameFromSize(md)}`,
-      lg && `col-lg${getClassNameFromSize(lg)}`,
-    )
-  }
-
-  return (
-    <div
-      className={$c(
-        'col',
-        sizeClassName,
-        offsetClassName,
-        isNotUndefined(order) && `order-${order}`,
-      )}
-      {...rest}
-    />
-  )
 }

@@ -6,11 +6,14 @@ interface JumbotronProps extends CommonProps {
   fluid?: boolean
 }
 
-export function Jumbotron({ className, fluid, ...rest }: JumbotronProps) {
-  return (
-    <div
-      className={$c('jumbotron', fluid && 'jumbotron-fluid', className)}
-      {...rest}
-    />
-  )
+export class Jumbotron extends React.Component<JumbotronProps> {
+  render() {
+    const { className, fluid, ...rest } = this.props
+    return (
+      <div
+        className={$c('jumbotron', fluid && 'jumbotron-fluid', className)}
+        {...rest}
+      />
+    )
+  }
 }

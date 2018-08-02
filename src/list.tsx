@@ -51,19 +51,22 @@ export class ListItem extends Component<ListItemProps> {
   }
 }
 
-export function List({ items, render, renderItem, ...rest }: ListProps) {
-  rest.className = $c(rest.className, 'list-group')
-  if (render) {
-    return render({ items, ...rest })
+export class List extends React.Component<ListProps> {
+  render() {
+    const { items, render, renderItem, ...rest } = this.props
+    rest.className = $c(rest.className, 'list-group')
+    if (render) {
+      return render({ items, ...rest })
+    }
+    return (
+      <ul {...rest}>
+        {items.map((item, index, total) => {
+          if (renderItem) {
+            return renderItem(item, index, total)
+          }
+          return <ListItem>{item}</ListItem>
+        })}
+      </ul>
+    )
   }
-  return (
-    <ul {...rest}>
-      {items.map((item, index, total) => {
-        if (renderItem) {
-          return renderItem(item, index, total)
-        }
-        return <ListItem>{item}</ListItem>
-      })}
-    </ul>
-  )
 }

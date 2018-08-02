@@ -1,4 +1,4 @@
-import React, { Component, ReactElement } from 'react'
+import React from 'react'
 import $c from 'classnames'
 import { CommonProps } from './utils'
 
@@ -10,14 +10,19 @@ interface BreadcrumbProps extends CommonProps {
   items: BreadcrumbItem[]
 }
 
-export function Breadcrumb({ className, items, ...rest }: BreadcrumbProps) {
-  return (
-    <ol className={$c('breadcrumb', className)} {...rest}>
-      {items.map(({ render, active }) => {
-        return <li className={$c('breadcrumb-item', { active })}>{render()}</li>
-      })}
-    </ol>
-  )
+export class Breadcrumb extends React.Component<BreadcrumbProps> {
+  render() {
+    const { className, items, ...rest } = this.props
+    return (
+      <ol className={$c('breadcrumb', className)} {...rest}>
+        {items.map(({ render, active }) => {
+          return (
+            <li className={$c('breadcrumb-item', { active })}>{render()}</li>
+          )
+        })}
+      </ol>
+    )
+  }
 }
 
 // export const BreadcrumbItem = ({
