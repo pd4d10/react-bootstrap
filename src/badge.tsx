@@ -9,21 +9,32 @@ interface BadgeProps extends CommonProps {
 
 export class Badge extends Component<BadgeProps> {
   render() {
-    const { theme = 'secondary', pill, children, ...rest } = this.props
-    rest.className = $c(
-      rest.className,
+    const {
+      theme = 'secondary',
+      pill,
+      className,
+      children,
+      ...rest
+    } = this.props
+
+    const classes = $c(
+      className,
       'badge',
       `badge-${theme}`,
       pill && 'badge-pill',
     )
 
     if (typeof children === 'string') {
-      return <span {...rest} />
+      return (
+        <span className={classes} {...rest}>
+          {children}
+        </span>
+      )
     }
 
     const child = React.Children.only(children)
     return React.cloneElement(child, {
-      className: $c(rest.className, child.props.className),
+      className: $c(classes, child.props.className),
     })
   }
 }
