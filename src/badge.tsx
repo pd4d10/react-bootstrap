@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
 import $c from 'classnames'
 import { CommonProps, Theme } from './utils'
-import { isFunction } from 'util'
 
 interface BadgeProps extends CommonProps {
   theme: Theme
   pill?: boolean
-  render?: Function
 }
 
 export class Badge extends Component<BadgeProps> {
   render() {
-    const { theme = 'primary', pill, render, ...rest } = this.props
+    const { theme = 'secondary', pill, children, ...rest } = this.props
     rest.className = $c(
       rest.className,
       'badge',
@@ -19,10 +17,13 @@ export class Badge extends Component<BadgeProps> {
       pill && 'badge-pill',
     )
 
-    if (render) {
-      return render(rest)
-    } else {
+    if (typeof children === 'string') {
       return <span {...rest} />
     }
+
+    const child = React.Children.only(children)
+    return React.cloneElement(child, {
+      className: $c(rest.className, child.props.className),
+    })
   }
 }

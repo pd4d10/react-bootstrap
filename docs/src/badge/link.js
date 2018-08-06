@@ -1,39 +1,15 @@
 import React from 'react'
-import { Badge, Button } from 'relaunch'
+import { Badge } from 'relaunch'
 
-export default () => (
+export const LinkExample = () => (
   <div>
-    <Badge
-      theme="primary"
-      render={props => (
-        <a href="javascript:" {...props}>
-          Primary
-        </a>
-      )}
-    />{' '}
-    <Badge
-      theme="secondary"
-      render={props => (
-        <a href="javascript:" {...props}>
-          Secondary
-        </a>
-      )}
-    />{' '}
-    <Badge
-      theme="success"
-      render={props => (
-        <a href="javascript:" {...props}>
-          Success
-        </a>
-      )}
-    />{' '}
-    <Badge
-      theme="danger"
-      render={props => (
-        <a href="javascript:" {...props}>
-          Danger
-        </a>
-      )}
-    />
+    <Badge theme="primary"><a href="#">Primary</a></Badge>{' '}
+    <Badge theme="secondary"><a href="#">Secondary</a></Badge>{' '}
+    <Badge theme="success"><a href="#">Success</a></Badge>{' '}
+    <Badge theme="danger"><a href="#">Danger</a></Badge>{' '}
+    <Badge theme="warning"><a href="#">Warning</a></Badge>{' '}
+    <Badge theme="info"><a href="#">Info</a></Badge>{' '}
+    <Badge theme="light"><a href="#">Light</a></Badge>{' '}
+    <Badge theme="dark"><a href="#">Dark</a></Badge>
   </div>
 )

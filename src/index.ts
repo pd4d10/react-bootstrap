@@ -1,6 +1,6 @@
 export { Alert } from './alert'
 export { Badge } from './badge'
-export { Breadcrumb } from './breadcrumb'
+export { Breadcrumb, BreadcrumbItem } from './breadcrumb'
 export { Button } from './button'
 export { ButtonGroup, ButtonToolbar } from './button-group'
 export { Card } from './card'

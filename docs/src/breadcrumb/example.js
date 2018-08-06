@@ -1,26 +1,12 @@
 import React from 'react'
-import { Breadcrumb } from 'relaunch'
+import { Breadcrumb, BreadcrumbItem } from 'relaunch'
 
-export default () => (
+export const ExampleComponent = () => (
   <div>
-    <Breadcrumb
-      items={[
-        {
-          render: () => 'Home',
-          active: true,
-        },
-      ]}
-    />
-    <Breadcrumb
-      items={[
-        {
-          render: () => <a href="javascript:">Home</a>,
-        },
-        {
-          render: () => 'Library',
-          active: true,
-        },
-      ]}
-    />
+    <Breadcrumb>
+      <BreadcrumbItem><a href="#">Home</a></BreadcrumbItem>
+      <BreadcrumbItem><a href="#">Library</a></BreadcrumbItem>
+      <BreadcrumbItem active>Data</BreadcrumbItem>
+    </Breadcrumb>
   </div>
 )

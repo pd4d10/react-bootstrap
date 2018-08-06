@@ -32,7 +32,9 @@ export class Modal extends Component<ModalProps> {
   render() {
     const { visible, className, body, footer, ...rest } = this.props
     return (
-      <Portal closeOnOutsideClick closeOnEsc>
+      <Portal
+      // closeOnOutsideClick closeOnEsc
+      >
         <Fragment>
           <div
             className={$c(className, 'modal', 'fade', visible && 'show')}
