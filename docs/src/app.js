@@ -23,7 +23,7 @@ import { AlertExamples } from './alert/index'
 import { BadgeExamples } from './badge'
 import { BreadcrumbExamples } from './breadcrumb/index'
 import { LayoutExample } from './layout'
-import { ButtonExamples } from './button/index'
+import ButtonExamples from './button/index.mdx'
 import { Home } from './home'
 import { JumbotronExamples } from './jumbotron'
 import { CardExamples } from './card'
@@ -87,7 +87,7 @@ class App extends Component {
                   path="/breadcrumb"
                   examples={BreadcrumbExamples}
                 />
-                <ExampleContainer path="/buttons" examples={ButtonExamples} />
+                <Route path="/buttons" component={ButtonExamples} />
                 <ExampleContainer
                   path="/button-group"
                   examples={ButtonGroupExamples}

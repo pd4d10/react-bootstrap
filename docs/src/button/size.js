@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'relaunch'
 
-export default () => (
+export const SizeExamples = () => (
   <div>
     <div>
       <Button theme="primary" size="lg">
@@ -17,14 +17,6 @@ export default () => (
       </Button>{' '}
       <Button theme="secondary" size="sm">
         Small button
-      </Button>
-    </div>
-    <div>
-      <Button theme="primary" size="lg" block>
-        Block level button
-      </Button>
-      <Button theme="secondary" size="lg" block>
-        Block level button
       </Button>
     </div>
     <div>

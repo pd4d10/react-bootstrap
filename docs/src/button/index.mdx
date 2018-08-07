@@ -1,0 +1,25 @@
+import { Examples } from './examples'
+import { OutlineExamples } from './outline'
+import { SizeExamples } from './size'
+import { CodeContainer } from '../example-container.js'
+
+## Examples
+
+Specify `theme` to use predefined button styles.
+
+<Examples />
+<CodeContainer>{require('!!raw-loader!./examples')}</CodeContainer>
+
+## Outline buttons
+
+Add `outline` to remove all background images and colors.
+
+<OutlineExamples />
+<CodeContainer>{require('!!raw-loader!./outline')}</CodeContainer>
+
+## Sizes
+
+Specify `size` for additional sizes.
+
+<SizeExamples />
+<CodeContainer>{require('!!raw-loader!./size')}</CodeContainer>

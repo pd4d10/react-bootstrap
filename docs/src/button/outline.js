@@ -1,31 +1,15 @@
 import React from 'react'
 import { Button } from 'relaunch'
 
-export default () => (
+export const OutlineExamples = () => (
   <div>
-    <Button theme="primary" outline>
-      Primary
-    </Button>{' '}
-    <Button theme="secondary" outline>
-      Secondary
-    </Button>{' '}
-    <Button theme="success" outline>
-      Success
-    </Button>{' '}
-    <Button theme="info" outline>
-      Info
-    </Button>{' '}
-    <Button theme="warning" outline>
-      Warning
-    </Button>{' '}
-    <Button theme="danger" outline>
-      Danger
-    </Button>{' '}
-    <Button theme="light" outline>
-      Light
-    </Button>{' '}
-    <Button theme="dark" outline>
-      Dark
-    </Button>
+    <Button outline theme="primary">Primary</Button>{' '}
+    <Button outline theme="secondary">Secondary</Button>{' '}
+    <Button outline theme="success">Success</Button>{' '}
+    <Button outline theme="info">Info</Button>{' '}
+    <Button outline theme="warning">Warning</Button>{' '}
+    <Button outline theme="danger">Danger</Button>{' '}
+    <Button outline theme="light">Light</Button>{' '}
+    <Button outline theme="dark">Dark</Button>
   </div>
 )
