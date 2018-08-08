@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Alert } from 'relaunch'
 
-export default () => (
+export const Example = () => (
   <Fragment>
     <Alert theme="primary">
       A simple primary alert with{' '}

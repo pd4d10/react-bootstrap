@@ -1,25 +1,46 @@
-import { Examples } from './examples'
-import { OutlineExamples } from './outline'
-import { SizeExamples } from './size'
-import { CodeContainer } from '../example-container.js'
+import { DemoContainer } from '../example-container'
 
 ## Examples
 
 Specify `theme` to use predefined button styles.
 
-<Examples />
-<CodeContainer>{require('!!raw-loader!./examples')}</CodeContainer>
+<DemoContainer
+  component={require('./theme').Example}
+  code={require('!!raw-loader!./theme')}
+/>
 
 ## Outline buttons
 
 Add `outline` to remove all background images and colors.
 
-<OutlineExamples />
-<CodeContainer>{require('!!raw-loader!./outline')}</CodeContainer>
+<DemoContainer
+  component={require('./outline').Example}
+  code={require('!!raw-loader!./outline')}
+/>
 
 ## Sizes
 
 Specify `size` for additional sizes.
 
-<SizeExamples />
-<CodeContainer>{require('!!raw-loader!./size')}</CodeContainer>
+<DemoContainer
+  component={require('./size').Example}
+  code={require('!!raw-loader!./size')}
+/>
+
+## Active state
+
+Add `active` to show active appearance
+
+<DemoContainer
+  component={require('./active').Example}
+  code={require('!!raw-loader!./active')}
+/>
+
+## Disabled state
+
+Add `disabled` to make buttons look inactive
+
+<DemoContainer
+  component={require('./disabled').Example}
+  code={require('!!raw-loader!./disabled')}
+/>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Badge } from 'relaunch'
 
-export const LinkExample = () => (
+export const Example = () => (
   <div>
     <Badge theme="primary"><a href="#">Primary</a></Badge>{' '}
     <Badge theme="secondary"><a href="#">Secondary</a></Badge>{' '}

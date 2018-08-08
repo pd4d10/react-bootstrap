@@ -1,7 +1,7 @@
 import React from 'react'
 import { DropDown, DropDownDivider, DropDownItem } from 'relaunch'
 
-export default () => (
+export const Example = () => (
   <div>
     <DropDownDivider />
     <DropDown text="Dropdown">

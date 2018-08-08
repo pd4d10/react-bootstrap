@@ -1,7 +1,7 @@
 import React from 'react'
 import { Alert } from 'relaunch'
 
-export default () => (
+export const Example = () => (
   <div>
     <Alert theme="primary">A simple primary alert—check it out!</Alert>
     <Alert theme="secondary">A simple secondary alert—check it out!</Alert>

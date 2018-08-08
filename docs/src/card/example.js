@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Button } from 'relaunch'
 
-export default () => (
+export const Example = () => (
   <Card
     style={{ width: '18rem' }}
     topImage={() => <img src={null} alt="Card image cap" />}

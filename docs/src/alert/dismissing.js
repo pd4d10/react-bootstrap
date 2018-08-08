@@ -1,7 +1,7 @@
 import React from 'react'
 import { Alert } from 'relaunch'
 
-export default () => (
+export const Example = () => (
   <Alert
     closable
     theme="warning"

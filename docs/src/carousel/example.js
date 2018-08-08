@@ -1,7 +1,7 @@
 import React from 'react'
 import { Carousel } from 'relaunch'
 
-export default () => (
+export const Example = () => (
   <Carousel
     items={[
       require('./first.svg'),

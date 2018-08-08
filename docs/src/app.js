@@ -19,23 +19,26 @@ import {
 } from 'relaunch'
 import { navItems } from './utils'
 import { ExampleContainer } from './example-container'
-import { AlertExamples } from './alert/index'
-import { BadgeExamples } from './badge'
-import { BreadcrumbExamples } from './breadcrumb/index'
-import { LayoutExample } from './layout'
-import ButtonExamples from './button/index.mdx'
 import { Home } from './home'
-import { JumbotronExamples } from './jumbotron'
-import { CardExamples } from './card'
-import { ListExamples } from './list'
-import { ButtonGroupExamples } from './button-group'
-import { CarouselExamples } from './carousel'
-import { CollapseExamples } from './collapse'
-import { ModalExamples } from './modal'
-import { NavExamples } from './nav'
-import { ProgressExamples } from './progress'
-import { PaginationExamples } from './pagination'
-import { DropdownExamples } from './dropdown'
+
+import AlertExamples from './alert/index.mdx'
+import BadgeExamples from './badge/index.mdx'
+import BreadcrumbExamples from './breadcrumb/index.mdx'
+import ButtonExamples from './button/index.mdx'
+import ButtonGroupExamples from './button-group/index.mdx'
+import CardExamples from './card/index.mdx'
+import CarouselExamples from './carousel/index.mdx'
+import CollapseExamples from './collapse/index.mdx'
+import DropdownExamples from './dropdown/index.mdx'
+import JumbotronExamples from './jumbotron/index.mdx'
+import LayoutExamples from './layout/index.mdx'
+import ListExamples from './list/index.mdx'
+import ModalExamples from './modal/index.mdx'
+import NavExamples from './nav/index.mdx'
+import NavbarExamples from './navbar/index.mdx'
+import PaginationExamples from './pagination/index.mdx'
+import ProgressExamples from './progress/index.mdx'
+import TableExamples from './table/index.mdx'
 
 const Sidebar = withRouter(p => (
   <Nav
@@ -81,47 +84,24 @@ class App extends Component {
               </Col>
               <Col size={{ md: 9, lg: 10 }}>
                 <Route path="/" exact component={Home} />
-                <ExampleContainer path="/alerts" examples={AlertExamples} />
-                <ExampleContainer path="/badge" examples={BadgeExamples} />
-                <ExampleContainer
-                  path="/breadcrumb"
-                  examples={BreadcrumbExamples}
-                />
+                <Route path="/alerts" component={AlertExamples} />
+                <Route path="/badge" component={BadgeExamples} />
+                <Route path="/breadcrumb" component={BreadcrumbExamples} />
                 <Route path="/buttons" component={ButtonExamples} />
-                <ExampleContainer
-                  path="/button-group"
-                  examples={ButtonGroupExamples}
-                />
-                <ExampleContainer path="/card" examples={CardExamples} />
-                <ExampleContainer
-                  path="/carousel"
-                  examples={CarouselExamples}
-                />
-                <ExampleContainer
-                  path="/collapse"
-                  examples={CollapseExamples}
-                />
-                <ExampleContainer
-                  path="/dropdown"
-                  examples={DropdownExamples}
-                />
-                <ExampleContainer path="/list-group" examples={ListExamples} />
-                <ExampleContainer
-                  path="/jumbotron"
-                  examples={JumbotronExamples}
-                />
-                <ExampleContainer path="/modal" examples={ModalExamples} />
-                <ExampleContainer path="/nav" examples={NavExamples} />
-                <ExampleContainer
-                  path="/progress"
-                  examples={ProgressExamples}
-                />
-                <ExampleContainer
-                  path="/pagination"
-                  examples={PaginationExamples}
-                />
-                {/*
-                <Route path="/layout" component={LayoutExample} /> */}
+                <Route path="/button-group" component={ButtonGroupExamples} />
+                <Route path="/card" component={CardExamples} />
+                <Route path="/carousel" component={CarouselExamples} />
+                <Route path="/collapse" component={CollapseExamples} />
+                <Route path="/dropdown" component={DropdownExamples} />
+                <Route path="/jumbotron" component={JumbotronExamples} />
+                <Route path="/layout" component={LayoutExamples} />
+                <Route path="/list-group" component={ListExamples} />
+                <Route path="/modal" component={ModalExamples} />
+                <Route path="/nav" component={NavExamples} />
+                <Route path="/navbar" component={NavbarExamples} />
+                <Route path="/pagination" component={PaginationExamples} />
+                <Route path="/progress" component={ProgressExamples} />
+                <Route path="/table" component={TableExamples} />
               </Col>
             </Row>
           </Container>

@@ -1,12 +1,19 @@
 import React, { Fragment } from 'react'
 import { Route } from 'react-router-dom'
-import Markdown from 'markdown-to-jsx'
 import Highlight from 'react-highlight.js'
 
-export const CodeContainer = ({ children }) => (
-  <figure className="highlight">
-    <Highlight language="jsx">{children}</Highlight>
-  </figure>
+// export const CodeContainer = ({ children }) => (
+// )
+
+export const DemoContainer = ({ component: Component, code }) => (
+  <React.Fragment>
+    <div className="bd-example">
+      <Component />
+    </div>
+    <figure className="highlight">
+      <Highlight language="jsx">{code}</Highlight>
+    </figure>
+  </React.Fragment>
 )
 
 export const ExampleContainer = ({ path, examples }) => (
@@ -30,7 +37,7 @@ export const ExampleContainer = ({ path, examples }) => (
                 </div>
               </h2>
             )}
-            {description && <Markdown>{description}</Markdown>}
+            {description}
             <div className="bd-example">
               <Component />
             </div>

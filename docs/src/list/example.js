@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { List, ListItem, Badge } from 'relaunch'
 
-export default () => (
+export const Example = () => (
   <Fragment>
     <List
       items={[

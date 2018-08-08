@@ -1,7 +1,7 @@
 import React from 'react'
 import { Jumbotron, Button } from 'relaunch'
 
-export default () => (
+export const Example = () => (
   <Jumbotron>
     <h1 className="display-4">Hello, world!</h1>
     <p className="lead">

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'relaunch'
 
-export const Examples = () => (
+export const Example = () => (
   <div>
     <Button theme="primary">Primary</Button>{' '}
     <Button theme="secondary">Secondary</Button>{' '}

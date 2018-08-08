@@ -1,7 +1,7 @@
 import React from 'react'
 import { ButtonGroup, ButtonToolbar, Button } from 'relaunch'
 
-export default () => (
+export const Example = () => (
   <div>
     <ButtonGroup>
       <Button theme="secondary">Left</Button>

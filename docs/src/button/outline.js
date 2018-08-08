@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'relaunch'
 
-export const OutlineExamples = () => (
+export const Example = () => (
   <div>
     <Button outline theme="primary">Primary</Button>{' '}
     <Button outline theme="secondary">Secondary</Button>{' '}

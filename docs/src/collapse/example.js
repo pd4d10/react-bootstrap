@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Collapse, Button } from 'relaunch'
 
-export default class Example extends Component {
+export class Example extends Component {
   state = {
     visible: false,
   }

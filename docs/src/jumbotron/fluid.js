@@ -1,7 +1,7 @@
 import React from 'react'
 import { Jumbotron } from 'relaunch'
 
-export default () => (
+export const Example = () => (
   <Jumbotron fluid>
     <div className="container">
       <h1 className="display-4">Fluid jumbotron</h1>
