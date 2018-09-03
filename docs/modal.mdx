@@ -1,0 +1,36 @@
+import { Playground, PropsTable } from 'docz'
+import { Modal, Button } from '../lib'
+
+## Example
+
+<Playground>
+  {() => {
+    class Example extends React.Component {
+      state = {
+        visible: false,
+      }
+
+      toggleVisible = () => {
+        this.setState(state => ({
+          visible: !state.visible,
+        }))
+      }
+
+      render() {
+        return (
+          <div>
+            <Button onClick={this.toggleVisible}>Toggle</Button>
+            <Modal
+              visible={this.state.visible}
+              body={<div>Woohoo, you're reading this text in a modal!</div>}
+              onFinish={this.toggleVisible}
+              onCancel={this.toggleVisible}
+            />
+          </div>
+        )
+      }
+    }
+
+    return <Example />
+  }}
+</Playground>

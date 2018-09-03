@@ -1,0 +1,63 @@
+---
+name: Alert
+---
+
+import { Playground, PropsTable } from 'docz'
+import { Alert } from '../lib'
+
+## Examples
+
+<Playground>
+  <Alert theme="primary">A simple primary alert—check it out!</Alert>
+  <Alert theme="secondary">A simple secondary alert—check it out!</Alert>
+  <Alert theme="success">A simple success alert—check it out!</Alert>
+  <Alert theme="danger">A simple danger alert—check it out!</Alert>
+  <Alert theme="warning">A simple warning alert—check it out!</Alert>
+  <Alert theme="info">A simple info alert—check it out!</Alert>
+  <Alert theme="light">A simple light alert—check it out!</Alert>
+  <Alert theme="dark">A simple dark alert—check it out!</Alert>
+</Playground>
+
+## Link color
+
+<Playground>
+  <Alert theme="primary">
+    A simple primary alert with <a href="javascript:" className="alert-link">an example link</a>. Give it a click if you like.
+  </Alert>
+  <Alert theme="secondary">
+    A simple secondary alert with <a href="javascript:" className="alert-link">an example link</a>. Give it a click if you like.
+  </Alert>
+</Playground>
+
+## Additional content
+
+<Playground>
+  <Alert theme="success">
+    <h4 className="alert-heading">Well done!</h4>
+    <p>
+      Aww yeah, you successfully read this important alert message. This example
+      text is going to run a bit longer so that you can see how spacing within
+      an alert works with this kind of content.
+    </p>
+    <hr />
+    <p className="mb-0">
+      Whenever you need to, be sure to use margin utilities to keep things nice
+      and tidy.
+    </p>
+  </Alert>
+</Playground>
+
+## Dismissing
+
+<Playground>
+  <Alert
+    closable
+    theme="warning"
+    onClose={() => {
+      alert('Close button clicked')
+    }}
+  >
+    <strong>Holy guacamole!</strong> You should check in on some of those fields
+    below.
+  </Alert>
+</Playground>

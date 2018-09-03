@@ -1,0 +1,62 @@
+import { Playground, PropsTable } from 'docz'
+import { Button, Breadcrumb, BreadcrumbItem } from '../lib'
+
+## Examples
+
+Specify `theme` to use predefined button styles.
+
+<Playground>
+  <Button theme="primary">Primary</Button>{' '}
+  <Button theme="secondary">Secondary</Button>{' '}
+  <Button theme="success">Success</Button>{' '}
+  <Button theme="info">Info</Button>{' '}
+  <Button theme="warning">Warning</Button>{' '}
+  <Button theme="danger">Danger</Button>{' '}
+  <Button theme="light">Light</Button>{' '}
+  <Button theme="dark">Dark</Button>{' '}
+  <Button theme="link">Link</Button>
+</Playground>
+
+## Outline buttons
+
+Add `outline` to remove all background images and colors.
+
+<Playground>
+  <Button outline theme="primary">Primary</Button>{' '}
+  <Button outline theme="secondary">Secondary</Button>{' '}
+  <Button outline theme="success">Success</Button>{' '}
+  <Button outline theme="info">Info</Button>{' '}
+  <Button outline theme="warning">Warning</Button>{' '}
+  <Button outline theme="danger">Danger</Button>{' '}
+  <Button outline theme="light">Light</Button>{' '}
+  <Button outline theme="dark">Dark</Button>
+</Playground>
+
+## Sizes
+
+Specify `size` for additional sizes.
+
+<Playground>
+  <Button size="lg" theme="primary">Large button</Button>{' '}
+  <Button size="lg" theme="secondary">Large button</Button>{' '}
+  <Button size="sm" theme="primary">Small button</Button>{' '}
+  <Button size="sm" theme="secondary">Small button</Button>
+</Playground>
+
+## Active state
+
+Add `active` to show active appearance
+
+<Playground>
+  <Button active theme="primary" size="lg">Primary link</Button>{' '}
+  <Button active theme="secondary" size="lg">Link</Button>
+</Playground>
+
+## Disabled state
+
+Add `disabled` to make buttons look inactive
+
+<Playground>
+  <Button disabled theme="primary" size="lg">Primary link</Button>{' '}
+  <Button disabled theme="secondary" size="lg">Link</Button>
+</Playground>
