@@ -35,3 +35,43 @@ import { Modal, Button } from '../lib'
     return <Example />
   }}
 </Playground>
+
+## Confirm
+
+<Playground>
+  {() => {
+    class Example extends React.Component {
+      constructor() {
+        this.state = {
+          result: '',
+        }
+      }
+
+      render() {
+        return (
+          <React.Fragment>
+            <Button
+              onClick={() => {
+                Modal.confirm({
+                  title: 'Confirm',
+                  content: "Are you sure",
+                  onFinish: ()=> {
+                    this.setState({ result: 'finish' })
+                  },
+                  onCancel:() =>{
+                    this.setState({ result: 'cancel' })
+                  },
+                })
+              }
+            }>Confirm</Button>{' '}
+            <span>
+              {this.state.result ? `You click ` + this.state.result : 'Click the button'}
+            </span>
+          </React.Fragment>
+        )
+      }
+    }
+
+    return <Example />
+  }}
+</Playground>

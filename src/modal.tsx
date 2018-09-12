@@ -5,6 +5,7 @@ import 'bootstrap/js/dist/modal'
 import $c from 'classnames'
 import { CommonProps } from './utils'
 import { Button } from './button'
+import ReactDOM from 'react-dom'
 
 interface ModalProps extends CommonProps {
   visible?: boolean
@@ -12,6 +13,48 @@ interface ModalProps extends CommonProps {
   onCancel?: Function
   body?: React.ReactNode
   footer?: React.ReactNode
+  domNode?: HTMLElement
+  backdrop?: boolean | 'static'
+  showClose?: boolean
+  closeOnEscPressed?: boolean
+}
+
+interface ConfirmParams extends CommonProps {
+  title?: string
+  content?: string
+  onFinish?: Function
+  onCancel?: Function
+}
+
+interface ConfirmModalProps extends ConfirmParams {
+  domNode: HTMLElement
+}
+
+class ConfirmModal extends React.Component<ConfirmModalProps> {
+  state = { visible: false }
+
+  componentDidMount() {
+    this.setState({ visible: true })
+  }
+
+  render() {
+    return (
+      <Modal
+        domNode={this.props.domNode}
+        visible={this.state.visible}
+        onFinish={() => {
+          this.setState({ visible: false })
+          this.props.onFinish && this.props.onFinish()
+        }}
+        onCancel={() => {
+          this.setState({ visible: false })
+          this.props.onCancel && this.props.onCancel()
+        }}
+        backdrop="static"
+        showClose={false}
+      />
+    )
+  }
 }
 
 export class Modal extends React.Component<ModalProps> {
@@ -23,8 +66,42 @@ export class Modal extends React.Component<ModalProps> {
     this.modalRef = React.createRef()
   }
 
+  static defaultProps: ModalProps = {
+    visible: false,
+    backdrop: true,
+    closeOnEscPressed: true,
+    showClose: true,
+  }
+
+  static confirm({ onFinish, onCancel, ...rest }: ConfirmModalProps) {
+    const div = document.createElement('div')
+    document.body.appendChild(div)
+    ReactDOM.render(
+      <ConfirmModal
+        {...rest}
+        onFinish={() => {
+          onFinish && onFinish()
+          document.body.removeChild(div)
+        }}
+        onCancel={() => {
+          onCancel && onCancel()
+          document.body.removeChild(div)
+        }}
+        domNode={div}
+      />,
+      div,
+    )
+  }
+
   componentDidMount() {
     this.$modal = $(this.modalRef.current as HTMLDivElement)
+    const $modal = this.$modal as JQuery<HTMLDivElement>
+    $modal.modal({
+      backdrop: this.props.backdrop,
+      // keyboard: this.props.closeOnEscPressed,
+      // focus: true,
+      show: this.props.visible,
+    })
   }
 
   componentDidUpdate() {
@@ -36,6 +113,11 @@ export class Modal extends React.Component<ModalProps> {
       $modal.off('click.dismiss.bs.modal')
       $modal.on('click.dismiss.bs.modal', event => {
         if (event.target !== event.currentTarget) {
+          return
+        }
+
+        if (this.props.backdrop === 'static') {
+          $modal.focus()
           return
         }
 
@@ -55,10 +137,20 @@ export class Modal extends React.Component<ModalProps> {
   }
 
   render() {
-    const { visible, className, body, footer, ...rest } = this.props
+    const {
+      visible,
+      className,
+      body,
+      footer,
+      domNode,
+      backdrop,
+      showClose,
+      ...rest
+    } = this.props
     return (
       <Portal
-      // closeOnOutsideClick closeOnEsc
+        node={domNode}
+        // closeOnOutsideClick closeOnEsc
       >
         <div
           className={$c(className, 'modal', 'fade')}
@@ -71,14 +163,16 @@ export class Modal extends React.Component<ModalProps> {
                 <h5 className="modal-title" id="exampleModalLiveLabel">
                   Modal title
                 </h5>
-                <button
-                  type="button"
-                  className="close"
-                  aria-label="Close"
-                  onClick={this.handleCancel}
-                >
-                  <span aria-hidden="true">×</span>
-                </button>
+                {showClose && (
+                  <button
+                    type="button"
+                    className="close"
+                    aria-label="Close"
+                    onClick={this.handleCancel}
+                  >
+                    <span aria-hidden="true">×</span>
+                  </button>
+                )}
               </div>
               <div className="modal-body">{body}</div>
               <div className="modal-footer">
