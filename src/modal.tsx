@@ -1,5 +1,7 @@
-import React, { Component, Fragment } from 'react'
+import React from 'react'
 import { Portal } from 'react-portal'
+import $ from 'jquery'
+import 'bootstrap/js/dist/modal'
 import $c from 'classnames'
 import { CommonProps } from './utils'
 import { Button } from './button'
@@ -12,12 +14,29 @@ interface ModalProps extends CommonProps {
   footer?: React.ReactNode
 }
 
-export class Modal extends Component<ModalProps> {
-  componentWillReceiveProps(nextProps: ModalProps) {
-    if (nextProps.visible) {
-      document.body.classList.add('modal-open')
+export class Modal extends React.Component<ModalProps> {
+  modalRef: React.RefObject<HTMLDivElement>
+  $modal?: JQuery<HTMLDivElement>
+
+  constructor(props: ModalProps) {
+    super(props)
+    this.modalRef = React.createRef()
+  }
+
+  componentDidMount() {
+    this.$modal = $(this.modalRef.current as HTMLDivElement)
+  }
+
+  componentDidUpdate() {
+    const $modal = this.$modal as JQuery<HTMLDivElement>
+    if (this.props.visible) {
+      $modal.modal('show')
+      $modal.off('click.dismiss.bs.modal') // Remove default dismiss event to respect visible prop
+      $modal.on('click.dismiss.bs.modal', () => {
+        this.handleCancel()
+      })
     } else {
-      document.body.classList.remove('modal-open')
+      $modal.modal('hide')
     }
   }
 
@@ -35,47 +54,42 @@ export class Modal extends Component<ModalProps> {
       <Portal
       // closeOnOutsideClick closeOnEsc
       >
-        <Fragment>
-          <div
-            className={$c(className, 'modal', 'fade', visible && 'show')}
-            role="dialog"
-            style={{
-              display: visible ? 'block' : 'none',
-            }}
-          >
-            <div className="modal-dialog" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="exampleModalLiveLabel">
-                    Modal title
-                  </h5>
-                  <button
-                    type="button"
-                    className="close"
-                    aria-label="Close"
-                    onClick={this.handleCancel}
-                  >
-                    <span aria-hidden="true">×</span>
-                  </button>
-                </div>
-                <div className="modal-body">{body}</div>
-                <div className="modal-footer">
-                  {footer || (
-                    <Fragment>
-                      <Button theme="secondary" onClick={this.handleCancel}>
-                        Close
-                      </Button>
-                      <Button theme="primary" onClick={this.handleFinish}>
-                        Save changes
-                      </Button>
-                    </Fragment>
-                  )}
-                </div>
+        <div
+          className={$c(className, 'modal', 'fade')}
+          role="dialog"
+          ref={this.modalRef}
+        >
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLiveLabel">
+                  Modal title
+                </h5>
+                <button
+                  type="button"
+                  className="close"
+                  aria-label="Close"
+                  onClick={this.handleCancel}
+                >
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div className="modal-body">{body}</div>
+              <div className="modal-footer">
+                {footer || (
+                  <React.Fragment>
+                    <Button theme="secondary" onClick={this.handleCancel}>
+                      Close
+                    </Button>
+                    <Button theme="primary" onClick={this.handleFinish}>
+                      Save changes
+                    </Button>
+                  </React.Fragment>
+                )}
               </div>
             </div>
           </div>
-          {visible && <div className="modal-backdrop fade show" />}
-        </Fragment>
+        </div>
       </Portal>
     )
   }
