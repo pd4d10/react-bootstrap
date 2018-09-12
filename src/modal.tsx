@@ -31,8 +31,14 @@ export class Modal extends React.Component<ModalProps> {
     const $modal = this.$modal as JQuery<HTMLDivElement>
     if (this.props.visible) {
       $modal.modal('show')
-      $modal.off('click.dismiss.bs.modal') // Remove default dismiss event to respect visible prop
-      $modal.on('click.dismiss.bs.modal', () => {
+
+      // Remove default dismiss event to respect visible prop
+      $modal.off('click.dismiss.bs.modal')
+      $modal.on('click.dismiss.bs.modal', event => {
+        if (event.target !== event.currentTarget) {
+          return
+        }
+
         this.handleCancel()
       })
     } else {
