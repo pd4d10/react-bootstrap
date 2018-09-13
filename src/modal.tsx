@@ -7,6 +7,12 @@ import { CommonProps } from './utils'
 import { Button } from './button'
 import ReactDOM from 'react-dom'
 
+declare global {
+  interface JQuery {
+    modal: Function
+  }
+}
+
 interface ModalProps extends CommonProps {
   visible?: boolean
   onFinish?: Function
@@ -94,8 +100,8 @@ export class Modal extends React.Component<ModalProps> {
   }
 
   componentDidMount() {
-    this.$modal = $(this.modalRef.current as HTMLDivElement)
-    const $modal = this.$modal as JQuery<HTMLDivElement>
+    this.$modal = $(this.modalRef.current!)
+    const $modal = this.$modal!
     $modal.modal({
       backdrop: this.props.backdrop,
       // keyboard: this.props.closeOnEscPressed,
@@ -105,7 +111,7 @@ export class Modal extends React.Component<ModalProps> {
   }
 
   componentDidUpdate() {
-    const $modal = this.$modal as JQuery<HTMLDivElement>
+    const $modal = this.$modal!
     if (this.props.visible) {
       $modal.modal('show')
 
