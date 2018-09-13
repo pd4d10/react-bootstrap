@@ -17,6 +17,8 @@ export type Theme =
 
 export type ButtonTheme = Theme | 'link'
 
+export type Direction = 'up' | 'down' | 'right' | 'left'
+
 export function isUndefined(v: any) {
   return typeof v === 'undefined'
 }

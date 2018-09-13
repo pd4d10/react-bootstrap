@@ -1,23 +1,112 @@
 import { Playground, PropsTable } from 'docz'
-import { DropDown, DropDownDivider, DropDownItem } from '../lib'
+import { Dropdown, DropdownDivider, DropdownMenu, DropdownItem } from '../lib'
 
 ## Examples
 
 <Playground>
-  <DropDownDivider />
-  <DropDown text="Dropdown">
-    <DropDownItem>
-      <a href="#">Action</a>
-    </DropDownItem>
-    <DropDownItem>
-      <a href="#">Another action</a>
-    </DropDownItem>
-    <DropDownItem>
-      <a href="#">Something else here</a>
-    </DropDownItem>
-    <DropDownDivider />
-    <DropDownItem>
-      <a href="#">Separated link</a>
-    </DropDownItem>
-  </DropDown>
+  <Dropdown
+    text="Dropdown"
+    overlay={
+      <DropdownMenu>
+        <DropdownItem><a href="#">Action</a></DropdownItem>
+        <DropdownItem><a href="#">Another action</a></DropdownItem>
+        <DropdownItem><a href="#">Something else here</a></DropdownItem>
+        <DropdownDivider />
+        <DropdownItem><a href="#">Separated link</a></DropdownItem>
+      </DropdownMenu>
+    }
+  />
+</Playground>
+
+## Theme
+
+<Playground>
+  <Dropdown
+    theme="warning"
+    text="Dropdown"
+    overlay={
+      <DropdownMenu>
+        <DropdownItem><a href="#">Action</a></DropdownItem>
+        <DropdownItem><a href="#">Another action</a></DropdownItem>
+        <DropdownItem><a href="#">Something else here</a></DropdownItem>
+        <DropdownDivider />
+        <DropdownItem><a href="#">Separated link</a></DropdownItem>
+      </DropdownMenu>
+    }
+  />
+</Playground>
+
+## Size
+
+<Playground>
+  <Dropdown
+    size="lg"
+    text="Large button"
+    overlay={
+      <DropdownMenu>
+        <DropdownItem><a href="#">Action</a></DropdownItem>
+        <DropdownItem><a href="#">Another action</a></DropdownItem>
+        <DropdownItem><a href="#">Something else here</a></DropdownItem>
+        <DropdownDivider />
+        <DropdownItem><a href="#">Separated link</a></DropdownItem>
+      </DropdownMenu>
+    }
+  />{' '}
+  <Dropdown
+    size="lg"
+    text="Large split button"
+    overlay={
+      <DropdownMenu>
+        <DropdownItem><a href="#">Action</a></DropdownItem>
+        <DropdownItem><a href="#">Another action</a></DropdownItem>
+        <DropdownItem><a href="#">Something else here</a></DropdownItem>
+        <DropdownDivider />
+        <DropdownItem><a href="#">Separated link</a></DropdownItem>
+      </DropdownMenu>
+    }
+  />
+</Playground>
+
+## Direction
+
+<Playground>
+  <Dropdown
+    direction="up"
+    text="Dropup"
+    overlay={
+      <DropdownMenu>
+        <DropdownItem><a href="#">Action</a></DropdownItem>
+        <DropdownItem><a href="#">Another action</a></DropdownItem>
+        <DropdownItem><a href="#">Something else here</a></DropdownItem>
+        <DropdownDivider />
+        <DropdownItem><a href="#">Separated link</a></DropdownItem>
+      </DropdownMenu>
+    }
+  />
+  <Dropdown
+    direction="left"
+    text="Dropup"
+    overlay={
+      <DropdownMenu>
+        <DropdownItem><a href="#">Action</a></DropdownItem>
+        <DropdownItem><a href="#">Another action</a></DropdownItem>
+        <DropdownItem><a href="#">Something else here</a></DropdownItem>
+        <DropdownDivider />
+        <DropdownItem><a href="#">Separated link</a></DropdownItem>
+      </DropdownMenu>
+    }
+  />
+  <Dropdown
+    direction="right"
+    text="Dropup"
+    overlay={
+      <DropdownMenu>
+        <DropdownItem><a href="#">Action</a></DropdownItem>
+        <DropdownItem><a href="#">Another action</a></DropdownItem>
+        <DropdownItem><a href="#">Something else here</a></DropdownItem>
+        <DropdownDivider />
+        <DropdownItem><a href="#">Separated link</a></DropdownItem>
+      </DropdownMenu>
+    }
+  />
 </Playground>

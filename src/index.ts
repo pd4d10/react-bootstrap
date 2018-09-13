@@ -6,7 +6,12 @@ export { ButtonGroup, ButtonToolbar } from './button-group'
 export { Card } from './card'
 export { Carousel } from './carousel'
 export { Collapse } from './collapse'
-export { DropDown, DropDownDivider, DropDownItem } from './dropdown'
+export {
+  Dropdown,
+  DropdownDivider,
+  DropdownMenu,
+  DropdownItem,
+} from './dropdown'
 export { List, ListItem } from './list'
 export { Container, Row, Col } from './layout'
 export { Modal } from './modal'
