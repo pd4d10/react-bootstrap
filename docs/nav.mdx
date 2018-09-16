@@ -1,4 +1,24 @@
 import { Playground, PropsTable } from 'docz'
-import { Nav } from '../lib'
+import { Nav, NavItem, NavLink } from '../lib'
 
 ## Example
+
+<Playground>
+  <Nav>
+    <NavItem><NavLink href="#">Home</NavLink></NavItem>
+  </Nav>
+</Playground>
+
+<Playground>
+  <Nav tabs>
+    <NavItem><NavLink href="#" active>Home</NavLink></NavItem>
+    <NavItem><NavLink href="#" disabled>Home</NavLink></NavItem>
+  </Nav>
+</Playground>
+
+<Playground>
+  <Nav pill>
+    <NavItem><NavLink href="#" active>Home</NavLink></NavItem>
+    <NavItem><NavLink href="#" disabled>Home</NavLink></NavItem>
+  </Nav>
+</Playground>

@@ -38,3 +38,6 @@ export function fill(length: number) {
   }
   return arr
 }
+
+// https://stackoverflow.com/a/50677584
+export type Arg0<T> = T extends (arg0: infer U, ...args: any[]) => any ? U : any

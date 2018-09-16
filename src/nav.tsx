@@ -1,13 +1,47 @@
-import React, { Component, SFC } from 'react'
+import React, { Component } from 'react'
 import $c from 'classnames'
-import { CommonProps } from './utils'
+import { withProps } from 'recompose'
+import { CommonProps, Arg0 } from './utils'
 
 interface NavProps extends CommonProps {
   items: any[]
   vertical?: boolean
-  tab?: boolean
+  tabs?: boolean
   fill?: boolean
   renderItem: (item: any, index: number) => React.ReactNode
+}
+
+interface NavLinkProps extends CommonProps {
+  active?: boolean
+  disabled?: boolean
+  component?: Arg0<typeof React.createElement>
+}
+
+export class NavLink extends React.Component<NavLinkProps> {
+  static defaultProps: NavLinkProps = {
+    active: false,
+    disabled: false,
+    component: 'a',
+  }
+
+  render() {
+    const { component, active, disabled, ...rest } = this.props
+    rest.className = $c(
+      'nav-link',
+      active && 'active',
+      disabled && 'disabled',
+      rest.className,
+    )
+    return React.createElement(component!, rest)
+  }
+}
+
+export class NavItem extends React.Component<CommonProps> {
+  render() {
+    const { ...rest } = this.props
+    rest.className = $c('nav-item', rest.className)
+    return React.createElement('li', rest)
+  }
 }
 
 export class Nav extends Component<NavProps> {
@@ -20,20 +54,20 @@ export class Nav extends Component<NavProps> {
   // }
 
   render() {
-    const { vertical, tab, fill, items, renderItem, ...rest } = this.props
+    const { vertical, tabs, fill, items, renderItem, ...rest } = this.props
     rest.className = $c(
       rest.className,
       'nav',
       vertical && 'flex-column',
-      tab && 'nav-tabs',
+      tabs && 'nav-tabs',
       fill && 'nav-fill',
     )
 
     return (
       <nav {...rest}>
-        {items.map((item, index) => {
+        {/* {items.map((item, index) => {
           return renderItem(item, index)
-        })}
+        })} */}
       </nav>
     )
   }
