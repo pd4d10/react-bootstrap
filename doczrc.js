@@ -14,6 +14,16 @@ export default {
       ],
     },
   },
+  themeConfig: {
+    styles: {
+      body: {
+        fontFamily: null,
+      },
+      pre: {
+        fontFamily: null,
+      },
+    },
+  },
   plugins: [
     css({
       preprocessor: 'postcss',
