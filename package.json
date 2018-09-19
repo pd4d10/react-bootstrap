@@ -36,6 +36,8 @@
     "typescript": "^3.0.1"
   },
   "dependencies": {
+    "@mdi/js": "^2.7.94",
+    "@mdi/react": "^1.0.1",
     "@types/classnames": "^2.2.6",
     "@types/jquery": "^3.3.6",
     "@types/react-portal": "^4.0.0",

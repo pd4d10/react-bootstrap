@@ -1,7 +1,7 @@
 import { Playground, PropsTable } from 'docz'
-import { Button, Breadcrumb, BreadcrumbItem } from '../lib'
+import { Button, Breadcrumb, BreadcrumbItem, Provider } from '../lib'
 
-## Examples
+## Theme
 
 Specify `theme` to use predefined button styles.
 
@@ -39,8 +39,16 @@ Specify `size` for additional sizes.
 <Playground>
   <Button size="lg" theme="primary">Large button</Button>{' '}
   <Button size="lg" theme="secondary">Large button</Button>{' '}
+</Playground>
+
+<Playground>
   <Button size="sm" theme="primary">Small button</Button>{' '}
   <Button size="sm" theme="secondary">Small button</Button>
+</Playground>
+
+<Playground>
+  <Button size="lg" block theme="primary">Block level button</Button>{' '}
+  <Button size="lg" block theme="secondary">Block level button</Button>
 </Playground>
 
 ## Active state
@@ -59,4 +67,26 @@ Add `disabled` to make buttons look inactive
 <Playground>
   <Button disabled theme="primary" size="lg">Primary link</Button>{' '}
   <Button disabled theme="secondary" size="lg">Link</Button>
+</Playground>
+
+## Loading state
+
+<Playground>
+  <Provider state={{ loading: false, timeout: 5 }}>
+    {({ state, setState }) => (
+      <React.Fragment>
+        <Button loading={true} disabled>Loading...</Button>{' '}
+        <Button
+          loading={state.loading}
+          disabled={state.loading}
+          onClick={() => { 
+            setState({ loading: true })
+            setTimeout(() => {
+              setState({ loading: false })
+            }, 5000)
+          }}
+        >Click me</Button>
+      </React.Fragment>
+    )}
+  </Provider>
 </Playground>

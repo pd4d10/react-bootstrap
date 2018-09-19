@@ -733,6 +733,14 @@
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.8.1.tgz#f3a81587ad8d0ef33cdad6f3b4310774fcc1053e"
 
+"@mdi/js@^2.7.94":
+  version "2.7.94"
+  resolved "https://registry.yarnpkg.com/@mdi/js/-/js-2.7.94.tgz#32aaa9dfb58c80f37a1fa1323d2730bea18a9ae6"
+
+"@mdi/react@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@mdi/react/-/react-1.0.1.tgz#abad5797862df94eac853b33b3d80c1fa2ea35d8"
+
 "@mdx-js/loader@^0.15.0":
   version "0.15.0"
   resolved "https://registry.yarnpkg.com/@mdx-js/loader/-/loader-0.15.0.tgz#05a36267d5a491ae1981508a3e662eaf848f6ad3"
