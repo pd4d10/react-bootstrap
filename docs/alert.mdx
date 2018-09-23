@@ -3,9 +3,16 @@ name: Alert
 ---
 
 import { Playground, PropsTable } from 'docz'
-import { Alert } from '../lib'
+import { Alert, AlertLink, Button } from '../lib'
+import { Link } from './utils'
 
-## Examples
+# Alert
+
+<PropsTable of={Alert} />
+
+## Themes
+
+Specify `theme` to use predefined styles.
 
 <Playground>
   <Alert theme="primary">A simple primary alert—check it out!</Alert>
@@ -18,14 +25,24 @@ import { Alert } from '../lib'
   <Alert theme="dark">A simple dark alert—check it out!</Alert>
 </Playground>
 
-## Link color
+## Notification
+
+<Playground>
+  <Button onClick={() => { Alert.notify({ theme: 'primary', content: 'A simple notification' }) }}>Show notification</Button>
+</Playground>
+
+## Link
+
+`AlertLink` is to provide matching colored links within `Alert`.
+
+Use `render` prop to render component other than HTML `a`, such as `Link` of React Router.
 
 <Playground>
   <Alert theme="primary">
-    A simple primary alert with <a href="javascript:" className="alert-link">an example link</a>. Give it a click if you like.
+    A simple primary alert with <AlertLink href="javascript:">an example link</AlertLink>. Give it a click if you like.
   </Alert>
-  <Alert theme="secondary">
-    A simple secondary alert with <a href="javascript:" className="alert-link">an example link</a>. Give it a click if you like.
+  <Alert theme="primary">
+    A simple primary alert with <AlertLink render={props => <Link {...props} to="/">a router link</Link>} />. Give it a click if you like.
   </Alert>
 </Playground>
 
@@ -33,14 +50,14 @@ import { Alert } from '../lib'
 
 <Playground>
   <Alert theme="success">
-    <h4 className="alert-heading">Well done!</h4>
+    <h4>Well done!</h4>
     <p>
       Aww yeah, you successfully read this important alert message. This example
       text is going to run a bit longer so that you can see how spacing within
       an alert works with this kind of content.
     </p>
     <hr />
-    <p className="mb-0">
+    <p style={{ marginBottom: 0 }}>
       Whenever you need to, be sure to use margin utilities to keep things nice
       and tidy.
     </p>
@@ -51,10 +68,10 @@ import { Alert } from '../lib'
 
 <Playground>
   <Alert
-    closable
+    dismissible
     theme="warning"
-    onClose={() => {
-      alert('Close button clicked')
+    onDismiss={() => {
+      // Do something here
     }}
   >
     <strong>Holy guacamole!</strong> You should check in on some of those fields

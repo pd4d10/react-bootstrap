@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { AnchorHTMLAttributes } from 'react'
 import $c from 'classnames'
 import { CommonProps, Theme } from './utils'
 
 interface AlertProps extends CommonProps {
-  theme?: Theme
-  closable?: boolean
-  onClose?: (e: React.MouseEvent<HTMLButtonElement>) => void
+  theme: Theme
+  dismissible?: boolean
+  onDismiss?: () => void
 }
 
 const initialState = {
   visible: true,
+  isDismissing: false,
 }
 
 type AlertState = Readonly<typeof initialState>
@@ -17,37 +18,40 @@ type AlertState = Readonly<typeof initialState>
 export class Alert extends React.Component<AlertProps, AlertState> {
   readonly state: AlertState = initialState
 
-  handleClose: AlertProps['onClose'] = e => {
-    this.setState({ visible: false })
-    this.props.onClose && this.props.onClose(e)
+  static defaultProps: Partial<AlertProps> = {
+    dismissible: false,
+  }
+
+  handleDismiss: AlertProps['onDismiss'] = () => {
+    this.setState({ isDismissing: true })
+    setTimeout(() => {
+      this.setState({ visible: false })
+    }, 150)
+    this.props.onDismiss && this.props.onDismiss()
   }
 
   render() {
-    const {
-      theme = 'primary',
-      closable = false,
-      onClose,
-      children,
-      ...rest
-    } = this.props
+    const { theme, dismissible, onDismiss, children, ...rest } = this.props
 
     rest.className = $c(
       rest.className,
       'alert',
       `alert-${theme}`,
-      closable && 'alert-dismissible',
+      dismissible && 'alert-dismissible',
+      this.state.isDismissing || 'show',
+      'fade',
     )
 
     return (
       this.state.visible && (
         <div role="alert" {...rest}>
           {children}
-          {closable && (
+          {dismissible && (
             <button
               type="button"
               className="close"
               aria-label="Close"
-              onClick={this.handleClose}
+              onClick={this.handleDismiss}
             >
               <span aria-hidden="true">&times;</span>
             </button>
@@ -55,5 +59,20 @@ export class Alert extends React.Component<AlertProps, AlertState> {
         </div>
       )
     )
+  }
+}
+
+interface AlertLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  render: (props: { className: string }) => React.ReactNode
+}
+
+export class AlertLink extends React.Component<AlertLinkProps> {
+  render() {
+    const { render, ...rest } = this.props
+    rest.className = $c(rest.className, 'alert-link')
+    if (render) {
+      return render({ className: rest.className })
+    }
+    return <a {...rest} />
   }
 }
