@@ -1,28 +1,28 @@
-import React from 'react'
+import React, { LiHTMLAttributes, OlHTMLAttributes } from 'react'
 import $c from 'classnames'
-import { CommonProps } from './utils'
 
-interface BreadcrumbItemProps extends CommonProps {
+interface BreadcrumbItemProps extends LiHTMLAttributes<HTMLLIElement> {
   active?: boolean
 }
 
-interface BreadcrumbProps extends CommonProps {}
+interface BreadcrumbProps extends OlHTMLAttributes<HTMLOListElement> {}
 
 export class BreadcrumbItem extends React.Component<BreadcrumbItemProps> {
   render() {
-    const { className, active, ...rest } = this.props
-    return (
-      <li
-        className={$c('breadcrumb-item', active && 'active', className)}
-        {...rest}
-      />
-    )
+    const { active, ...rest } = this.props
+    rest.className = $c('breadcrumb-item', active && 'active', rest.className)
+    return <li aria-current="page" {...rest} />
   }
 }
 
 export class Breadcrumb extends React.Component<BreadcrumbProps> {
   render() {
-    const { className, ...rest } = this.props
-    return <ol className={$c('breadcrumb', className)} {...rest} />
+    const { ...rest } = this.props
+    rest.className = $c('breadcrumb', rest.className)
+    return (
+      <nav aria-label="breadcrumb">
+        <ol {...rest} />
+      </nav>
+    )
   }
 }
