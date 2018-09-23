@@ -1,4 +1,4 @@
-import React, { Component, ReactNode } from 'react'
+import React from 'react'
 import $c from 'classnames'
 import Icon from '@mdi/react'
 import { mdiLoading } from '@mdi/js'
@@ -13,25 +13,12 @@ interface ButtonProps extends CommonProps {
   disabled?: boolean
   loading?: boolean | React.ReactNode
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  render?: (props: { className: string }) => React.ReactNode
 }
 
-export class Provider extends React.Component<{ state: any }> {
-  constructor(props: { state: any }) {
-    super(props)
-    this.state = props.state
-  }
-  render() {
-    return this.props.children({
-      state: this.state,
-      setState: this.setState.bind(this),
-    })
-  }
-}
-
-export class Button extends Component<ButtonProps> {
-  static defaultProps: ButtonProps = {
+export class Button extends React.Component<ButtonProps> {
+  static defaultProps: Partial<ButtonProps> = {
     theme: 'primary',
-    loading: false,
   }
 
   render() {
@@ -42,6 +29,7 @@ export class Button extends Component<ButtonProps> {
       block,
       active,
       loading,
+      render,
       children,
       ...rest
     } = this.props
@@ -55,6 +43,12 @@ export class Button extends Component<ButtonProps> {
       active && 'active',
     )
 
+    if (render) {
+      return render({
+        className: rest.className,
+      })
+    }
+
     return (
       <button type="button" role="button" {...rest}>
         {loading && loading === true ? (
@@ -66,12 +60,12 @@ export class Button extends Component<ButtonProps> {
             // vertical
             spin={1}
             // color="red"
-            style={{ width: 20, marginRight: 4 }}
+            style={{ width: '1em', marginRight: 4 }}
           />
         ) : (
           loading
         )}
-        {children}
+        <span style={{ verticalAlign: 'middle' }}>{children}</span>
       </button>
     )
   }

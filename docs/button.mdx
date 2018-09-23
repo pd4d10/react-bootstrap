@@ -1,7 +1,7 @@
 import { Playground, PropsTable } from 'docz'
-import { Button, Breadcrumb, BreadcrumbItem, Provider } from '../lib'
+import { Button, Breadcrumb, BreadcrumbItem } from '../lib'
 
-## Theme
+## Themes
 
 Specify `theme` to use predefined button styles.
 
@@ -15,6 +15,15 @@ Specify `theme` to use predefined button styles.
   <Button theme="light">Light</Button>{' '}
   <Button theme="dark">Dark</Button>{' '}
   <Button theme="link">Link</Button>
+</Playground>
+
+## Custom render
+
+<Playground>
+  <Button theme="primary" render={props => <a href="javascript:" {...props}>Link</a>} />{' '}
+  <Button theme="primary" render={props => <input type="button" value="Input" {...props} />} />{' '}
+  <Button theme="primary" render={props => <input type="submit" value="Submit" {...props} />} />{' '}
+  <Button theme="primary" render={props => <input type="reset" value="Reset" {...props} />} />
 </Playground>
 
 ## Outline buttons
@@ -72,21 +81,29 @@ Add `disabled` to make buttons look inactive
 ## Loading state
 
 <Playground>
-  <Provider state={{ loading: false, timeout: 5 }}>
-    {({ state, setState }) => (
-      <React.Fragment>
-        <Button loading={true} disabled>Loading...</Button>{' '}
-        <Button
-          loading={state.loading}
-          disabled={state.loading}
-          onClick={() => { 
-            setState({ loading: true })
-            setTimeout(() => {
-              setState({ loading: false })
-            }, 5000)
-          }}
-        >Click me</Button>
-      </React.Fragment>
-    )}
-  </Provider>
+  {() => {
+    class Example extends React.Component {
+      constructor() {
+        this.state = { loading: false }
+      }
+      render() {
+        return (
+          <React.Fragment>
+            <Button loading={true} disabled>Loading...</Button>{' '}
+            <Button
+              loading={this.state.loading}
+              disabled={this.state.loading}
+              onClick={() => { 
+                this.setState({ loading: true })
+                setTimeout(() => {
+                  this.setState({ loading: false })
+                }, 2000)
+              }}
+            >Trigger loading</Button>
+          </React.Fragment>
+        )
+      }
+    }
+    return <Example />
+  }}
 </Playground>
