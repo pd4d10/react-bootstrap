@@ -54,18 +54,18 @@ export class Button extends React.Component<ButtonProps> {
         {loading && loading === true ? (
           <Icon
             path={mdiLoading}
-            // size={1}
             color="#fff"
-            // horizontal
-            // vertical
             spin={1}
-            // color="red"
-            style={{ width: '1em', marginRight: 4 }}
+            style={{
+              width: '1em',
+              verticalAlign: '-0.12em',
+              marginRight: '0.3em',
+            }}
           />
         ) : (
           loading
         )}
-        <span style={{ verticalAlign: 'middle' }}>{children}</span>
+        {children}
       </button>
     )
   }
