@@ -72,3 +72,29 @@ export class Nav extends Component<NavProps> {
     )
   }
 }
+
+export class Tabs extends React.Component<CommonProps> {
+  render() {
+    const { items } = this.props
+    return (
+      <React.Fragment>
+        <ul className="nav nav-pills mb-3" role="tablist">
+          {items.map(item => (
+            <li className="nav-item">
+              <a
+                className="nav-link active"
+                data-toggle="pill"
+                href="#pills-home"
+                role="tab"
+                aria-controls="pills-home"
+                aria-selected="true"
+              >
+                Home
+              </a>
+            </li>
+          ))}
+        </ul>
+      </React.Fragment>
+    )
+  }
+}

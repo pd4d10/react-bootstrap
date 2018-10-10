@@ -1,4 +1,4 @@
-export { Alert } from './alert'
+export { Alert, AlertLink } from './alert'
 export { Badge } from './badge'
 export { Breadcrumb, BreadcrumbItem } from './breadcrumb'
 export { Button } from './button'

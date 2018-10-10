@@ -1,3 +1,4 @@
+import { render } from 'react-dom'
 export interface CommonProps {
   style?: React.CSSProperties
   className?: string
@@ -41,3 +42,17 @@ export function fill(length: number) {
 
 // https://stackoverflow.com/a/50677584
 export type Arg0<T> = T extends (arg0: infer U, ...args: any[]) => any ? U : any
+
+export function renderToBody(
+  ele: React.ReactElement<any>,
+  div: HTMLDivElement,
+) {
+  document.body.appendChild(div)
+  render(ele, div)
+  return {
+    node: div,
+    dispose() {
+      document.body.removeChild(div)
+    },
+  }
+}

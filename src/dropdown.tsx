@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { LinkHTMLAttributes, HTMLAttributes } from 'react'
 import $c from 'classnames'
 import $ from 'jquery'
 import 'bootstrap/js/dist/dropdown'
@@ -20,38 +20,46 @@ interface DropdownProps extends CommonProps {
   direction?: Direction
 }
 
-interface DropdownItemProps extends CommonProps {
+interface DropdownItemProps extends LinkHTMLAttributes<HTMLAnchorElement> {
   active?: boolean
   disabled?: boolean
+  render?: (props: { className: string }) => React.ReactNode
 }
 
 export class DropdownItem extends React.Component<DropdownItemProps> {
   render() {
-    const { active, disabled, children } = this.props
-    const child = React.Children.only(children)
+    const { active, disabled, render, ...rest } = this.props
+    rest.className = $c(
+      'dropdown-item',
+      active && 'active',
+      disabled && 'disabled',
+      rest.className,
+    )
+    if (render) {
+      return render({ className: rest.className })
+    }
 
-    return React.cloneElement(child, {
-      className: $c(
-        'dropdown-item',
-        active && 'active',
-        disabled && 'disabled',
-        child.props.className,
-      ),
-    })
+    return <a {...rest} />
   }
 }
 
-export class DropdownDivider extends React.Component<CommonProps> {
+interface DropdownDividerProps extends HTMLAttributes<HTMLDivElement> {}
+
+export class DropdownDivider extends React.Component<DropdownDividerProps> {
   render() {
-    const { className, ...rest } = this.props
-    return <div className={$c('dropdown-divider', className)} {...rest} />
+    const { ...rest } = this.props
+    rest.className = $c('dropdown-divider', rest.className)
+    return <div {...rest} />
   }
 }
 
-export class DropdownMenu extends React.Component<CommonProps> {
+interface DropdownMenuProps extends HTMLAttributes<HTMLDivElement> {}
+
+export class DropdownMenu extends React.Component<DropdownMenuProps> {
   render() {
-    const { className, ...rest } = this.props
-    return <div className={$c('dropdown-menu', className)} {...rest} />
+    const { ...rest } = this.props
+    rest.className = $c('dropdown-menu', rest.className)
+    return <div {...rest} />
   }
 }
 

@@ -3,7 +3,7 @@ import { Portal } from 'react-portal'
 import $ from 'jquery'
 import 'bootstrap/js/dist/modal'
 import $c from 'classnames'
-import { CommonProps } from './utils'
+import { CommonProps, renderToBody } from './utils'
 import { Button } from './button'
 import ReactDOM from 'react-dom'
 
@@ -80,22 +80,19 @@ export class Modal extends React.Component<ModalProps> {
   }
 
   static confirm({ onFinish, onCancel, ...rest }: ConfirmModalProps) {
-    const div = document.createElement('div')
-    document.body.appendChild(div)
-    ReactDOM.render(
+    const { node, dispose } = renderToBody(
       <ConfirmModal
         {...rest}
         onFinish={() => {
           onFinish && onFinish()
-          document.body.removeChild(div)
+          document.body.removeChild(node)
         }}
         onCancel={() => {
           onCancel && onCancel()
-          document.body.removeChild(div)
+          document.body.removeChild(node)
         }}
-        domNode={div}
+        domNode={node}
       />,
-      div,
     )
   }
 

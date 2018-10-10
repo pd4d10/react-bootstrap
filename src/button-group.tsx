@@ -11,10 +11,10 @@ export class ButtonGroup extends Component<ButtonGroupProps> {
   render() {
     const { size, vertical, ...rest } = this.props
     rest.className = $c(
-      rest.className,
       'btn-group',
       size && `btn-group-${size}`,
       vertical && 'btn-group-vertical',
+      rest.className,
     )
     return <div role="group" {...rest} />
   }

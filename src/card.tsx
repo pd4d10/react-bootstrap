@@ -3,7 +3,7 @@ import $c from 'classnames'
 import { CommonProps } from './utils'
 
 interface CardProps extends CommonProps {
-  topImage?: Function
+  topImage?: React.Component<{ className: string }>
   title?: string | Function
   subtitle?: string | Function
   text?: string | string[]
@@ -12,11 +12,18 @@ interface CardProps extends CommonProps {
 
 export class Card extends React.Component<CardProps> {
   render() {
-    const { topImage, title, subtitle, text, extra, ...rest } = this.props
+    const {
+      topImage: TopImage,
+      title,
+      subtitle,
+      text,
+      extra,
+      ...rest
+    } = this.props
     rest.className = $c(rest.className, 'card')
     return (
       <div {...rest}>
-        {topImage && topImage({ className: 'card-img-top' })}
+        {TopImage && <TopImage className="card-img-top" />}
         <div className="card-body">
           {title && <div className="card-title">{title}</div>}
           {subtitle && <div className="card-subtitle">{subtitle}</div>}
