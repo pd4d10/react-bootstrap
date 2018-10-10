@@ -9,7 +9,9 @@ import { ButtonGroup, ButtonToolbar, Button } from '../lib'
     <Button theme="secondary">Middle</Button>
     <Button theme="secondary">Right</Button>
   </ButtonGroup>
+</Playground>
 
+<Playground>
   <ButtonToolbar>
     <ButtonGroup className="mr-2">
       <Button theme="secondary">1</Button>
@@ -26,10 +28,28 @@ import { ButtonGroup, ButtonToolbar, Button } from '../lib'
       <Button theme="secondary">8</Button>
     </ButtonGroup>
   </ButtonToolbar>
+</Playground>
 
+<Playground>
   <ButtonGroup>
     <Button theme="secondary" size="lg">
       Large
     </Button>
   </ButtonGroup>
+</Playground>
+
+## Sizing
+
+<Playground>
+  {['lg', undefined, 'sm'].map(size => (
+    <div key={size} className="mt-1 mb-1">
+      <ButtonGroup>
+        {['Left', 'Middle', 'Right'].map(text => (
+          <Button size={size} theme="secondary">
+            {text}
+          </Button>
+        ))}
+      </ButtonGroup>
+    </div>
+  ))}
 </Playground>

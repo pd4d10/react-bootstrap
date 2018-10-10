@@ -6,14 +6,15 @@ import { Collapse, Button } from '../lib'
 <Playground>
   {() => {
     class Example extends React.Component {
-      state = {
-        visible: false,
-      }
-
-      toggleVisible = () => {
-        this.setState(state => ({
-          visible: !state.visible,
-        }))
+      constructor() {
+        this.state = {
+          visible: false,
+        }
+        this.toggleVisible = () => {
+          this.setState(state => ({
+            visible: !state.visible,
+          }))
+        }
       }
 
       render() {
@@ -34,7 +35,9 @@ import { Collapse, Button } from '../lib'
         )
       }
     }
-    
+
     return <Example />
-  }}
+
+}}
+
 </Playground>

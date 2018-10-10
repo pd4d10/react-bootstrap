@@ -28,7 +28,17 @@ Specify `theme` to use predefined styles.
 ## Notification
 
 <Playground>
-  <Button onClick={() => { Alert.notify({ theme: 'primary', children: 'A simple notification', timeout: 3000 }) }}>Show notification</Button>
+  <Button
+    onClick={() => {
+      Alert.notify({
+        theme: 'primary',
+        children: 'A simple notification',
+        timeout: 3000,
+      })
+    }}
+  >
+    Show notification
+  </Button>
 </Playground>
 
 ## Link
@@ -39,10 +49,20 @@ Use `render` prop to render component other than HTML `a`, such as `Link` of Rea
 
 <Playground>
   <Alert theme="primary">
-    A simple primary alert with <AlertLink href="javascript:">an example link</AlertLink>. Give it a click if you like.
+    A simple primary alert with{' '}
+    <AlertLink href="javascript:">an example link</AlertLink>. Give it a click
+    if you like.
   </Alert>
   <Alert theme="primary">
-    A simple primary alert with <AlertLink render={props => <Link {...props} to="/">a router link</Link>} />. Give it a click if you like.
+    A simple primary alert with{' '}
+    <AlertLink
+      render={props => (
+        <Link {...props} to="/">
+          a router link
+        </Link>
+      )}
+    />
+    . Give it a click if you like.
   </Alert>
 </Playground>
 

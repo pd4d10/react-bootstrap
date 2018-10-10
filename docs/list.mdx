@@ -62,11 +62,10 @@ import { List, ListItem } from '../lib'
       <ListItem
         action
         active={index === 0}
-        render={({ className, ...props }) => (
+        render={({ className }) => (
           <a
             href="javascript:"
             className={'flex-column align-items-start ' + className}
-            {...props}
           >
             <div className="d-flex w-100 justify-content-between">
               <h5 className="mb-1">List group item heading</h5>

@@ -6,34 +6,47 @@ import { Badge, Button } from '../lib'
 Badges scale to match the size of the immediate parent element.
 
 <Playground>
-  <h1>Example heading <Badge>New</Badge></h1>
-  <h2>Example heading <Badge>New</Badge></h2>
-  <h3>Example heading <Badge>New</Badge></h3>
-  <h4>Example heading <Badge>New</Badge></h4>
-  <h5>Example heading <Badge>New</Badge></h5>
-  <h6>Example heading <Badge>New</Badge></h6>
+  <h1>
+    Example heading <Badge>New</Badge>
+  </h1>
+  <h2>
+    Example heading <Badge>New</Badge>
+  </h2>
+  <h3>
+    Example heading <Badge>New</Badge>
+  </h3>
+  <h4>
+    Example heading <Badge>New</Badge>
+  </h4>
+  <h5>
+    Example heading <Badge>New</Badge>
+  </h5>
+  <h6>
+    Example heading <Badge>New</Badge>
+  </h6>
 </Playground>
 
 Badges can be used as part of links or buttons to provide a counter.
 
 <Playground>
-  <Button theme="primary">Notifications <Badge theme="light">4</Badge></Button>{' '}
-  <Button theme="primary">Profile <Badge theme="light">9</Badge></Button>
+  <Button theme="primary">
+    Notifications <Badge theme="light">4</Badge>
+  </Button>{' '}
+  <Button theme="primary">
+    Profile <Badge theme="light">9</Badge>
+  </Button>
 </Playground>
 
 ## Contextual variations
 
 Specify `theme` to change the appearance of a badge.
 
-<Playground>    
+<Playground>
   <Badge theme="primary">Primary</Badge>{' '}
   <Badge theme="secondary">Secondary</Badge>{' '}
-  <Badge theme="success">Success</Badge>{' '}
-  <Badge theme="danger">Danger</Badge>{' '}
-  <Badge theme="warning">Warning</Badge>{' '}
-  <Badge theme="info">Info</Badge>{' '}
-  <Badge theme="light">Light</Badge>{' '}
-  <Badge theme="dark">Dark</Badge>
+  <Badge theme="success">Success</Badge> <Badge theme="danger">Danger</Badge>{' '}
+  <Badge theme="warning">Warning</Badge> <Badge theme="info">Info</Badge>{' '}
+  <Badge theme="light">Light</Badge> <Badge theme="dark">Dark</Badge>
 </Playground>
 
 ## Pill badges
@@ -41,25 +54,57 @@ Specify `theme` to change the appearance of a badge.
 Add `pill` to make badges more rounded.
 
 <Playground>
-  <Badge theme="primary" pill>Primary</Badge>{' '}
-  <Badge theme="secondary" pill>Secondary</Badge>{' '}
-  <Badge theme="success" pill>Success</Badge>{' '}
-  <Badge theme="danger" pill>Danger</Badge>{' '}
-  <Badge theme="warning" pill>Warning</Badge>{' '}
-  <Badge theme="info" pill>Info</Badge>{' '}
-  <Badge theme="light" pill>Light</Badge>{' '}
-  <Badge theme="dark" pill>Dark</Badge>
+  <Badge theme="primary" pill>
+    Primary
+  </Badge>{' '}
+  <Badge theme="secondary" pill>
+    Secondary
+  </Badge>{' '}
+  <Badge theme="success" pill>
+    Success
+  </Badge>{' '}
+  <Badge theme="danger" pill>
+    Danger
+  </Badge>{' '}
+  <Badge theme="warning" pill>
+    Warning
+  </Badge>{' '}
+  <Badge theme="info" pill>
+    Info
+  </Badge>{' '}
+  <Badge theme="light" pill>
+    Light
+  </Badge>{' '}
+  <Badge theme="dark" pill>
+    Dark
+  </Badge>
 </Playground>
 
 ## Links
 
 <Playground>
-  <Badge theme="primary"><a href="#">Primary</a></Badge>{' '}
-  <Badge theme="secondary"><a href="#">Secondary</a></Badge>{' '}
-  <Badge theme="success"><a href="#">Success</a></Badge>{' '}
-  <Badge theme="danger"><a href="#">Danger</a></Badge>{' '}
-  <Badge theme="warning"><a href="#">Warning</a></Badge>{' '}
-  <Badge theme="info"><a href="#">Info</a></Badge>{' '}
-  <Badge theme="light"><a href="#">Light</a></Badge>{' '}
-  <Badge theme="dark"><a href="#">Dark</a></Badge>
+  <Badge theme="primary">
+    <a href="#">Primary</a>
+  </Badge>{' '}
+  <Badge theme="secondary">
+    <a href="#">Secondary</a>
+  </Badge>{' '}
+  <Badge theme="success">
+    <a href="#">Success</a>
+  </Badge>{' '}
+  <Badge theme="danger">
+    <a href="#">Danger</a>
+  </Badge>{' '}
+  <Badge theme="warning">
+    <a href="#">Warning</a>
+  </Badge>{' '}
+  <Badge theme="info">
+    <a href="#">Info</a>
+  </Badge>{' '}
+  <Badge theme="light">
+    <a href="#">Light</a>
+  </Badge>{' '}
+  <Badge theme="dark">
+    <a href="#">Dark</a>
+  </Badge>
 </Playground>
