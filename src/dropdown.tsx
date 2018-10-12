@@ -1,8 +1,8 @@
-import React, { LinkHTMLAttributes, HTMLAttributes } from 'react'
+import React, { HTMLAttributes } from 'react'
 import $c from 'classnames'
 import $ from 'jquery'
 import 'bootstrap/js/dist/dropdown'
-import { CommonProps, Theme, Size, Direction } from './utils'
+import * as types from './types'
 import { Button } from './button'
 
 declare global {
@@ -11,39 +11,40 @@ declare global {
   }
 }
 
-interface DropdownProps extends CommonProps {
+interface DropdownProps extends types.CommonProps<HTMLAttributes<HTMLElement>> {
   text: string
   overlay: React.ReactElement<any>
-  theme?: Theme
-  size?: Size
+  theme?: types.Theme
+  size?: types.Size
   split?: boolean
-  direction?: Direction
+  direction?: types.Direction
 }
 
-interface DropdownItemProps extends LinkHTMLAttributes<HTMLAnchorElement> {
+interface DropdownItemProps {
   active?: boolean
   disabled?: boolean
-  render?: (props: { className: string }) => React.ReactNode
+  component?: React.ReactType
 }
 
 export class DropdownItem extends React.Component<DropdownItemProps> {
+  static defaultProps: Partial<DropdownItemProps> = {
+    component: 'a',
+  }
+
   render() {
-    const { active, disabled, render, ...rest } = this.props
+    const { active, disabled, component, ...rest } = this.props
+    const Component = component!
     rest.className = $c(
+      rest.className,
       'dropdown-item',
       active && 'active',
       disabled && 'disabled',
-      rest.className,
     )
-    if (render) {
-      return render({ className: rest.className })
-    }
-
-    return <a {...rest} />
+    return <Component {...rest} />
   }
 }
 
-interface DropdownDividerProps extends HTMLAttributes<HTMLDivElement> {}
+interface DropdownDividerProps extends React.AllHTMLAttributes<HTMLElement> {}
 
 export class DropdownDivider extends React.Component<DropdownDividerProps> {
   render() {
@@ -53,12 +54,12 @@ export class DropdownDivider extends React.Component<DropdownDividerProps> {
   }
 }
 
-interface DropdownMenuProps extends HTMLAttributes<HTMLDivElement> {}
+interface DropdownMenuProps extends React.AllHTMLAttributes<HTMLElement> {}
 
 export class DropdownMenu extends React.Component<DropdownMenuProps> {
   render() {
     const { ...rest } = this.props
-    rest.className = $c('dropdown-menu', rest.className)
+    rest.className = $c(rest.className, 'dropdown-menu')
     return <div {...rest} />
   }
 }
@@ -118,12 +119,12 @@ export class Dropdown extends React.Component<DropdownProps> {
         {...rest}
       >
         {split ? (
-          <React.Fragment>
+          <>
             <Button theme={theme} size={size}>
               {text}
             </Button>
             <ToggleButton />
-          </React.Fragment>
+          </>
         ) : (
           <ToggleButton />
         )}

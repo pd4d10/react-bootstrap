@@ -3,9 +3,9 @@ import { Portal } from 'react-portal'
 import $ from 'jquery'
 import 'bootstrap/js/dist/modal'
 import $c from 'classnames'
-import { CommonProps, renderToBody } from './utils'
+import { renderToBody } from './utils'
+import * as types from './types'
 import { Button } from './button'
-import ReactDOM from 'react-dom'
 
 declare global {
   interface JQuery {
@@ -13,7 +13,7 @@ declare global {
   }
 }
 
-interface ModalProps extends CommonProps {
+interface ModalProps extends types.CommonProps {
   visible?: boolean
   onFinish?: Function
   onCancel?: Function
@@ -25,7 +25,7 @@ interface ModalProps extends CommonProps {
   closeOnEscPressed?: boolean
 }
 
-interface ConfirmParams extends CommonProps {
+interface ConfirmParams extends types.CommonProps {
   title?: string
   content?: string
   onFinish?: Function
@@ -180,14 +180,14 @@ export class Modal extends React.Component<ModalProps> {
               <div className="modal-body">{body}</div>
               <div className="modal-footer">
                 {footer || (
-                  <React.Fragment>
+                  <>
                     <Button theme="secondary" onClick={this.handleCancel}>
                       Close
                     </Button>
                     <Button theme="primary" onClick={this.handleFinish}>
                       Save changes
                     </Button>
-                  </React.Fragment>
+                  </>
                 )}
               </div>
             </div>

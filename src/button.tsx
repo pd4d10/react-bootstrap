@@ -2,18 +2,17 @@ import React from 'react'
 import $c from 'classnames'
 import Icon from '@mdi/react'
 import { mdiLoading } from '@mdi/js'
-import { CommonProps, ButtonTheme, Size } from './utils'
+import * as types from './types'
 
-interface ButtonProps extends CommonProps {
-  theme?: ButtonTheme
+interface ButtonProps
+  extends types.CommonProps<React.ButtonHTMLAttributes<HTMLElement>> {
+  theme?: types.ButtonTheme
   outline?: boolean
-  size?: Size
+  size?: types.Size
   block?: boolean
   active?: boolean
   disabled?: boolean
-  loading?: boolean | React.ReactNode
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  render?: (props: { className: string }) => React.ReactNode
+  loading?: boolean
 }
 
 export class Button extends React.Component<ButtonProps> {
@@ -29,7 +28,6 @@ export class Button extends React.Component<ButtonProps> {
       block,
       active,
       loading,
-      render,
       children,
       ...rest
     } = this.props
@@ -43,15 +41,9 @@ export class Button extends React.Component<ButtonProps> {
       active && 'active',
     )
 
-    if (render) {
-      return render({
-        className: rest.className,
-      })
-    }
-
     return (
-      <button type="button" role="button" {...rest}>
-        {loading && loading === true ? (
+      <button {...rest}>
+        {loading && (
           <Icon
             path={mdiLoading}
             color="#fff"
@@ -62,8 +54,6 @@ export class Button extends React.Component<ButtonProps> {
               marginRight: '0.3em',
             }}
           />
-        ) : (
-          loading
         )}
         {children}
       </button>

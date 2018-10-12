@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import $c from 'classnames'
-import { withProps } from 'recompose'
-import { CommonProps, Arg0 } from './utils'
+import * as types from './types'
 
-interface NavProps extends CommonProps {
+interface NavProps extends types.CommonProps {
   items: any[]
   vertical?: boolean
   tabs?: boolean
@@ -11,10 +10,9 @@ interface NavProps extends CommonProps {
   renderItem: (item: any, index: number) => React.ReactNode
 }
 
-interface NavLinkProps extends CommonProps {
+interface NavLinkProps extends types.CommonProps {
   active?: boolean
   disabled?: boolean
-  component?: Arg0<typeof React.createElement>
 }
 
 export class NavLink extends React.Component<NavLinkProps> {
@@ -73,11 +71,11 @@ export class Nav extends Component<NavProps> {
   }
 }
 
-export class Tabs extends React.Component<CommonProps> {
+export class Tabs extends React.Component<types.CommonProps> {
   render() {
     const { items } = this.props
     return (
-      <React.Fragment>
+      <>
         <ul className="nav nav-pills mb-3" role="tablist">
           {items.map(item => (
             <li className="nav-item">
@@ -94,7 +92,7 @@ export class Tabs extends React.Component<CommonProps> {
             </li>
           ))}
         </ul>
-      </React.Fragment>
+      </>
     )
   }
 }

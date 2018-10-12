@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import $c from 'classnames'
-import { CommonProps } from './utils'
+import * as types from './types'
 
-interface CollapseProps extends CommonProps {
+interface CollapseProps extends types.CommonProps {
   visible?: boolean
 }
 

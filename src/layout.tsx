@@ -1,26 +1,31 @@
 import React from 'react'
 import $c from 'classnames'
-import { CommonProps, isUndefined, isNotUndefined } from './utils'
+import * as types from './types'
 
-interface ContainerProps extends CommonProps {
+interface ContainerProps extends types.CommonProps {
   fluid?: boolean
 }
-interface RowProps extends CommonProps {}
+interface RowProps extends types.CommonProps {}
+
 type OffsetValue = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
+
 type SizeValue = OffsetValue | 'auto'
+
 type Offset = {
   sm?: OffsetValue
   md?: OffsetValue
   lg?: OffsetValue
   xl?: OffsetValue
 }
+
 type Size = {
   sm?: SizeValue
   md?: SizeValue
   lg?: SizeValue
   xl?: OffsetValue
 }
-interface ColProps extends CommonProps {
+
+interface ColProps extends types.CommonProps {
   size?: SizeValue | Size
   offset?: OffsetValue | Offset
   order?: number | 'last' | 'first'
@@ -91,7 +96,7 @@ export class Col extends React.Component<ColProps> {
           'col',
           sizeClassName,
           offsetClassName,
-          isNotUndefined(order) && `order-${order}`,
+          typeof order === 'undefined' || `order-${order}`,
         )}
         {...rest}
       />

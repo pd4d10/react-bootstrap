@@ -1,9 +1,11 @@
-import React, { AnchorHTMLAttributes } from 'react'
+import React from 'react'
 import $c from 'classnames'
-import { CommonProps, Theme, renderToBody } from './utils'
+import { renderToBody } from './utils'
+import * as types from './types'
 
-interface AlertProps extends CommonProps {
-  theme: Theme
+interface AlertProps
+  extends types.CommonProps<React.HTMLAttributes<HTMLElement>> {
+  theme: types.Theme
   dismissible?: boolean
   timeout: number
   onDismiss?: () => void
@@ -13,15 +15,16 @@ interface NotifyParams extends AlertProps {
   // timeout?: number
 }
 
-const initialState = {
-  visible: true,
-  isDismissing: false,
-}
-
-type AlertState = Readonly<typeof initialState>
+type AlertState = Readonly<{
+  visible: boolean
+  isDismissing: boolean
+}>
 
 export class Alert extends React.Component<AlertProps, AlertState> {
-  readonly state: AlertState = initialState
+  state: AlertState = {
+    visible: true,
+    isDismissing: false,
+  }
 
   static defaultProps: Partial<AlertProps> = {
     dismissible: false,
@@ -119,7 +122,7 @@ export class Alert extends React.Component<AlertProps, AlertState> {
   }
 }
 
-interface AlertLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+interface AlertLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   render: (props: { className: string }) => React.ReactNode
 }
 

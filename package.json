@@ -13,17 +13,15 @@
   "files": [
     "lib"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pd4d10/relaunch.git"
-  },
-  "keywords": [],
-  "author": "",
+  "repository": "pd4d10/relaunch",
+  "keywords": [
+    "bootstrap",
+    "react",
+    "component"
+  ],
+  "author": "Rongjian Zhang <pd4d10@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/pd4d10/relaunch/issues"
-  },
-  "homepage": "https://github.com/pd4d10/relaunch#readme",
+  "homepage": "https://github.com/pd4d10/relaunch",
   "devDependencies": {
     "@types/react": "^16.4.7",
     "@types/react-dom": "^16.0.6",

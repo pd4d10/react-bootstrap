@@ -1,30 +1,30 @@
 import React, { Component } from 'react'
 import $c from 'classnames'
-import { CommonProps, Arg0 } from './utils'
+import * as types from './types'
 
-interface NavbarBrandProps extends CommonProps {
+interface NavbarBrandProps extends types.CommonProps {
   href?: string
   to?: string
-  component?: Arg0<typeof React.createElement>
+  component?: React.ReactType
 }
 
-interface NavbarProps extends CommonProps {
+interface NavbarProps extends types.CommonProps {
   theme: 'light' | 'dark'
   brand: JSX.Element
   items: {
-    component?: Arg0<typeof React.createElement>
+    component?: React.ReactType
     active?: boolean
     disabled?: boolean
   }[]
 }
 
-interface NavProps extends CommonProps {}
+interface NavProps extends types.CommonProps {}
 
-interface NavItemProps extends CommonProps {
+interface NavItemProps extends types.CommonProps {
   active?: boolean
 }
 
-interface NavLinkProps extends CommonProps {
+interface NavLinkProps extends types.CommonProps {
   tag?: string
 }
 

@@ -1,11 +1,12 @@
 import React from 'react'
 import $c from 'classnames'
-import { CommonProps, Theme, Size, fill } from './utils'
+import * as types from './types'
+import { fill } from './utils'
 
-interface PaginationProps extends CommonProps {
+interface PaginationProps extends types.CommonProps {
   current: number
   total: number
-  size?: Size
+  size?: types.Size
   onChange: (page: number) => void
   // align: 'center' | 'right'
   renderItem?: (page: number) => React.ReactNode

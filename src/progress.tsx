@@ -1,10 +1,10 @@
 import React from 'react'
 import $c from 'classnames'
-import { CommonProps, Theme } from './utils'
+import * as types from './types'
 
-interface ProgressBarProps extends CommonProps {
+interface ProgressBarProps extends types.CommonProps {
   percent: number
-  theme?: Theme
+  theme?: types.Theme
   striped?: boolean
   animated?: boolean
   label?: React.ReactNode

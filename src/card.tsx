@@ -1,8 +1,8 @@
 import React from 'react'
 import $c from 'classnames'
-import { CommonProps } from './utils'
+import * as types from './types'
 
-interface CardProps extends CommonProps {
+interface CardProps extends types.CommonProps {
   topImage?: React.Component<{ className: string }>
   title?: string | Function
   subtitle?: string | Function

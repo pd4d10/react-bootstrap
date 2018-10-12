@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React from 'react'
 import $c from 'classnames'
-import { CommonProps, Theme } from './utils'
+import * as types from './types'
 
-interface CarouselProps extends CommonProps {
+interface CarouselProps extends types.CommonProps {
   items: any[]
   interval?: number
   direction?: 'left' | 'right'
@@ -23,7 +23,7 @@ const initialState = {
 
 type CarouselState = Readonly<typeof initialState>
 
-export class Carousel extends Component<CarouselProps, CarouselState> {
+export class Carousel extends React.Component<CarouselProps, CarouselState> {
   readonly state: CarouselState = initialState
 
   static defaultProps = {
@@ -133,7 +133,7 @@ export class Carousel extends Component<CarouselProps, CarouselState> {
             )
           })}
           {controls && (
-            <Fragment>
+            <>
               <a
                 className="carousel-control-prev"
                 href="#"
@@ -158,7 +158,7 @@ export class Carousel extends Component<CarouselProps, CarouselState> {
                 />
                 <span className="sr-only">Next</span>
               </a>
-            </Fragment>
+            </>
           )}
         </div>
       </div>

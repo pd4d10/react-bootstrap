@@ -1,8 +1,8 @@
 import React from 'react'
 import $c from 'classnames'
-import { CommonProps } from './utils'
+import * as types from './types'
 
-interface JumbotronProps extends CommonProps {
+interface JumbotronProps extends types.CommonProps {
   fluid?: boolean
 }
 

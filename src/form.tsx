@@ -1,10 +1,10 @@
 import React from 'react'
 import $c from 'classnames'
-import { CommonProps } from './utils'
+import * as types from './types'
 
-interface FormProps extends CommonProps {}
+interface FormProps extends types.CommonProps {}
 
-interface FormItemProps extends CommonProps {}
+interface FormItemProps extends types.CommonProps {}
 
 export class Form extends React.Component<FormProps> {
   render() {

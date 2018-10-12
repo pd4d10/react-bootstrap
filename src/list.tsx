@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import $c from 'classnames'
-import { Badge } from './badge'
-import { CommonProps, Theme } from './utils'
+import { Badge } from './'
+import * as types from './types'
 
-interface ListItemProps extends CommonProps {
+interface ListItemProps extends types.CommonProps {
   active?: boolean
   disabled?: boolean
-  theme?: Theme
+  theme?: types.Theme
   flush?: boolean
   action?: boolean
   render?: Function
 }
 
-interface ListProps extends CommonProps {
+interface ListProps extends types.CommonProps {
   items: any[]
   render?: Function
   renderItem?: Function

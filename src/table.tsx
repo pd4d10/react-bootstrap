@@ -1,8 +1,8 @@
 import React from 'react'
 import $c from 'classnames'
-import { CommonProps } from './utils'
+import * as types from './types'
 
-interface TableProps extends CommonProps {
+interface TableProps extends types.CommonProps {
   items: any[]
   renderItem: (item: any) => React.ReactNode
 }

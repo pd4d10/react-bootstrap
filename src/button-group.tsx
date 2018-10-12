@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import $c from 'classnames'
-import { CommonProps, Size } from './utils'
+import * as types from './types'
 
-interface ButtonGroupProps extends CommonProps {
-  size?: Size
+interface ButtonGroupProps extends types.CommonProps {
+  size?: types.Size
   vertical?: boolean
 }
 
@@ -20,7 +20,7 @@ export class ButtonGroup extends Component<ButtonGroupProps> {
   }
 }
 
-interface ButtonToolbarProps extends CommonProps {}
+interface ButtonToolbarProps extends types.CommonProps {}
 
 export class ButtonToolbar extends Component<ButtonToolbarProps> {
   render() {

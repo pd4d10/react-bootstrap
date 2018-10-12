@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import $c from 'classnames'
-import { CommonProps, Theme } from './utils'
+import * as types from './types'
 
-interface BadgeProps extends CommonProps {
-  theme: Theme
+interface BadgeProps extends types.CommonProps {
+  theme: types.Theme
   pill?: boolean
 }
 
