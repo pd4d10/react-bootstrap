@@ -2,16 +2,20 @@ import React from 'react'
 import $c from 'classnames'
 import * as types from './types'
 
-interface TableProps extends types.CommonProps {
+type TableProps = types.CommonProps<React.TableHTMLAttributes<HTMLElement>> & {
   items: any[]
   renderItem: (item: any) => React.ReactNode
 }
 
 export class Table extends React.Component<TableProps> {
   render() {
-    const { className, items } = this.props
+    const { items, render, ...rest } = this.props
+    rest.className = $c(rest.className, 'table')
+    if (render) {
+      return render({ className: rest.className })
+    }
     return (
-      <table className={$c(className, 'table')}>
+      <table {...rest}>
         <thead>
           <tr>
             <th scope="col">#</th>

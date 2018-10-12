@@ -2,7 +2,7 @@ import React from 'react'
 import $c from 'classnames'
 import * as types from './types'
 
-interface ProgressBarProps extends types.CommonProps {
+export type ProgressBarProps = types.CommonProps & {
   percent: number
   theme?: types.Theme
   striped?: boolean
@@ -10,7 +10,7 @@ interface ProgressBarProps extends types.CommonProps {
   label?: React.ReactNode
 }
 
-interface ProgressProps extends ProgressBarProps {
+export type ProgressProps = ProgressBarProps & {
   multiple?: ProgressBarProps[]
 }
 
@@ -41,17 +41,21 @@ class ProgressBar extends React.Component<ProgressBarProps> {
 export class Progress extends React.Component<ProgressProps> {
   render() {
     const {
-      className,
       percent,
       theme,
       striped,
       animated,
       label,
       multiple,
+      render,
       ...rest
     } = this.props
+    rest.className = $c(rest.className, 'progress')
+    if (render) {
+      return render({ className: rest.className })
+    }
     return (
-      <div className={$c(className, 'progress')} {...rest}>
+      <div {...rest}>
         {multiple ? (
           multiple.map((item, index) => <ProgressBar key={index} {...item} />)
         ) : (

@@ -83,28 +83,12 @@ Add `pill` to make badges more rounded.
 ## Links
 
 <Playground>
-  <Badge theme="primary">
-    <a href="#">Primary</a>
-  </Badge>{' '}
-  <Badge theme="secondary">
-    <a href="#">Secondary</a>
-  </Badge>{' '}
-  <Badge theme="success">
-    <a href="#">Success</a>
-  </Badge>{' '}
-  <Badge theme="danger">
-    <a href="#">Danger</a>
-  </Badge>{' '}
-  <Badge theme="warning">
-    <a href="#">Warning</a>
-  </Badge>{' '}
-  <Badge theme="info">
-    <a href="#">Info</a>
-  </Badge>{' '}
-  <Badge theme="light">
-    <a href="#">Light</a>
-  </Badge>{' '}
-  <Badge theme="dark">
-    <a href="#">Dark</a>
-  </Badge>
+  <Badge theme="primary" render={props => <a href="javascript:" {...props}>Primary</a>} />{' '}
+  <Badge theme="secondary" render={props => <a href="javascript:" {...props}>Secondary</a>} />{' '}
+  <Badge theme="success" render={props => <a href="javascript:" {...props}>Success</a>} />{' '}
+  <Badge theme="danger" render={props => <a href="javascript:" {...props}>Danger</a>} />{' '}
+  <Badge theme="warning" render={props => <a href="javascript:" {...props}>Warning</a>} />{' '}
+  <Badge theme="info" render={props => <a href="javascript:" {...props}>Info</a>} />{' '}
+  <Badge theme="light" render={props => <a href="javascript:" {...props}>Light</a>} />{' '}
+  <Badge theme="dark" render={props => <a href="javascript:" {...props}>Dark</a>} />
 </Playground>

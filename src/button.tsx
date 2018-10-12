@@ -16,7 +16,7 @@ interface ButtonProps
 }
 
 export class Button extends React.Component<ButtonProps> {
-  static defaultProps: Partial<ButtonProps> = {
+  static defaultProps: ButtonProps = {
     theme: 'primary',
   }
 
@@ -28,6 +28,7 @@ export class Button extends React.Component<ButtonProps> {
       block,
       active,
       loading,
+      render,
       children,
       ...rest
     } = this.props
@@ -40,6 +41,10 @@ export class Button extends React.Component<ButtonProps> {
       block && 'btn-block',
       active && 'active',
     )
+
+    if (render) {
+      return render({ className: rest.className })
+    }
 
     return (
       <button {...rest}>

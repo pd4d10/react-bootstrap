@@ -1,3 +1,5 @@
+import React from 'react'
+
 export type Size = 'lg' | 'sm'
 
 export type Theme =
@@ -16,11 +18,10 @@ export type TextTheme = Theme | 'muted'
 
 export type Direction = 'up' | 'down' | 'right' | 'left'
 
-export type CommonProps<T = {}> = T & {
+export type CommonProps<T = React.HTMLAttributes<HTMLElement>> = T & {
   // bsStyle?: {
   //   clearfix?: boolean
   //   text?: TextTheme
   // }
-  style?: React.CSSProperties
-  className?: string
+  render?: (props: { className: string }) => React.ReactNode
 }

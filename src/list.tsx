@@ -1,21 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component, HTMLAttributes } from 'react'
 import $c from 'classnames'
 import { Badge } from './'
 import * as types from './types'
 
-interface ListItemProps extends types.CommonProps {
+type ListItemProps = types.CommonProps<React.LiHTMLAttributes<HTMLElement>> & {
   active?: boolean
   disabled?: boolean
   theme?: types.Theme
   flush?: boolean
   action?: boolean
   render?: Function
-}
-
-interface ListProps extends types.CommonProps {
-  items: any[]
-  render?: Function
-  renderItem?: Function
 }
 
 export class ListItem extends Component<ListItemProps> {
@@ -45,10 +39,16 @@ export class ListItem extends Component<ListItemProps> {
       action && `list-group-item-action`,
     )
     if (render) {
-      return render(rest)
+      return render({ className: rest.className })
     }
     return <li {...rest} />
   }
+}
+
+type ListProps = types.CommonProps & {
+  items: any[]
+  render?: Function
+  renderItem?: Function
 }
 
 export class List extends React.Component<ListProps> {
@@ -56,7 +56,7 @@ export class List extends React.Component<ListProps> {
     const { items, render, renderItem, ...rest } = this.props
     rest.className = $c(rest.className, 'list-group')
     if (render) {
-      return render({ items, ...rest })
+      return render({ items, className: rest.className })
     }
     return (
       <ul {...rest}>

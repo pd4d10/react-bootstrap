@@ -3,7 +3,7 @@ import $c from 'classnames'
 import * as types from './types'
 import { fill } from './utils'
 
-interface PaginationProps extends types.CommonProps {
+type PaginationProps = types.CommonProps & {
   current: number
   total: number
   size?: types.Size

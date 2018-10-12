@@ -8,7 +8,7 @@ interface FormItemProps extends types.CommonProps {}
 
 export class Form extends React.Component<FormProps> {
   render() {
-    const { ...rest } = this.props
+    const { render, ...rest } = this.props
     return <form {...rest} />
   }
 }

@@ -3,8 +3,7 @@ import $c from 'classnames'
 import { renderToBody } from './utils'
 import * as types from './types'
 
-interface AlertProps
-  extends types.CommonProps<React.HTMLAttributes<HTMLElement>> {
+type AlertProps = types.CommonProps & {
   theme: types.Theme
   dismissible?: boolean
   timeout: number
@@ -89,6 +88,7 @@ export class Alert extends React.Component<AlertProps, AlertState> {
       dismissible,
       onDismiss,
       timeout,
+      render,
       children,
       ...rest
     } = this.props
@@ -101,6 +101,10 @@ export class Alert extends React.Component<AlertProps, AlertState> {
       this.state.isDismissing || 'show',
       'fade',
     )
+
+    if (render) {
+      return render({ className: rest.className })
+    }
 
     return (
       this.state.visible && (
@@ -122,9 +126,7 @@ export class Alert extends React.Component<AlertProps, AlertState> {
   }
 }
 
-interface AlertLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  render: (props: { className: string }) => React.ReactNode
-}
+type AlertLinkProps = types.CommonProps<React.AnchorHTMLAttributes<HTMLElement>>
 
 export class AlertLink extends React.Component<AlertLinkProps> {
   render() {
