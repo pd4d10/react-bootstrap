@@ -5,8 +5,6 @@ interface BreadcrumbItemProps extends LiHTMLAttributes<HTMLLIElement> {
   active?: boolean
 }
 
-interface BreadcrumbProps extends OlHTMLAttributes<HTMLOListElement> {}
-
 export class BreadcrumbItem extends React.Component<BreadcrumbItemProps> {
   render() {
     const { active, ...rest } = this.props
@@ -14,6 +12,8 @@ export class BreadcrumbItem extends React.Component<BreadcrumbItemProps> {
     return <li aria-current="page" {...rest} />
   }
 }
+
+interface BreadcrumbProps extends OlHTMLAttributes<HTMLOListElement> {}
 
 export class Breadcrumb extends React.Component<BreadcrumbProps> {
   render() {

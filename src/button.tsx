@@ -3,9 +3,11 @@ import $c from 'classnames'
 import Icon from '@mdi/react'
 import { mdiLoading } from '@mdi/js'
 import * as types from './types'
+import { getStyle } from './utils'
 
-interface ButtonProps
-  extends types.CommonProps<React.ButtonHTMLAttributes<HTMLElement>> {
+export type ButtonProps = types.CommonProps<
+  React.ButtonHTMLAttributes<HTMLElement>
+> & {
   theme?: types.ButtonTheme
   outline?: boolean
   size?: types.Size
@@ -28,8 +30,9 @@ export class Button extends React.Component<ButtonProps> {
       block,
       active,
       loading,
-      render,
       children,
+      bsStyle,
+      render,
       ...rest
     } = this.props
 
@@ -40,6 +43,7 @@ export class Button extends React.Component<ButtonProps> {
       size && `btn-${size}`,
       block && 'btn-block',
       active && 'active',
+      getStyle(bsStyle),
     )
 
     if (render) {

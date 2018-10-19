@@ -33,13 +33,9 @@ interface ColProps extends types.CommonProps {
 
 export class Container extends React.Component<ContainerProps> {
   render() {
-    const { fluid, className, ...rest } = this.props
-    return (
-      <div
-        className={$c(className, fluid ? 'container-fluid' : 'container')}
-        {...rest}
-      />
-    )
+    const { fluid, ...rest } = this.props
+    rest.className = $c(rest.className, fluid ? 'container-fluid' : 'container')
+    return <div {...rest} />
   }
 }
 

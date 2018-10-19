@@ -12,6 +12,7 @@ export {
   DropdownMenu,
   DropdownItem,
 } from './dropdown'
+export { FormGroup, Input, Label } from './form'
 export { List, ListItem } from './list'
 export { Container, Row, Col } from './layout'
 export { Modal } from './modal'

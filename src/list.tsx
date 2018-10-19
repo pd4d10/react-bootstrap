@@ -2,6 +2,7 @@ import React, { Component, HTMLAttributes } from 'react'
 import $c from 'classnames'
 import { Badge } from './'
 import * as types from './types'
+import { getStyle } from './utils'
 
 type ListItemProps = types.CommonProps<React.LiHTMLAttributes<HTMLElement>> & {
   active?: boolean
@@ -9,7 +10,6 @@ type ListItemProps = types.CommonProps<React.LiHTMLAttributes<HTMLElement>> & {
   theme?: types.Theme
   flush?: boolean
   action?: boolean
-  render?: Function
 }
 
 export class ListItem extends Component<ListItemProps> {
@@ -25,8 +25,9 @@ export class ListItem extends Component<ListItemProps> {
       disabled,
       theme,
       flush,
-      render,
       action,
+      bsStyle,
+      render,
       ...rest
     } = this.props
     rest.className = $c(
@@ -37,6 +38,7 @@ export class ListItem extends Component<ListItemProps> {
       flush && `list-group-item-flush`,
       theme && `list-group-item-${theme}`,
       action && `list-group-item-action`,
+      getStyle(bsStyle),
     )
     if (render) {
       return render({ className: rest.className })

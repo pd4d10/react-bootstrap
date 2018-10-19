@@ -1,16 +1,10 @@
 import React, { Component } from 'react'
 import $c from 'classnames'
 import * as types from './types'
+import { getStyle } from './utils'
 
-interface NavProps extends types.CommonProps {
-  items: any[]
-  vertical?: boolean
-  tabs?: boolean
-  fill?: boolean
-  renderItem: (item: any, index: number) => React.ReactNode
-}
-
-interface NavLinkProps extends types.CommonProps {
+export interface NavLinkProps
+  extends types.CommonProps<React.AnchorHTMLAttributes<HTMLElement>> {
   active?: boolean
   disabled?: boolean
 }
@@ -19,38 +13,47 @@ export class NavLink extends React.Component<NavLinkProps> {
   static defaultProps: NavLinkProps = {
     active: false,
     disabled: false,
-    component: 'a',
   }
 
   render() {
-    const { component, active, disabled, ...rest } = this.props
+    const { active, disabled, bsStyle, render, ...rest } = this.props
     rest.className = $c(
+      rest.className,
       'nav-link',
       active && 'active',
       disabled && 'disabled',
-      rest.className,
+      getStyle(bsStyle),
     )
-    return React.createElement(component!, rest)
+    if (render) {
+      return render({ className: rest.className })
+    }
+    return <a {...rest} />
   }
 }
 
-export class NavItem extends React.Component<CommonProps> {
+export interface NavItemProps
+  extends types.CommonProps<React.LiHTMLAttributes<HTMLElement>> {}
+
+export class NavItem extends React.Component<NavItemProps> {
   render() {
-    const { ...rest } = this.props
-    rest.className = $c('nav-item', rest.className)
+    const { bsStyle, render, ...rest } = this.props
+    rest.className = $c('nav-item', rest.className, getStyle(bsStyle))
+    if (render) {
+      return render({ className: rest.className })
+    }
     return React.createElement('li', rest)
   }
 }
 
-export class Nav extends Component<NavProps> {
-  // static defaultProps = {
-  //   renderItem: (item: string) => (
-  //     <a href="#" className="nav-link">
-  //       {item}
-  //     </a>
-  //   ),
-  // }
+export interface NavProps extends types.CommonProps {
+  items: any[]
+  vertical?: boolean
+  tabs?: boolean
+  fill?: boolean
+  renderItem: (item: any, index: number) => React.ReactNode
+}
 
+export class Nav extends Component<NavProps> {
   render() {
     const { vertical, tabs, fill, items, renderItem, ...rest } = this.props
     rest.className = $c(
@@ -61,13 +64,7 @@ export class Nav extends Component<NavProps> {
       fill && 'nav-fill',
     )
 
-    return (
-      <nav {...rest}>
-        {/* {items.map((item, index) => {
-          return renderItem(item, index)
-        })} */}
-      </nav>
-    )
+    return <nav {...rest} />
   }
 }
 

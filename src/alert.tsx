@@ -1,6 +1,6 @@
 import React from 'react'
 import $c from 'classnames'
-import { renderToBody } from './utils'
+import { renderToBody, getStyle } from './utils'
 import * as types from './types'
 
 type AlertProps = types.CommonProps & {
@@ -88,6 +88,7 @@ export class Alert extends React.Component<AlertProps, AlertState> {
       dismissible,
       onDismiss,
       timeout,
+      bsStyle,
       render,
       children,
       ...rest
@@ -100,6 +101,7 @@ export class Alert extends React.Component<AlertProps, AlertState> {
       dismissible && 'alert-dismissible',
       this.state.isDismissing || 'show',
       'fade',
+      getStyle(bsStyle),
     )
 
     if (render) {
