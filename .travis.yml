@@ -1,7 +1,7 @@
 language: node_js
 node_js: stable
 before_deploy:
-  - yarn tsc
+  - yarn tsc || echo '0'
   - yarn docz build
   - echo 'relaunch.js.org' > .docz/dist/CNAME
 deploy:
