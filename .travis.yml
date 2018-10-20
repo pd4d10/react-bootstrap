@@ -1,0 +1,15 @@
+language: node_js
+node_js: stable
+before_deploy:
+  - yarn tsc
+  - yarn docz build
+  - echo 'relaunch.js.org' > .docz/dist/CNAME
+deploy:
+  local-dir: .docz/dist
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  committer-from-gh: true
+  on:
+    branch: master
