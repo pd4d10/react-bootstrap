@@ -4,6 +4,7 @@ import $ from 'jquery'
 import 'bootstrap/js/dist/dropdown'
 import * as types from './types'
 import { Button } from './button'
+import { createComponent } from './utils'
 
 declare global {
   interface JQuery {
@@ -11,57 +12,13 @@ declare global {
   }
 }
 
-interface DropdownProps extends types.CommonProps<HTMLAttributes<HTMLElement>> {
+export interface DropdownProps extends types.CommonProps {
   text: string
   overlay: React.ReactElement<any>
   theme?: types.Theme
   size?: types.Size
   split?: boolean
   direction?: types.Direction
-}
-
-interface DropdownItemProps {
-  active?: boolean
-  disabled?: boolean
-  component?: React.ReactType
-}
-
-export class DropdownItem extends React.Component<DropdownItemProps> {
-  static defaultProps: Partial<DropdownItemProps> = {
-    component: 'a',
-  }
-
-  render() {
-    const { active, disabled, component, ...rest } = this.props
-    const Component = component!
-    rest.className = $c(
-      rest.className,
-      'dropdown-item',
-      active && 'active',
-      disabled && 'disabled',
-    )
-    return <Component {...rest} />
-  }
-}
-
-interface DropdownDividerProps extends React.AllHTMLAttributes<HTMLElement> {}
-
-export class DropdownDivider extends React.Component<DropdownDividerProps> {
-  render() {
-    const { ...rest } = this.props
-    rest.className = $c('dropdown-divider', rest.className)
-    return <div {...rest} />
-  }
-}
-
-interface DropdownMenuProps extends React.AllHTMLAttributes<HTMLElement> {}
-
-export class DropdownMenu extends React.Component<DropdownMenuProps> {
-  render() {
-    const { ...rest } = this.props
-    rest.className = $c(rest.className, 'dropdown-menu')
-    return <div {...rest} />
-  }
 }
 
 export class Dropdown extends React.Component<DropdownProps> {
@@ -133,3 +90,27 @@ export class Dropdown extends React.Component<DropdownProps> {
     )
   }
 }
+
+export interface DropdownItemProps
+  extends types.CommonProps<React.AnchorHTMLAttributes<HTMLAnchorElement>> {
+  active?: boolean
+  disabled?: boolean
+}
+
+export class DropdownItem extends React.Component<DropdownItemProps> {
+  render() {
+    const { active, disabled, bsStyle, render, ...rest } = this.props
+    rest.className = $c(
+      rest.className,
+      'dropdown-item',
+      active && 'active',
+      disabled && 'disabled',
+    )
+    if (render) return render({ className: rest.className })
+    return <a {...rest} />
+  }
+}
+
+export const DropdownDivider = createComponent('DropdownDivider')
+
+export const DropdownMenu = createComponent('DropdownMenu')

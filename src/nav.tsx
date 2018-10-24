@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import $c from 'classnames'
 import * as types from './types'
-import { getStyle } from './utils'
+import { getStyle, createComponent } from './utils'
 
 export interface NavLinkProps
   extends types.CommonProps<React.AnchorHTMLAttributes<HTMLElement>> {
@@ -31,19 +31,7 @@ export class NavLink extends React.Component<NavLinkProps> {
   }
 }
 
-export interface NavItemProps
-  extends types.CommonProps<React.LiHTMLAttributes<HTMLElement>> {}
-
-export class NavItem extends React.Component<NavItemProps> {
-  render() {
-    const { bsStyle, render, ...rest } = this.props
-    rest.className = $c('nav-item', rest.className, getStyle(bsStyle))
-    if (render) {
-      return render({ className: rest.className })
-    }
-    return React.createElement('li', rest)
-  }
-}
+export const NavItem = createComponent('NavItem', 'li')
 
 export interface NavProps extends types.CommonProps {
   items: any[]

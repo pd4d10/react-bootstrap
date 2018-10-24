@@ -2,7 +2,7 @@ import React from 'react'
 import $c from 'classnames'
 import * as types from './types'
 
-type FormProps = types.CommonProps
+export interface FormProps extends types.CommonProps {}
 
 export class Form extends React.Component<FormProps> {
   render() {
@@ -11,7 +11,9 @@ export class Form extends React.Component<FormProps> {
   }
 }
 
-type FormGroupProps = types.CommonProps & { check?: boolean }
+export interface FormGroupProps extends types.CommonProps {
+  check?: boolean
+}
 
 export class FormGroup extends React.Component<FormGroupProps> {
   render() {
@@ -21,19 +23,21 @@ export class FormGroup extends React.Component<FormGroupProps> {
   }
 }
 
-type InputProps = types.CommonProps<React.InputHTMLAttributes<HTMLElement>> & {
+export interface InputProps
+  extends types.CommonProps<React.InputHTMLAttributes<HTMLElement>> {
   size: types.Size
 }
 
 export class Input extends React.Component<InputProps> {
   getFormControlClassName = () => {
+    const { type } = this.props
     let className = 'form-control'
 
-    if (this.props.type && ['file', 'range'].indexOf(this.props.type) !== -1) {
-      className += '-' + this.props.type
+    if (type && ['file', 'range'].indexOf(type) !== -1) {
+      className += '-' + type
     } else if (this.props.readOnly) {
       className += '-plaintext'
-    } else if (this.props.type === 'checkbox') {
+    } else if (type === 'checkbox') {
       className = 'form-check-input'
     }
     return className
@@ -50,7 +54,8 @@ export class Input extends React.Component<InputProps> {
   }
 }
 
-type LabelProps = types.CommonProps<React.LabelHTMLAttributes<HTMLElement>> & {
+export interface LabelProps
+  extends types.CommonProps<React.LabelHTMLAttributes<HTMLElement>> {
   check?: boolean
 }
 

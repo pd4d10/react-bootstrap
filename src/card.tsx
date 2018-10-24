@@ -1,66 +1,19 @@
 import React from 'react'
 import $c from 'classnames'
 import * as types from './types'
-import { getStyle } from './utils'
+import { getStyle, createComponent } from './utils'
 
-export interface CardProps extends types.CommonProps {}
+export const Card = createComponent('Card')
 
-export class Card extends React.Component<CardProps> {
-  render() {
-    const { bsStyle, render, ...rest } = this.props
-    rest.className = $c(rest.className, 'card', getStyle(bsStyle))
-    if (render) return render({ className: rest.className })
-    return <div {...rest} />
-  }
-}
+export const CardHeader = createComponent('CardHeader')
 
-const withClassName = (displayName: string, className: string, Tag = 'div') =>
-  class extends React.Component<types.CommonProps> {
-    static displayName = displayName
-    render() {
-      const { bsStyle, render, ...rest } = this.props
-      rest.className = $c(rest.className, className, getStyle(bsStyle))
-      if (render) return render({ className: rest.className })
-      return <Tag {...rest} />
-    }
-  }
+export const CardBody = createComponent('CardBody')
 
-export const CardHeader = withClassName('CardHeader', 'card-header')
+export const CardFooter = createComponent('CardFooter')
 
-export const CardFooter = withClassName('CardFooter', 'card-footer')
+export const CardTitle = createComponent('CardTitle', 'h5')
 
-export interface CardBodyProps extends types.CommonProps {}
-
-export class CardBody extends React.Component<CardBodyProps> {
-  render() {
-    const { bsStyle, render, ...rest } = this.props
-    rest.className = $c(rest.className, 'card-body', getStyle(bsStyle))
-    if (render) return render({ className: rest.className })
-    return <div {...rest} />
-  }
-}
-
-export interface CardTitleProps extends types.CommonProps {}
-
-export class CardTitle extends React.Component<CardTitleProps> {
-  render() {
-    const { bsStyle, render, ...rest } = this.props
-    rest.className = $c(rest.className, 'card-title', getStyle(bsStyle))
-    if (render) return render({ className: rest.className })
-    return <h5 {...rest} />
-  }
-}
-
-export interface CardTextProps extends types.CommonProps {}
-
-export class CardText extends React.Component<CardTextProps> {
-  render() {
-    const { bsStyle, render, ...rest } = this.props
-    rest.className = $c(rest.className, 'card-text', getStyle(bsStyle))
-    if (render) return render({ className: rest.className })
-    return <p {...rest} />
-  }
-}
+export const CardText = createComponent('CardText', 'p')
 
 export interface CardImageProps
   extends types.CommonProps<React.ImgHTMLAttributes<HTMLImageElement>> {

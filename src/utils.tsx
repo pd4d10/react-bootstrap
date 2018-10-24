@@ -1,4 +1,7 @@
+import React from 'react'
 import { render } from 'react-dom'
+import $c from 'classnames'
+import { kebabCase } from 'lodash-es'
 import * as types from './types'
 
 export function fill(length: number) {
@@ -49,4 +52,21 @@ export function getStyle(bs?: types.BsStyle) {
   })
 
   return classes.join(' ')
+}
+
+export function createComponent(
+  displayName: string,
+  Tag = 'div',
+  className = kebabCase(displayName),
+) {
+  const component: React.SFC<types.CommonProps> = props => {
+    const { bsStyle, render, ...rest } = props
+    rest.className = $c(rest.className, className, getStyle(bsStyle))
+    if (render) {
+      return render({ className: rest.className })
+    }
+    return <Tag {...rest} />
+  }
+  component.displayName = displayName
+  return component
 }
