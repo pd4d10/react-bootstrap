@@ -51,6 +51,14 @@ export type BsStyle = {
    * margin top and bottom
    */
   my?: Margin
+  /**
+   * background theme
+   */
+  bg?: Theme
+  /**
+   * border theme
+   */
+  border?: Theme
 }
 
 export type CommonProps<T = React.HTMLAttributes<HTMLElement>> = T & {

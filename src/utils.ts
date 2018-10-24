@@ -40,6 +40,8 @@ export function getStyle(bs?: types.BsStyle) {
     'mr',
     'mx',
     'my',
+    'bg',
+    'border',
   ]
 
   prefixes.forEach(prefix => {

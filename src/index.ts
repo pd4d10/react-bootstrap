@@ -3,7 +3,15 @@ export { Badge } from './badge'
 export { Breadcrumb, BreadcrumbItem } from './breadcrumb'
 export { Button } from './button'
 export { ButtonGroup, ButtonToolbar } from './button-group'
-export { Card } from './card'
+export {
+  Card,
+  CardText,
+  CardTitle,
+  CardBody,
+  CardImage,
+  CardHeader,
+  CardFooter,
+} from './card'
 export { Carousel } from './carousel'
 export { Collapse } from './collapse'
 export {
