@@ -15,8 +15,7 @@ export const CardTitle = createComponent('CardTitle', 'h5')
 
 export const CardText = createComponent('CardText', 'p')
 
-export interface CardImageProps
-  extends types.CommonProps<React.ImgHTMLAttributes<HTMLImageElement>> {
+export interface CardImageProps extends types.CommonProps<'img'> {
   position?: 'top' | 'bottom' | 'overlay'
 }
 

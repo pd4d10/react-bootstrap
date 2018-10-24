@@ -54,18 +54,18 @@ export function getStyle(bs?: types.BsStyle) {
   return classes.join(' ')
 }
 
-export function createComponent(
+export function createComponent<T extends keyof React.ReactHTML = 'div'>(
   displayName: string,
-  Tag = 'div',
+  tag: T = 'div' as T,
   className = kebabCase(displayName),
 ) {
-  const component: React.SFC<types.CommonProps> = props => {
+  const component: React.SFC<types.CommonProps<T>> = props => {
     const { bsStyle, render, ...rest } = props
     rest.className = $c(rest.className, className, getStyle(bsStyle))
     if (render) {
       return render({ className: rest.className })
     }
-    return <Tag {...rest} />
+    return React.createElement(tag, rest)
   }
   component.displayName = displayName
   return component

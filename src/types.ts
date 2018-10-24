@@ -61,7 +61,13 @@ export type BsStyle = {
   border?: Theme
 }
 
-export type CommonProps<T = React.HTMLAttributes<HTMLElement>> = T & {
+export type AttrsOfTag<
+  T extends keyof React.ReactHTML
+> = React.ReactHTML[T] extends React.DetailedHTMLFactory<infer R, any>
+  ? R
+  : never
+
+export type CommonProps<T extends keyof React.ReactHTML> = AttrsOfTag<T> & {
   bsStyle?: BsStyle
   render?: (props: { className: string }) => React.ReactNode
 }
