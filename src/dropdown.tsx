@@ -1,10 +1,9 @@
-import React, { HTMLAttributes } from 'react'
-import $c from 'classnames'
+import React from 'react'
 import $ from 'jquery'
 import 'bootstrap/js/dist/dropdown'
 import * as types from './types'
 import { Button } from './button'
-import { createComponent } from './utils'
+import { createComponent, $c } from './utils'
 
 declare global {
   interface JQuery {

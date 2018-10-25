@@ -1,6 +1,5 @@
 import React from 'react'
-import $c from 'classnames'
-import { createComponent } from './utils'
+import { createComponent, $c } from './utils'
 
 export interface JumbotronProps {
   fluid?: boolean

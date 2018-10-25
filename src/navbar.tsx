@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import $c from 'classnames'
 import * as types from './types'
+import { $c } from './utils'
 
 interface NavbarBrandProps extends types.CommonProps {
   href?: string

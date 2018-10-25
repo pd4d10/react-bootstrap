@@ -1,8 +1,12 @@
 import React from 'react'
 import { render } from 'react-dom'
-import $c from 'classnames'
 import { kebabCase } from 'lodash-es'
 import * as types from './types'
+
+// class name helper
+export function $c(...args: (string | boolean | undefined)[]) {
+  return args.filter(arg => arg).join(' ')
+}
 
 export function fill(length: number) {
   const arr = Array(length)

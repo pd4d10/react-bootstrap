@@ -1,7 +1,6 @@
 import React from 'react'
-import $c from 'classnames'
 import * as types from './types'
-import { fill } from './utils'
+import { fill, $c } from './utils'
 
 type PaginationProps = types.CommonProps & {
   current: number

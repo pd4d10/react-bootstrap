@@ -1,5 +1,4 @@
-import $c from 'classnames'
-import { createComponent } from './utils'
+import { createComponent, $c } from './utils'
 
 export interface BreadcrumbItemProps {
   active?: boolean

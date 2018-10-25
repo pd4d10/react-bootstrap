@@ -1,7 +1,6 @@
 import React from 'react'
-import $c from 'classnames'
 import * as types from './types'
-import { createComponent } from './utils'
+import { createComponent, $c } from './utils'
 
 export interface ListItemProps {
   active?: boolean

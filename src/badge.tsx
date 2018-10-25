@@ -1,6 +1,5 @@
-import $c from 'classnames'
 import * as types from './types'
-import { createComponent } from './utils'
+import { createComponent, $c } from './utils'
 
 export interface BadgeProps {
   theme: types.Theme

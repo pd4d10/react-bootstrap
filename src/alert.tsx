@@ -1,6 +1,5 @@
 import React from 'react'
-import $c from 'classnames'
-import { renderToBody, getStyle, createComponent } from './utils'
+import { renderToBody, getStyle, createComponent, $c } from './utils'
 import * as types from './types'
 
 export interface AlertProps extends types.CommonProps {

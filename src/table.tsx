@@ -1,6 +1,6 @@
 import React from 'react'
-import $c from 'classnames'
 import * as types from './types'
+import { $c } from './utils'
 
 type TableProps = types.CommonProps<'table'> & {
   items: any[]
