@@ -91,25 +91,24 @@ export class Dropdown extends React.Component<DropdownProps> {
   }
 }
 
-export interface DropdownItemProps
-  extends types.CommonProps<React.AnchorHTMLAttributes<HTMLAnchorElement>> {
+export interface DropdownItemProps {
   active?: boolean
   disabled?: boolean
 }
 
-export class DropdownItem extends React.Component<DropdownItemProps> {
-  render() {
-    const { active, disabled, bsStyle, render, ...rest } = this.props
+export const DropdownItem = createComponent<'a', DropdownItemProps>(
+  'DropdownItem',
+  'a',
+  ({ active, disabled, ...rest }) => {
     rest.className = $c(
       rest.className,
       'dropdown-item',
       active && 'active',
       disabled && 'disabled',
     )
-    if (render) return render({ className: rest.className })
-    return <a {...rest} />
-  }
-}
+    return rest
+  },
+)
 
 export const DropdownDivider = createComponent('DropdownDivider')
 

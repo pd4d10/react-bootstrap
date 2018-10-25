@@ -5,8 +5,7 @@ import { mdiLoading } from '@mdi/js'
 import * as types from './types'
 import { getStyle } from './utils'
 
-export interface ButtonProps
-  extends types.CommonProps<React.ButtonHTMLAttributes<HTMLElement>> {
+export interface ButtonProps extends types.CommonProps<'button'> {
   theme?: types.ButtonTheme
   outline?: boolean
   size?: types.Size

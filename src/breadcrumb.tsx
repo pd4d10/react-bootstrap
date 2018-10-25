@@ -1,19 +1,22 @@
-import React, { LiHTMLAttributes, OlHTMLAttributes } from 'react'
+import React from 'react'
 import $c from 'classnames'
+import * as types from './types'
+import { createComponent } from './utils'
 
-interface BreadcrumbItemProps extends LiHTMLAttributes<HTMLLIElement> {
+export interface BreadcrumbItemProps {
   active?: boolean
 }
 
-export class BreadcrumbItem extends React.Component<BreadcrumbItemProps> {
-  render() {
-    const { active, ...rest } = this.props
+export const BreadcrumbItem = createComponent<'li', BreadcrumbItemProps>(
+  'BreadcrumbItem',
+  'li',
+  ({ active, ...rest }) => {
     rest.className = $c('breadcrumb-item', active && 'active', rest.className)
-    return <li aria-current="page" {...rest} />
-  }
-}
+    return rest
+  },
+)
 
-interface BreadcrumbProps extends OlHTMLAttributes<HTMLOListElement> {}
+export interface BreadcrumbProps extends types.CommonProps<'ol'> {}
 
 export class Breadcrumb extends React.Component<BreadcrumbProps> {
   render() {

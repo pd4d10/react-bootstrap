@@ -1,9 +1,9 @@
 import React from 'react'
 import $c from 'classnames'
-import { renderToBody, getStyle } from './utils'
+import { renderToBody, getStyle, createComponent } from './utils'
 import * as types from './types'
 
-type AlertProps = types.CommonProps & {
+export interface AlertProps extends types.CommonProps {
   theme: types.Theme
   dismissible?: boolean
   timeout: number
@@ -128,15 +128,4 @@ export class Alert extends React.Component<AlertProps, AlertState> {
   }
 }
 
-type AlertLinkProps = types.CommonProps<React.AnchorHTMLAttributes<HTMLElement>>
-
-export class AlertLink extends React.Component<AlertLinkProps> {
-  render() {
-    const { render, ...rest } = this.props
-    rest.className = $c(rest.className, 'alert-link')
-    if (render) {
-      return render({ className: rest.className })
-    }
-    return <a {...rest} />
-  }
-}
+export const AlertLink = createComponent('AlertLink', 'a')

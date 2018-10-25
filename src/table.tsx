@@ -2,7 +2,7 @@ import React from 'react'
 import $c from 'classnames'
 import * as types from './types'
 
-type TableProps = types.CommonProps<React.TableHTMLAttributes<HTMLElement>> & {
+type TableProps = types.CommonProps<'table'> & {
   items: any[]
   renderItem: (item: any) => React.ReactNode
 }

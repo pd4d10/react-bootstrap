@@ -1,49 +1,39 @@
-import React, { Component } from 'react'
+import React from 'react'
 import $c from 'classnames'
 import * as types from './types'
-import { getStyle, createComponent } from './utils'
+import { createComponent } from './utils'
 
-export interface NavLinkProps
-  extends types.CommonProps<React.AnchorHTMLAttributes<HTMLElement>> {
+export interface NavLinkProps {
   active?: boolean
   disabled?: boolean
 }
 
-export class NavLink extends React.Component<NavLinkProps> {
-  static defaultProps: NavLinkProps = {
-    active: false,
-    disabled: false,
-  }
-
-  render() {
-    const { active, disabled, bsStyle, render, ...rest } = this.props
+export const NavLink = createComponent<'a', NavLinkProps>(
+  'NavLink',
+  'a',
+  ({ active, disabled, ...rest }) => {
     rest.className = $c(
       rest.className,
       'nav-link',
       active && 'active',
       disabled && 'disabled',
-      getStyle(bsStyle),
     )
-    if (render) {
-      return render({ className: rest.className })
-    }
-    return <a {...rest} />
-  }
-}
+    return rest
+  },
+)
 
 export const NavItem = createComponent('NavItem', 'li')
 
-export interface NavProps extends types.CommonProps {
-  items: any[]
+export interface NavProps {
   vertical?: boolean
   tabs?: boolean
   fill?: boolean
-  renderItem: (item: any, index: number) => React.ReactNode
 }
 
-export class Nav extends Component<NavProps> {
-  render() {
-    const { vertical, tabs, fill, items, renderItem, ...rest } = this.props
+export const Nav = createComponent<'nav', NavProps>(
+  'Nav',
+  'nav',
+  ({ vertical, tabs, fill, ...rest }) => {
     rest.className = $c(
       rest.className,
       'nav',
@@ -51,10 +41,9 @@ export class Nav extends Component<NavProps> {
       tabs && 'nav-tabs',
       fill && 'nav-fill',
     )
-
-    return <nav {...rest} />
-  }
-}
+    return rest
+  },
+)
 
 export class Tabs extends React.Component<types.CommonProps> {
   render() {

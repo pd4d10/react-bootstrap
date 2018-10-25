@@ -1,10 +1,9 @@
-import React, { Component, HTMLAttributes } from 'react'
+import React from 'react'
 import $c from 'classnames'
-import { Badge } from './'
 import * as types from './types'
-import { getStyle } from './utils'
+import { createComponent } from './utils'
 
-type ListItemProps = types.CommonProps<React.LiHTMLAttributes<HTMLElement>> & {
+export interface ListItemProps {
   active?: boolean
   disabled?: boolean
   theme?: types.Theme
@@ -12,24 +11,10 @@ type ListItemProps = types.CommonProps<React.LiHTMLAttributes<HTMLElement>> & {
   action?: boolean
 }
 
-export class ListItem extends Component<ListItemProps> {
-  // handleClick = (e: React.MouseEvent<HTMLLIElement>) => {
-  //   if (this.props.onClick) {
-  //     this.props.onClick(e, )
-  //   }
-  // }
-
-  render() {
-    const {
-      active,
-      disabled,
-      theme,
-      flush,
-      action,
-      bsStyle,
-      render,
-      ...rest
-    } = this.props
+export const ListItem = createComponent<'li', ListItemProps>(
+  'ListItem',
+  'li',
+  ({ active, disabled, theme, flush, action, ...rest }) => {
     rest.className = $c(
       rest.className,
       'list-group-item',
@@ -38,14 +23,10 @@ export class ListItem extends Component<ListItemProps> {
       flush && `list-group-item-flush`,
       theme && `list-group-item-${theme}`,
       action && `list-group-item-action`,
-      getStyle(bsStyle),
     )
-    if (render) {
-      return render({ className: rest.className })
-    }
-    return <li {...rest} />
-  }
-}
+    return rest
+  },
+)
 
 type ListProps = types.CommonProps & {
   items: any[]

@@ -1,68 +1,56 @@
 import React from 'react'
 import $c from 'classnames'
 import * as types from './types'
+import { createComponent } from './utils'
 
-export interface FormProps extends types.CommonProps {}
-
-export class Form extends React.Component<FormProps> {
-  render() {
-    const { render, ...rest } = this.props
-    return <form {...rest} />
-  }
-}
-
-export interface FormGroupProps extends types.CommonProps {
+export interface FormGroupProps {
   check?: boolean
 }
 
-export class FormGroup extends React.Component<FormGroupProps> {
-  render() {
-    const { check, ...rest } = this.props
+export const FormGroup = createComponent<'div', FormGroupProps>(
+  'FormGroup',
+  'div',
+  ({ check, ...rest }) => {
     rest.className = $c(rest.className, 'form-group', check && 'form-check')
-    return <div {...rest} />
-  }
-}
+    return rest
+  },
+)
 
-export interface InputProps
-  extends types.CommonProps<React.InputHTMLAttributes<HTMLElement>> {
+export interface InputProps {
   size: types.Size
 }
 
-export class Input extends React.Component<InputProps> {
-  getFormControlClassName = () => {
-    const { type } = this.props
+export const Input = createComponent<'input', InputProps>(
+  'Input',
+  'input',
+  ({ size, ...rest }) => {
     let className = 'form-control'
 
-    if (type && ['file', 'range'].indexOf(type) !== -1) {
-      className += '-' + type
-    } else if (this.props.readOnly) {
+    if (rest.type && ['file', 'range'].indexOf(rest.type) !== -1) {
+      className += '-' + rest.type
+    } else if (rest.readOnly) {
       className += '-plaintext'
-    } else if (type === 'checkbox') {
+    } else if (rest.type === 'checkbox') {
       className = 'form-check-input'
     }
-    return className
-  }
-
-  render() {
-    const { size, ...rest } = this.props
     rest.className = $c(
       rest.className,
-      this.getFormControlClassName(),
+      className,
       size && 'form-control-' + size,
     )
-    return <input {...rest} />
-  }
-}
+    return rest
+  },
+)
 
-export interface LabelProps
-  extends types.CommonProps<React.LabelHTMLAttributes<HTMLElement>> {
+export interface LabelProps {
   check?: boolean
 }
 
-export class Label extends React.Component<LabelProps> {
-  render() {
-    const { check, ...rest } = this.props
+export const Label = createComponent<'label', LabelProps>(
+  'Label',
+  'label',
+  ({ check, ...rest }) => {
     rest.className = $c(rest.className, check && 'form-check-label')
-    return <label {...rest} />
-  }
-}
+    return rest
+  },
+)
