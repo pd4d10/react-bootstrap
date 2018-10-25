@@ -1,11 +1,15 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { kebabCase } from 'lodash-es'
 import * as types from './types'
 
 // class name helper
 export function $c(...args: (string | boolean | undefined)[]) {
   return args.filter(arg => arg).join(' ')
+}
+
+// ButtonGroup -> button-group
+function kebabCase(str: string) {
+  return str.replace(/(?<!^)([A-Z])/g, '-$1').toLowerCase()
 }
 
 export function fill(length: number) {
