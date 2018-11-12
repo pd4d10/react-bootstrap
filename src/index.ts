@@ -1,8 +1,8 @@
-export { Alert, AlertLink } from './alert/alert'
-export { Badge } from './badge/badge'
-export { Breadcrumb, BreadcrumbItem } from './breadcrumb/breadcrumb'
-export { Button } from './button/button'
-export { ButtonGroup, ButtonToolbar } from './button-group'
+export { Alert, AlertLink } from './components/alert'
+export { Badge } from './components/badge'
+export { Breadcrumb, BreadcrumbItem } from './components/breadcrumb'
+export { Button } from './components/button'
+export { ButtonGroup, ButtonToolbar } from './components/button-group'
 export {
   Card,
   CardText,
@@ -11,23 +11,23 @@ export {
   CardImage,
   CardHeader,
   CardFooter,
-} from './card/card'
-export { Carousel } from './carousel'
-export { Collapse } from './collapse'
+} from './components/card'
+export { Carousel } from './components/carousel'
+export { Collapse } from './components/collapse'
 export {
   Dropdown,
   DropdownDivider,
   DropdownMenu,
   DropdownItem,
   DropdownHeader,
-} from './dropdown'
-export { FormGroup, Input, Label } from './form'
-export { List, ListItem } from './list'
-export { Container, Row, Col } from './layout'
-export { Modal } from './modal'
-export { Navbar, NavbarNav, NavbarBrand } from './navbar'
-export { Nav, NavItem, NavLink } from './nav'
-export { Jumbotron } from './jumbotron'
-export { Pagination } from './pagination'
-export { Progress } from './progress'
-export { Table } from './table'
+} from './components/dropdown'
+export { FormGroup, Input, Label } from './components/form'
+export { List, ListItem } from './components/list'
+export { Container, Row, Col } from './components/layout'
+export { Modal } from './components/modal'
+export { Navbar, NavbarNav, NavbarBrand } from './components/navbar'
+export { Nav, NavItem, NavLink } from './components/nav'
+export { Jumbotron } from './components/jumbotron'
+export { Pagination } from './components/pagination'
+export { Progress } from './components/progress'
+export { Table } from './components/table'

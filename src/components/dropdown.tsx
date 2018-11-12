@@ -1,9 +1,9 @@
 import React from 'react'
 import $ from 'jquery'
 import 'bootstrap/js/dist/dropdown'
-import * as types from './types'
-import { Button } from './button/button'
-import { createComponent, $c } from './utils'
+import * as types from '../types'
+import { Button } from './button'
+import { createComponent, $c } from '../utils'
 
 export interface DropdownProps extends types.CommonProps {
   text: string

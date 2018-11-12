@@ -1,6 +1,6 @@
 import React from 'react'
-import * as types from './types'
-import { $c } from './utils'
+import * as types from '../types'
+import { $c } from '../utils'
 
 interface CollapseProps extends types.CommonProps {
   visible?: boolean

@@ -1,5 +1,5 @@
 module.exports = {
-  components: 'src/**/*.tsx',
+  components: 'src/components/**/*.tsx',
   propsParser: require('react-docgen-typescript').parse,
   require: ['bootstrap/dist/css/bootstrap.min.css'], // https://github.com/styleguidist/react-styleguidist/blob/master/docs/Cookbook.md#how-to-add-custom-javascript-and-css-or-polyfills
   webpackConfig: {

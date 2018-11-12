@@ -2,9 +2,9 @@ import React from 'react'
 import { Portal } from 'react-portal'
 import $ from 'jquery'
 import 'bootstrap/js/dist/modal'
-import { renderToBody, $c } from './utils'
-import * as types from './types'
-import { Button } from './button/button'
+import { renderToBody, $c } from '../utils'
+import * as types from '../types'
+import { Button } from './button'
 
 declare global {
   interface JQuery {
