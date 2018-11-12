@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { Portal } from 'react-portal'
 import $ from 'jquery'
 import 'bootstrap/js/dist/modal'

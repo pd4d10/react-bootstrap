@@ -15,7 +15,7 @@ export interface ButtonProps extends types.CommonProps<'button'> {
 }
 
 /**
- * Button
+ * Button desc
  */
 export class Button extends Component<ButtonProps> {
   static defaultProps: ButtonProps = {

@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { renderToBody, getStyle, createComponent, $c } from '../utils'
 import * as types from '../types'
 
@@ -19,7 +19,7 @@ type AlertState = Readonly<{
 }>
 
 /**
- * Alert
+ * Alert desc
  */
 export class Alert extends React.Component<AlertProps, AlertState> {
   state: AlertState = {

@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import $ from 'jquery'
 import 'bootstrap/js/dist/dropdown'
 import * as types from '../types'
