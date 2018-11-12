@@ -1,15 +1,9 @@
----
-name: Form
----
-
-import { Playground, PropsTable } from 'docz'
-import { Input, FormGroup, Label, Button } from '../lib'
-
 ## Themes
 
 Specify `theme` to use predefined styles.
 
-<Playground>
+```js
+<>
   <form onSubmit={e => { e.preventDefault() }}>
     <FormGroup>
       <Label htmlFor="exampleInputEmail1">Email address</Label>
@@ -26,27 +20,28 @@ Specify `theme` to use predefined styles.
     </FormGroup>
     <Button type="submit" theme="primary">Submit</Button>
   </form>
-</Playground>
+</>
+```
 
-## Size
+### Size
 
-<Playground>
+```js
+<>
   <Input size="lg" placeholder="Large input" />
   <Input placeholder="Default input" />
   <Input size="sm" placeholder="Small input" />
-</Playground>
+</>
+```
 
+### Range inputs
 
-## Range inputs
-
-<Playground>
+```js
+<>
   <form>
     <FormGroup>
       <Label htmlFor="formControlRange">Example Range input</Label>
       <Input type="range" id="formControlRange" />
     </FormGroup>
   </form>
-</Playground>
-
-
-
+</>
+```

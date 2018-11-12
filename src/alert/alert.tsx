@@ -1,6 +1,6 @@
 import React from 'react'
-import { renderToBody, getStyle, createComponent, $c } from './utils'
-import * as types from './types'
+import { renderToBody, getStyle, createComponent, $c } from '../utils'
+import * as types from '../types'
 
 export interface AlertProps extends types.CommonProps {
   theme: types.Theme
@@ -18,6 +18,9 @@ type AlertState = Readonly<{
   isDismissing: boolean
 }>
 
+/**
+ * Alert
+ */
 export class Alert extends React.Component<AlertProps, AlertState> {
   state: AlertState = {
     visible: true,
@@ -27,6 +30,8 @@ export class Alert extends React.Component<AlertProps, AlertState> {
   static defaultProps: Partial<AlertProps> = {
     dismissible: false,
   }
+
+  static Link = createComponent('AlertLink', 'a')
 
   static $container: HTMLDivElement
   static notifyItemsMapper: { [key: string]: NotifyParams } = {}
@@ -126,5 +131,3 @@ export class Alert extends React.Component<AlertProps, AlertState> {
     )
   }
 }
-
-export const AlertLink = createComponent('AlertLink', 'a')

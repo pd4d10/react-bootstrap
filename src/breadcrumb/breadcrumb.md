@@ -1,17 +1,9 @@
----
-name: Breadcrumb
----
-
-import { Playground, PropsTable } from 'docz'
-import { Breadcrumb, BreadcrumbItem } from '../lib'
-
-# Breadcrumb
-
 Indicate the current page’s location within a navigational hierarchy that automatically adds separators via CSS.
 
-## Example
+### Example
 
-<Playground>
+```js
+<>
   <Breadcrumb>
     <BreadcrumbItem active>Home</BreadcrumbItem>
   </Breadcrumb>
@@ -30,4 +22,5 @@ Indicate the current page’s location within a navigational hierarchy that auto
     </BreadcrumbItem>
     <BreadcrumbItem active>Data</BreadcrumbItem>
   </Breadcrumb>
-</Playground>
+</>
+```

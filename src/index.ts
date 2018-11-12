@@ -1,7 +1,7 @@
-export { Alert, AlertLink } from './alert'
-export { Badge } from './badge'
-export { Breadcrumb, BreadcrumbItem } from './breadcrumb'
-export { Button } from './button'
+export { Alert, AlertLink } from './alert/alert'
+export { Badge } from './badge/badge'
+export { Breadcrumb, BreadcrumbItem } from './breadcrumb/breadcrumb'
+export { Button } from './button/button'
 export { ButtonGroup, ButtonToolbar } from './button-group'
 export {
   Card,
@@ -11,7 +11,7 @@ export {
   CardImage,
   CardHeader,
   CardFooter,
-} from './card'
+} from './card/card'
 export { Carousel } from './carousel'
 export { Collapse } from './collapse'
 export {
@@ -19,6 +19,7 @@ export {
   DropdownDivider,
   DropdownMenu,
   DropdownItem,
+  DropdownHeader,
 } from './dropdown'
 export { FormGroup, Input, Label } from './form'
 export { List, ListItem } from './list'

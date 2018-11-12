@@ -1,11 +1,10 @@
-import { Playground, PropsTable } from 'docz'
-import { Badge, Button } from '../lib'
 
-## Example
+### Example
 
 Badges scale to match the size of the immediate parent element.
 
-<Playground>
+```js
+<>
   <h1>
     Example heading <Badge>New</Badge>
   </h1>
@@ -24,36 +23,41 @@ Badges scale to match the size of the immediate parent element.
   <h6>
     Example heading <Badge>New</Badge>
   </h6>
-</Playground>
+</>
+```
 
 Badges can be used as part of links or buttons to provide a counter.
 
-<Playground>
+```js
+<>
   <Button theme="primary">
     Notifications <Badge theme="light">4</Badge>
   </Button>{' '}
   <Button theme="primary">
     Profile <Badge theme="light">9</Badge>
   </Button>
-</Playground>
+</>
+```
 
-## Contextual variations
+### Contextual variations
 
 Specify `theme` to change the appearance of a badge.
 
-<Playground>
+```js
+<>
   <Badge theme="primary">Primary</Badge>{' '}
   <Badge theme="secondary">Secondary</Badge>{' '}
   <Badge theme="success">Success</Badge> <Badge theme="danger">Danger</Badge>{' '}
   <Badge theme="warning">Warning</Badge> <Badge theme="info">Info</Badge>{' '}
   <Badge theme="light">Light</Badge> <Badge theme="dark">Dark</Badge>
-</Playground>
+</>
+```
 
-## Pill badges
+### Pill badges
 
 Add `pill` to make badges more rounded.
-
-<Playground>
+```js
+<>
   <Badge theme="primary" pill>
     Primary
   </Badge>{' '}
@@ -78,17 +82,76 @@ Add `pill` to make badges more rounded.
   <Badge theme="dark" pill>
     Dark
   </Badge>
-</Playground>
+</>
+```
 
-## Links
+### Links
 
-<Playground>
-  <Badge theme="primary" render={props => <a href="javascript:" {...props}>Primary</a>} />{' '}
-  <Badge theme="secondary" render={props => <a href="javascript:" {...props}>Secondary</a>} />{' '}
-  <Badge theme="success" render={props => <a href="javascript:" {...props}>Success</a>} />{' '}
-  <Badge theme="danger" render={props => <a href="javascript:" {...props}>Danger</a>} />{' '}
-  <Badge theme="warning" render={props => <a href="javascript:" {...props}>Warning</a>} />{' '}
-  <Badge theme="info" render={props => <a href="javascript:" {...props}>Info</a>} />{' '}
-  <Badge theme="light" render={props => <a href="javascript:" {...props}>Light</a>} />{' '}
-  <Badge theme="dark" render={props => <a href="javascript:" {...props}>Dark</a>} />
-</Playground>
+```js
+<>
+  <Badge
+    theme="primary"
+    render={props => (
+      <a href="javascript:" {...props}>
+        Primary
+      </a>
+    )}
+  />{' '}
+  <Badge
+    theme="secondary"
+    render={props => (
+      <a href="javascript:" {...props}>
+        Secondary
+      </a>
+    )}
+  />{' '}
+  <Badge
+    theme="success"
+    render={props => (
+      <a href="javascript:" {...props}>
+        Success
+      </a>
+    )}
+  />{' '}
+  <Badge
+    theme="danger"
+    render={props => (
+      <a href="javascript:" {...props}>
+        Danger
+      </a>
+    )}
+  />{' '}
+  <Badge
+    theme="warning"
+    render={props => (
+      <a href="javascript:" {...props}>
+        Warning
+      </a>
+    )}
+  />{' '}
+  <Badge
+    theme="info"
+    render={props => (
+      <a href="javascript:" {...props}>
+        Info
+      </a>
+    )}
+  />{' '}
+  <Badge
+    theme="light"
+    render={props => (
+      <a href="javascript:" {...props}>
+        Light
+      </a>
+    )}
+  />{' '}
+  <Badge
+    theme="dark"
+    render={props => (
+      <a href="javascript:" {...props}>
+        Dark
+      </a>
+    )}
+  />
+</>
+```

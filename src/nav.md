@@ -1,17 +1,15 @@
-import { Playground, PropsTable } from 'docz'
-import { Nav, NavItem, NavLink } from '../lib'
+### Example
 
-## Example
-
-<Playground>
+```js
+<>
   <Nav>
     <NavItem>
       <NavLink href="#">Home</NavLink>
     </NavItem>
   </Nav>
-</Playground>
+</>
 
-<Playground>
+<>
   <Nav tabs>
     <NavItem>
       <NavLink href="#" active>
@@ -24,9 +22,9 @@ import { Nav, NavItem, NavLink } from '../lib'
       </NavLink>
     </NavItem>
   </Nav>
-</Playground>
+</>
 
-<Playground>
+<>
   <Nav pill>
     <NavItem>
       <NavLink href="#" active>
@@ -39,4 +37,5 @@ import { Nav, NavItem, NavLink } from '../lib'
       </NavLink>
     </NavItem>
   </Nav>
-</Playground>
+</>
+```

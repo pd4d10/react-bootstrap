@@ -1,6 +1,6 @@
 import React from 'react'
-import * as types from './types'
-import { createComponent, $c } from './utils'
+import * as types from '../types'
+import { createComponent, $c } from '../utils'
 
 export interface ButtonGroupProps {
   size?: types.Size

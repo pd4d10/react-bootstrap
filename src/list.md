@@ -1,9 +1,7 @@
-import { Playground, PropsTable } from 'docz'
-import { List, ListItem } from '../lib'
-
 ## Example
 
-<Playground>
+```js
+<>
   <List
     items={[
       'Cras justo odio',
@@ -81,4 +79,5 @@ import { List, ListItem } from '../lib'
       />
     )}
   />
-</Playground>
+</>
+```

@@ -1,9 +1,7 @@
-import { Playground, PropsTable } from 'docz'
-import { Dropdown, DropdownDivider, DropdownMenu, DropdownItem } from '../lib'
+### Examples
 
-## Examples
-
-<Playground>
+```js
+<>
   <Dropdown
     text="Dropdown"
     overlay={
@@ -17,11 +15,13 @@ import { Dropdown, DropdownDivider, DropdownMenu, DropdownItem } from '../lib'
     }
     style={{ height: 200 }}
   />
-</Playground>
+</>
+```
 
 ## Theme
 
-<Playground>
+```js
+<>
   <Dropdown
     theme="warning"
     text="Dropdown"
@@ -35,11 +35,13 @@ import { Dropdown, DropdownDivider, DropdownMenu, DropdownItem } from '../lib'
       </DropdownMenu>
     }
   />
-</Playground>
+</>
+```
 
 ## Size
 
-<Playground>
+```js
+<>
   <Dropdown
     size="lg"
     text="Large button"
@@ -82,11 +84,13 @@ import { Dropdown, DropdownDivider, DropdownMenu, DropdownItem } from '../lib'
       </DropdownMenu>
     }
   />
-</Playground>
+</>
+```
 
 ## Direction
 
-<Playground>
+```js
+<>
   <Dropdown
     direction="up"
     text="Dropup"
@@ -150,4 +154,5 @@ import { Dropdown, DropdownDivider, DropdownMenu, DropdownItem } from '../lib'
       </DropdownMenu>
     }
   />
-</Playground>
+</>
+```

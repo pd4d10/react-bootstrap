@@ -1,5 +1,5 @@
 import React from 'react'
-import { createComponent, $c } from './utils'
+import { createComponent, $c } from '../utils'
 
 export const Card = createComponent('Card')
 

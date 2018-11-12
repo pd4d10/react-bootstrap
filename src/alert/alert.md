@@ -1,20 +1,7 @@
----
-name: Alert
----
+### Themes
 
-import { Playground, PropsTable } from 'docz'
-import { Alert, AlertLink, Button } from '../lib'
-import { Link } from './utils'
-
-# Alert
-
-<PropsTable of={Alert} />
-
-## Themes
-
-Specify `theme` to use predefined styles.
-
-<Playground>
+```js
+<>
   <Alert theme="primary">A simple primary alert—check it out!</Alert>
   <Alert theme="secondary">A simple secondary alert—check it out!</Alert>
   <Alert theme="success">A simple success alert—check it out!</Alert>
@@ -23,11 +10,13 @@ Specify `theme` to use predefined styles.
   <Alert theme="info">A simple info alert—check it out!</Alert>
   <Alert theme="light">A simple light alert—check it out!</Alert>
   <Alert theme="dark">A simple dark alert—check it out!</Alert>
-</Playground>
+</>
+```
 
-## Notification
+### Notification
 
-<Playground>
+```js
+<>
   <Button
     onClick={() => {
       Alert.notify({
@@ -39,36 +28,36 @@ Specify `theme` to use predefined styles.
   >
     Show notification
   </Button>
-</Playground>
+</>
+```
 
-## Link
+### Link
 
-`AlertLink` is to provide matching colored links within `Alert`.
-
-Use `render` prop to render component other than HTML `a`, such as `Link` of React Router.
-
-<Playground>
+```js
+<>
   <Alert theme="primary">
     A simple primary alert with{' '}
-    <AlertLink href="javascript:">an example link</AlertLink>. Give it a click
+    <Alert.Link href="javascript:">an example link</Alert.Link>. Give it a click
     if you like.
   </Alert>
   <Alert theme="primary">
     A simple primary alert with{' '}
-    <AlertLink
+    <Alert.Link
       render={props => (
-        <Link {...props} to="/">
+        <a {...props} to="/">
           a router link
-        </Link>
+        </a>
       )}
     />
     . Give it a click if you like.
   </Alert>
-</Playground>
+</>
+```
 
-## Additional content
+### Additional content
 
-<Playground>
+```js
+<>
   <Alert theme="success">
     <h4>Well done!</h4>
     <p>
@@ -82,11 +71,13 @@ Use `render` prop to render component other than HTML `a`, such as `Link` of Rea
       and tidy.
     </p>
   </Alert>
-</Playground>
+</>
+```
 
-## Dismissing
+### Dismissing
 
-<Playground>
+```js
+<>
   <Alert
     dismissible
     theme="warning"
@@ -97,4 +88,5 @@ Use `render` prop to render component other than HTML `a`, such as `Link` of Rea
     <strong>Holy guacamole!</strong> You should check in on some of those fields
     below.
   </Alert>
-</Playground>
+</>
+```

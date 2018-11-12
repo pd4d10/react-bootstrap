@@ -1,9 +1,7 @@
-import { Playground, PropsTable } from 'docz'
-import { Progress } from '../lib'
+### Example
 
-## Example
-
-<Playground>
+```js
+<>
   <Progress percent={50} />
   <Progress percent={50} style={{ height: 1 }} />
   <Progress percent={50} label={<span>50%</span>} />
@@ -11,4 +9,5 @@ import { Progress } from '../lib'
   <Progress percent={50} striped />
   <Progress percent={50} animated />
   <Progress multiple={[{ percent: 50 }, { percent: 25, theme: 'info' }]} />
-</Playground>
+</>
+```

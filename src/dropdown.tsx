@@ -2,14 +2,8 @@ import React from 'react'
 import $ from 'jquery'
 import 'bootstrap/js/dist/dropdown'
 import * as types from './types'
-import { Button } from './button'
+import { Button } from './button/button'
 import { createComponent, $c } from './utils'
-
-declare global {
-  interface JQuery {
-    dropdown: Function
-  }
-}
 
 export interface DropdownProps extends types.CommonProps {
   text: string
@@ -20,25 +14,21 @@ export interface DropdownProps extends types.CommonProps {
   direction?: types.Direction
 }
 
-export class Dropdown extends React.Component<DropdownProps> {
+interface DropdownState {
+  visible: boolean
+}
+
+export class Dropdown extends React.Component<DropdownProps, DropdownState> {
   static defaultProps: Partial<DropdownProps> = {
-    split: false,
     direction: 'down',
   }
 
-  toggleRef: React.RefObject<Button>
-  $toggle?: JQuery<Button>
-
-  constructor(props: DropdownProps) {
-    super(props)
-    this.toggleRef = React.createRef()
-  }
-
-  componentDidMount() {
-    this.$toggle = $(this.toggleRef.current!)
+  state = {
+    visible: false,
   }
 
   render() {
+    const { visible } = this.state
     const {
       text,
       overlay,
@@ -56,9 +46,10 @@ export class Dropdown extends React.Component<DropdownProps> {
         size={size}
         className={$c('dropdown-toggle', split && 'dropdown-toggle-split')}
         data-toggle="dropdown"
-        ref={this.toggleRef}
         onClick={() => {
-          this.$toggle!.dropdown()
+          this.setState(({ visible }) => ({
+            visible: !visible,
+          }))
         }}
       >
         {split ? <span className="sr-only">{text}</span> : text}
@@ -70,6 +61,7 @@ export class Dropdown extends React.Component<DropdownProps> {
         className={$c(
           className,
           direction && `drop${direction}`,
+          visible && 'show',
           // split ? 'btn-group' : 'dropdown',
         )}
         {...rest}
@@ -112,3 +104,5 @@ export const DropdownItem = createComponent<'a', DropdownItemProps>(
 export const DropdownDivider = createComponent('DropdownDivider')
 
 export const DropdownMenu = createComponent('DropdownMenu')
+
+export const DropdownHeader = createComponent('DropdownHeader')
