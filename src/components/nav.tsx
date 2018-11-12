@@ -10,15 +10,8 @@ export interface NavLinkProps {
 export const NavLink = createComponent<'a', NavLinkProps>(
   'NavLink',
   'a',
-  ({ active, disabled, ...rest }) => {
-    rest.className = $c(
-      rest.className,
-      'nav-link',
-      active && 'active',
-      disabled && 'disabled',
-    )
-    return rest
-  },
+  ({ active, disabled }) =>
+    $c('nav-link', active && 'active', disabled && 'disabled'),
 )
 
 export const NavItem = createComponent('NavItem', 'li')
@@ -32,16 +25,13 @@ export interface NavProps {
 export const Nav = createComponent<'nav', NavProps>(
   'Nav',
   'nav',
-  ({ vertical, tabs, fill, ...rest }) => {
-    rest.className = $c(
-      rest.className,
+  ({ vertical, tabs, fill }) =>
+    $c(
       'nav',
       vertical && 'flex-column',
       tabs && 'nav-tabs',
       fill && 'nav-fill',
-    )
-    return rest
-  },
+    ),
 )
 
 export class Tabs extends React.Component<types.CommonProps> {

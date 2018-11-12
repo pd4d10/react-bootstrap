@@ -8,8 +8,5 @@ export interface JumbotronProps {
 export const Jumbotron = createComponent<'div', JumbotronProps>(
   'Jumbotron',
   'div',
-  ({ fluid, ...rest }) => {
-    rest.className = $c(rest.className, 'jumbotron', fluid && 'jumbotron-fluid')
-    return rest
-  },
+  ({ fluid }) => $c('jumbotron', fluid && 'jumbotron-fluid'),
 )

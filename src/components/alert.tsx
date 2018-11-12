@@ -57,7 +57,12 @@ export class Alert extends React.Component<AlertProps, AlertState> {
             <Alert
               key={key}
               {...params}
-              style={{ ...params.style, transition: 'all .15s linear' }}
+              attrs={{
+                style: {
+                  ...(params.attrs ? params.attrs.style : {}),
+                  transition: 'all .15s linear',
+                },
+              }}
               onDismiss={() => {
                 params.onDismiss && params.onDismiss()
                 delete Alert.notifyItemsMapper[key]
@@ -87,36 +92,26 @@ export class Alert extends React.Component<AlertProps, AlertState> {
   }
 
   render() {
-    const {
-      theme,
-      dismissible,
-      onDismiss,
-      timeout,
-      bsStyle,
-      render,
-      children,
-      ...rest
-    } = this.props
-
-    rest.className = $c(
-      rest.className,
+    const { props: p } = this
+    const className = $c(
       'alert',
-      `alert-${theme}`,
-      dismissible && 'alert-dismissible',
+      `alert-${p.theme}`,
+      p.dismissible && 'alert-dismissible',
       this.state.isDismissing || 'show',
       'fade',
-      getStyle(bsStyle),
+      getStyle(p.bsStyle),
+      p.attrs && p.attrs.className,
     )
 
-    if (render) {
-      return render({ className: rest.className })
+    if (p.render) {
+      return p.render({ ...p.attrs, className })
     }
 
     return (
       this.state.visible && (
-        <div role="alert" {...rest}>
-          {children}
-          {dismissible && (
+        <div role="alert">
+          {p.children}
+          {p.dismissible && (
             <button
               type="button"
               className="close"

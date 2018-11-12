@@ -34,6 +34,8 @@ export class Carousel extends React.Component<CarouselProps, CarouselState> {
     controls: true,
   }
 
+  // static Control = CarouselControl
+
   mod = (index: number) => {
     const len = this.props.items.length
     if (len === 0) {

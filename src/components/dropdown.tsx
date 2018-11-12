@@ -29,22 +29,15 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
   render() {
     const { visible } = this.state
-    const {
-      text,
-      overlay,
-      theme,
-      size,
-      split,
-      direction,
-      className,
-      ...rest
-    } = this.props
+    const { text, overlay, theme, size, split, direction, ...rest } = this.props
 
     const ToggleButton = () => (
       <Button
         theme={theme}
         size={size}
-        className={$c('dropdown-toggle', split && 'dropdown-toggle-split')}
+        attrs={{
+          className: $c('dropdown-toggle', split && 'dropdown-toggle-split'),
+        }}
         data-toggle="dropdown"
         onClick={() => {
           this.setState(({ visible }) => ({
@@ -90,15 +83,8 @@ export interface DropdownItemProps {
 export const DropdownItem = createComponent<'a', DropdownItemProps>(
   'DropdownItem',
   'a',
-  ({ active, disabled, ...rest }) => {
-    rest.className = $c(
-      rest.className,
-      'dropdown-item',
-      active && 'active',
-      disabled && 'disabled',
-    )
-    return rest
-  },
+  ({ active, disabled }) =>
+    $c('dropdown-item', active && 'active', disabled && 'disabled'),
 )
 
 export const DropdownDivider = createComponent('DropdownDivider')

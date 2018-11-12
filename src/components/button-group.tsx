@@ -10,15 +10,12 @@ export interface ButtonGroupProps {
 export const ButtonGroup = createComponent<'div', ButtonGroupProps>(
   'ButtonGroup',
   'div',
-  ({ size, vertical, ...rest }) => {
-    rest.className = $c(
-      rest.className,
+  ({ size, vertical }) =>
+    $c(
       'btn-group',
       size && `btn-group-${size}`,
       vertical && 'btn-group-vertical',
-    )
-    return rest
-  },
+    ),
 )
 
 export const ButtonToolbar = createComponent('ButtonToolbar')

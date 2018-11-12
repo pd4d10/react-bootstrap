@@ -13,18 +13,15 @@ export interface ListItemProps {
 export const ListItem = createComponent<'li', ListItemProps>(
   'ListItem',
   'li',
-  ({ active, disabled, theme, flush, action, ...rest }) => {
-    rest.className = $c(
-      rest.className,
+  ({ active, disabled, theme, flush, action }) =>
+    $c(
       'list-group-item',
       active && 'active',
       disabled && 'disabled',
       flush && `list-group-item-flush`,
       theme && `list-group-item-${theme}`,
       action && `list-group-item-action`,
-    )
-    return rest
-  },
+    ),
 )
 
 type ListProps = types.CommonProps & {

@@ -9,35 +9,31 @@ export interface FormGroupProps {
 export const FormGroup = createComponent<'div', FormGroupProps>(
   'FormGroup',
   'div',
-  ({ check, ...rest }) => {
-    rest.className = $c(rest.className, 'form-group', check && 'form-check')
-    return rest
-  },
+  ({ check }) => $c('form-group', check && 'form-check'),
 )
 
-export interface InputProps {
+export interface InputProps extends types.CommonProps<'input'> {
   size: types.Size
+  type: React.InputHTMLAttributes<HTMLInputElement>['type']
+  readOnly: React.InputHTMLAttributes<HTMLInputElement>['readOnly']
+  onChange: React.InputHTMLAttributes<HTMLInputElement>['onChange']
 }
 
 export const Input = createComponent<'input', InputProps>(
   'Input',
   'input',
-  ({ size, ...rest }) => {
+  ({ size, type, readOnly }) => {
     let className = 'form-control'
 
-    if (rest.type && ['file', 'range'].indexOf(rest.type) !== -1) {
-      className += '-' + rest.type
-    } else if (rest.readOnly) {
+    if (type && ['file', 'range'].indexOf(type) !== -1) {
+      className += '-' + type
+    } else if (readOnly) {
       className += '-plaintext'
-    } else if (rest.type === 'checkbox') {
+    } else if (type === 'checkbox') {
       className = 'form-check-input'
     }
-    rest.className = $c(
-      rest.className,
-      className,
-      size && 'form-control-' + size,
-    )
-    return rest
+
+    return $c(className, size && 'form-control-' + size)
   },
 )
 
@@ -48,8 +44,5 @@ export interface LabelProps {
 export const Label = createComponent<'label', LabelProps>(
   'Label',
   'label',
-  ({ check, ...rest }) => {
-    rest.className = $c(rest.className, check && 'form-check-label')
-    return rest
-  },
+  ({ check }) => $c(check && 'form-check-label'),
 )

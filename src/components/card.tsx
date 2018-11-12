@@ -20,11 +20,5 @@ export interface CardImageProps {
 export const CardImage = createComponent<'img', CardImageProps>(
   'CardImage',
   'img',
-  ({ position, ...rest }) => {
-    rest.className = $c(
-      rest.className,
-      'card-img' + (position ? '-' + position : ''),
-    )
-    return rest
-  },
+  ({ position }) => $c('card-img' + (position ? '-' + position : '')),
 )

@@ -12,6 +12,7 @@ export interface ButtonProps extends types.CommonProps<'button'> {
   active?: boolean
   disabled?: boolean
   loading?: boolean
+  onClick?: React.ButtonHTMLAttributes<HTMLButtonElement>['onClick']
 }
 
 /**
@@ -23,36 +24,31 @@ export class Button extends Component<ButtonProps> {
   }
 
   render() {
-    const {
-      theme,
-      outline,
-      size,
-      block,
-      active,
-      loading,
-      children,
-      bsStyle,
-      render,
-      ...rest
-    } = this.props
-
-    rest.className = $c(
-      rest.className,
+    const { props: p } = this
+    const className = $c(
       'btn',
-      `btn-${outline ? 'outline-' : ''}${theme}`,
-      size && `btn-${size}`,
-      block && 'btn-block',
-      active && 'active',
-      getStyle(bsStyle),
+      `btn-${p.outline ? 'outline-' : ''}${p.theme}`,
+      p.size && `btn-${p.size}`,
+      p.block && 'btn-block',
+      p.active && 'active',
+      getStyle(p.bsStyle),
+      p.attrs && p.attrs.className,
     )
 
-    if (render) {
-      return render({ className: rest.className })
+    if (p.render) {
+      return p.render({ className })
+    }
+
+    const buttonProps = {
+      ...p.attrs,
+      disabled: p.disabled,
+      onClick: p.onClick,
+      className,
     }
 
     return (
-      <button {...rest}>
-        {loading && (
+      <button {...buttonProps}>
+        {p.loading && (
           <Icon
             path={mdiLoading}
             color="#fff"
@@ -64,7 +60,7 @@ export class Button extends Component<ButtonProps> {
             }}
           />
         )}
-        {children}
+        {p.children}
       </button>
     )
   }

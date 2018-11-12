@@ -67,9 +67,17 @@ export type AttrsOfTag<
   ? R
   : never
 
-export type CommonProps<T extends keyof React.ReactHTML = 'div'> = AttrsOfTag<
-  T
-> & {
+export type CommonProps<T extends keyof React.ReactHTML = 'div'> = {
+  /**
+   * HTML Attributes
+   */
+  attrs?: AttrsOfTag<T>
+  /**
+   * Bootstrap style
+   */
   bsStyle?: BsStyle
+  /**
+   * Custom render function
+   */
   render?: (props: { className: string }) => React.ReactNode
 }

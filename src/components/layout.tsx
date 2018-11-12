@@ -1,11 +1,6 @@
 import * as React from 'react'
 import * as types from '../types'
-import { $c } from '../utils'
-
-interface ContainerProps extends types.CommonProps {
-  fluid?: boolean
-}
-interface RowProps extends types.CommonProps {}
+import { $c, createComponent } from '../utils'
 
 type OffsetValue = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
 
@@ -31,20 +26,17 @@ interface ColProps extends types.CommonProps {
   order?: number | 'last' | 'first'
 }
 
-export class Container extends React.Component<ContainerProps> {
-  render() {
-    const { fluid, ...rest } = this.props
-    rest.className = $c(rest.className, fluid ? 'container-fluid' : 'container')
-    return <div {...rest} />
-  }
+export interface ContainerProps extends types.CommonProps {
+  fluid?: boolean
 }
 
-export class Row extends React.Component<RowProps> {
-  render() {
-    const { className, ...rest } = this.props
-    return <div className={$c('row', className)} {...rest} />
-  }
-}
+export const Container = createComponent<'div', ContainerProps>(
+  'Container',
+  'div',
+  ({ fluid }) => $c(fluid ? 'container-fluid' : 'container'),
+)
+
+export const Row = createComponent('Row')
 
 const getClassNameFromSize = (value: SizeValue) => {
   if (value === 'auto') {

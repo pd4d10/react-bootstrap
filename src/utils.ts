@@ -3,8 +3,8 @@ import { render } from 'react-dom'
 import * as types from './types'
 
 // class name helper
-export function $c(...args: (string | boolean | undefined)[]) {
-  return args.filter(arg => arg).join(' ')
+export function $c(...classes: (string | boolean | undefined)[]) {
+  return classes.filter(c => c).join(' ')
 }
 
 // ButtonGroup -> button-group
@@ -68,22 +68,24 @@ export function createComponent<
 >(
   displayName: string,
   tag: T = 'div' as T,
-  makeClassName: ((
-    props: types.CommonProps<T> & K,
-  ) => types.CommonProps<T>) = ({ ...rest }) => {
-    rest.className = $c(rest.className, kebabCase(displayName))
-    return rest
-  },
+  getClassNameFromProps: string | ((props: K) => string) = () =>
+    kebabCase(displayName),
 ) {
-  const component: React.SFC<types.CommonProps<T> & K> = ({ ...rest }) => {
-    rest = makeClassName(rest)
-    const { bsStyle, render, ...newProps } = rest
-    newProps.className = $c(newProps.className, getStyle(bsStyle))
+  const component: React.SFC<types.CommonProps<T> & K> = props => {
+    const { attrs = {}, bsStyle, render } = props
+
+    attrs.className = $c(
+      attrs.className,
+      getStyle(bsStyle),
+      typeof getClassNameFromProps === 'string'
+        ? getClassNameFromProps
+        : getClassNameFromProps(props),
+    )
 
     if (render) {
-      return render({ className: newProps.className })
+      return render(attrs)
     } else {
-      return React.createElement(tag, newProps)
+      return React.createElement(tag, attrs)
     }
   }
   component.displayName = displayName
@@ -91,13 +93,13 @@ export function createComponent<
 }
 
 // Fake router link for documents
-export const Link = (props: React.AnchorHTMLAttributes<HTMLElement>) => (
-  <a
-    href="javascript:"
-    {...props}
-    onClick={e => {
-      props.onClick && props.onClick(e)
-      alert('Link is clicked')
-    }}
-  />
-)
+// export const Link = (props: React.AnchorHTMLAttributes<HTMLElement>) => (
+//   <a
+//     href="javascript:"
+//     {...props}
+//     onClick={e => {
+//       props.onClick && props.onClick(e)
+//       alert('Link is clicked')
+//     }}
+//   />
+// )
