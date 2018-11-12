@@ -85,7 +85,7 @@ export function createComponent<
     if (render) {
       return render(attrs)
     } else {
-      return React.createElement(tag, attrs)
+      return React.createElement(tag, attrs, props.children)
     }
   }
   component.displayName = displayName
