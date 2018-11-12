@@ -1,4 +1,4 @@
-export { Alert, AlertLink } from './components/alert'
+export { Alert } from './components/alert'
 export { Badge } from './components/badge'
 export { Breadcrumb, BreadcrumbItem } from './components/breadcrumb'
 export { Button } from './components/button'

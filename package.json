@@ -4,7 +4,7 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "start": "tsc --watch | styleguidist server",
+    "start": "styleguidist server",
     "build": "styleguidist build",
     "test": "exit 0"
   },
@@ -19,7 +19,7 @@
   ],
   "author": "Rongjian Zhang <pd4d10@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/pd4d10/relaunch",
+  "homepage": "https://relaunch.js.org",
   "devDependencies": {
     "@types/react": "^16.4.7",
     "@types/react-dom": "^16.0.6",

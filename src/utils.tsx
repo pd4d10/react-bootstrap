@@ -89,3 +89,15 @@ export function createComponent<
   component.displayName = displayName
   return component
 }
+
+// Fake router link for documents
+export const Link = (props: React.AnchorHTMLAttributes<HTMLElement>) => (
+  <a
+    href="javascript:"
+    {...props}
+    onClick={e => {
+      props.onClick && props.onClick(e)
+      alert('Link is clicked')
+    }}
+  />
+)
