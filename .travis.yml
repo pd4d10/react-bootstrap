@@ -1,11 +1,10 @@
 language: node_js
 node_js: stable
 before_deploy:
-  - yarn tsc || echo '0'
-  - yarn docz build
-  - echo 'relaunch.js.org' > .docz/dist/CNAME
+  - yarn build
+  - echo 'relaunch.js.org' > styleguide/CNAME
 deploy:
-  local-dir: .docz/dist
+  local-dir: styleguide
   provider: pages
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
