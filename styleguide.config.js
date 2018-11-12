@@ -1,5 +1,7 @@
+const path = require('path')
+
 module.exports = {
-  components: 'src/components/**/*.tsx',
+  // components: 'src/components/alert.tsx',
   propsParser: require('react-docgen-typescript').parse,
   require: ['bootstrap/dist/css/bootstrap.min.css'], // https://github.com/styleguidist/react-styleguidist/blob/master/docs/Cookbook.md#how-to-add-custom-javascript-and-css-or-polyfills
   webpackConfig: {
@@ -17,5 +19,8 @@ module.exports = {
         { test: /\.css$/, loaders: ['style-loader', 'css-loader'] },
       ],
     },
+  },
+  context: {
+    utils: path.resolve(__dirname, 'src/utils'),
   },
 }

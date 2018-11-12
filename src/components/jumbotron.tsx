@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { createComponent, $c } from '../utils'
 
 export interface JumbotronProps {
