@@ -31,8 +31,6 @@ export class Alert extends React.Component<AlertProps, AlertState> {
     dismissible: false,
   }
 
-  static Link = createComponent('AlertLink', 'a')
-
   static $container: HTMLDivElement
   static notifyItemsMapper: { [key: string]: NotifyParams } = {}
 

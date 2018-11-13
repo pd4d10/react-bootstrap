@@ -37,19 +37,12 @@
 <>
   <Alert theme="primary">
     A simple primary alert with{' '}
-    <Alert.Link href="javascript:">an example link</Alert.Link>. Give it a click
+    <AlertLink href="javascript:">an example link</AlertLink>. Give it a click
     if you like.
   </Alert>
   <Alert theme="primary">
-    A simple primary alert with{' '}
-    <Alert.Link
-      render={props => (
-        <Link to="/" {...props}>
-          a router link
-        </Link>
-      )}
-    />
-    . Give it a click if you like.
+    A simple primary alert with <AlertRouterLink>a router link</AlertRouterLink>.
+    Give it a click if you like.
   </Alert>
 </>
 ```
