@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { renderToBody, getStyle, createComponent, $c } from '../utils'
-import * as types from '../types'
+import { renderToBody, getStyle, createComponent, $c } from '../../utils'
+import * as types from '../../types'
 
 export interface AlertProps extends types.CommonProps {
   theme: types.Theme

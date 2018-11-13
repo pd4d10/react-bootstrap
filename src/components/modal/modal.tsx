@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { Portal } from 'react-portal'
 import { Transition } from 'react-transition-group'
-import { renderToBody, $c, include } from '../utils'
-import * as types from '../types'
-import { Button } from './button/button'
+import { renderToBody, $c, include } from '../../utils'
+import * as types from '../../types'
+import { Button } from '../button/button'
 
 interface ModalProps extends types.CommonProps {
   visible?: boolean

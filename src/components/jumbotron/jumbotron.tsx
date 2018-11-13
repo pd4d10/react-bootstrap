@@ -1,4 +1,4 @@
-import { createComponent, $c } from '../utils'
+import { createComponent, $c } from '../../utils'
 
 export interface JumbotronProps {
   fluid?: boolean

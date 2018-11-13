@@ -1,6 +1,6 @@
 import * as React from 'react'
-import * as types from '../types'
-import { $c } from '../utils'
+import * as types from '../../types'
+import { $c } from '../../utils'
 
 export type ProgressBarProps = types.CommonProps & {
   percent: number
