@@ -1,7 +1,16 @@
 const path = require('path')
+const { upperFirst, camelCase } = require('lodash')
+const pkg = require('./package.json')
 
 module.exports = {
+  title: `Relaunch v${pkg.version}`,
   // components: 'src/components/alert.tsx',
+  getComponentPathLine: componentPath => {
+    const componentName = upperFirst(
+      camelCase(path.basename(componentPath, '.tsx')),
+    )
+    return `import { ${componentName} } from 'relaunch'`
+  },
   propsParser: require('react-docgen-typescript').parse,
   require: ['bootstrap/dist/css/bootstrap.min.css'], // https://github.com/styleguidist/react-styleguidist/blob/master/docs/Cookbook.md#how-to-add-custom-javascript-and-css-or-polyfills
   webpackConfig: {
