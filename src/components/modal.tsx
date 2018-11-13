@@ -1,27 +1,22 @@
 import * as React from 'react'
 import { Portal } from 'react-portal'
-import $ from 'jquery'
-import 'bootstrap/js/dist/modal'
-import { renderToBody, $c } from '../utils'
+import { Transition } from 'react-transition-group'
+import { renderToBody, $c, include } from '../utils'
 import * as types from '../types'
 import { Button } from './button/button'
 
-declare global {
-  interface JQuery {
-    modal: Function
-  }
-}
-
 interface ModalProps extends types.CommonProps {
   visible?: boolean
-  onFinish?: Function
-  onCancel?: Function
+  onFinish?: (e: React.MouseEvent) => void
+  onCancel?: (e: React.MouseEvent) => void
+  title: string
   body?: React.ReactNode
   footer?: React.ReactNode
   domNode?: HTMLElement
   backdrop?: boolean | 'static'
   showClose?: boolean
   closeOnEscPressed?: boolean
+  // requestClose: React.DOMAttributes<HTMLDivElement>['onClick']
 }
 
 interface ConfirmParams extends types.CommonProps {
@@ -63,135 +58,118 @@ class ConfirmModal extends React.Component<ConfirmModalProps> {
 }
 
 export class Modal extends React.Component<ModalProps> {
-  modalRef: React.RefObject<HTMLDivElement>
-  $modal?: JQuery<HTMLDivElement>
-
-  constructor(props: ModalProps) {
-    super(props)
-    this.modalRef = React.createRef()
-  }
-
-  static defaultProps: ModalProps = {
+  static defaultProps: Partial<ModalProps> = {
     visible: false,
     backdrop: true,
     closeOnEscPressed: true,
     showClose: true,
   }
 
-  static confirm({ onFinish, onCancel, ...rest }: ConfirmModalProps) {
-    const { node, dispose } = renderToBody(
-      <ConfirmModal
-        {...rest}
-        onFinish={() => {
-          onFinish && onFinish()
-          document.body.removeChild(node)
-        }}
-        onCancel={() => {
-          onCancel && onCancel()
-          document.body.removeChild(node)
-        }}
-        domNode={node}
-      />,
-    )
-  }
+  // static confirm({ onFinish, onCancel, ...rest }: ConfirmModalProps) {
+  //   const { node, dispose } = renderToBody(
+  //     <ConfirmModal
+  //       {...rest}
+  //       onFinish={() => {
+  //         onFinish && onFinish()
+  //         document.body.removeChild(node)
+  //       }}
+  //       onCancel={() => {
+  //         onCancel && onCancel()
+  //         document.body.removeChild(node)
+  //       }}
+  //       domNode={node}
+  //     />,
+  //   )
+  // }
 
-  componentDidMount() {
-    this.$modal = $(this.modalRef.current!)
-    const $modal = this.$modal!
-    $modal.modal({
-      backdrop: this.props.backdrop,
-      // keyboard: this.props.closeOnEscPressed,
-      // focus: true,
-      show: this.props.visible,
-    })
-  }
-
-  componentDidUpdate() {
-    const $modal = this.$modal!
-    if (this.props.visible) {
-      $modal.modal('show')
-
-      // Remove default dismiss event to respect visible prop
-      $modal.off('click.dismiss.bs.modal')
-      $modal.on('click.dismiss.bs.modal', event => {
-        if (event.target !== event.currentTarget) {
-          return
-        }
-
-        if (this.props.backdrop === 'static') {
-          $modal.focus()
-          return
-        }
-
-        this.handleCancel()
-      })
-    } else {
-      $modal.modal('hide')
-    }
-  }
-
-  handleCancel = () => {
-    this.props.onCancel && this.props.onCancel()
-  }
-
-  handleFinish = () => {
-    this.props.onFinish && this.props.onFinish()
+  handleClose = (e: React.MouseEvent) => {
+    this.props.onCancel && this.props.onCancel(e)
   }
 
   render() {
     const {
+      title,
       visible,
-      className,
       body,
       footer,
       domNode,
       backdrop,
       showClose,
-      ...rest
     } = this.props
+
     return (
       <Portal
         node={domNode}
         // closeOnOutsideClick closeOnEsc
       >
-        <div
-          className={$c(className, 'modal', 'fade')}
-          role="dialog"
-          ref={this.modalRef}
-        >
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLiveLabel">
-                  Modal title
-                </h5>
-                {showClose && (
-                  <button
-                    type="button"
-                    className="close"
-                    aria-label="Close"
-                    onClick={this.handleCancel}
-                  >
-                    <span aria-hidden="true">×</span>
-                  </button>
+        <Transition in={visible} timeout={150}>
+          {state => {
+            const isVisible = include(state, ['entered', 'entering', 'exiting'])
+            const hasShow = include(state, ['entered'])
+
+            return (
+              <>
+                <div
+                  className={$c('modal', 'fade', hasShow && 'show')}
+                  style={{
+                    display: isVisible ? 'block' : 'none',
+                  }}
+                  role="dialog"
+                  onClick={e => {
+                    if (e.target === e.currentTarget) {
+                      this.handleClose(e)
+                    }
+                  }}
+                  onTransitionEnd={e => {
+                    this.setState({ isTransitioning: false })
+                  }}
+                >
+                  <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title">{title}</h5>
+                        {showClose && (
+                          <button
+                            type="button"
+                            className="close"
+                            aria-label="Close"
+                            onClick={this.handleClose}
+                          >
+                            <span aria-hidden="true">×</span>
+                          </button>
+                        )}
+                      </div>
+                      <div className="modal-body">{body}</div>
+                      <div className="modal-footer">
+                        {footer || (
+                          <>
+                            <Button
+                              theme="secondary"
+                              onClick={this.handleClose}
+                            >
+                              Close
+                            </Button>
+                            <Button
+                              theme="primary"
+                              onClick={this.props.onFinish}
+                            >
+                              Finish
+                            </Button>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {isVisible && (
+                  <div
+                    className={$c('modal-backdrop', 'fade', hasShow && 'show')}
+                  />
                 )}
-              </div>
-              <div className="modal-body">{body}</div>
-              <div className="modal-footer">
-                {footer || (
-                  <>
-                    <Button theme="secondary" onClick={this.handleCancel}>
-                      Close
-                    </Button>
-                    <Button theme="primary" onClick={this.handleFinish}>
-                      Save changes
-                    </Button>
-                  </>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
+              </>
+            )
+          }}
+        </Transition>
       </Portal>
     )
   }
