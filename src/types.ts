@@ -80,4 +80,8 @@ export type CommonProps<T extends keyof React.ReactHTML = 'div'> = {
    * Custom render function
    */
   render?: (props: { className: string }) => React.ReactNode
+  /**
+   * Custom render component
+   */
+  component?: React.ReactType
 }

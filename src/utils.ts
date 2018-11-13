@@ -82,7 +82,9 @@ export function createComponent<
         : getClassNameFromProps(props),
     )
 
-    if (render) {
+    if (props.component) {
+      return React.createElement(props.component, attrs, props.children)
+    } else if (render) {
       return render(attrs)
     } else {
       return React.createElement(tag, attrs, props.children)
