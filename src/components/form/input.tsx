@@ -1,16 +1,6 @@
 import * as React from 'react'
-import * as types from '../types'
-import { createComponent, $c } from '../utils'
-
-export interface FormGroupProps {
-  check?: boolean
-}
-
-export const FormGroup = createComponent<'div', FormGroupProps>(
-  'FormGroup',
-  'div',
-  ({ check }) => $c('form-group', check && 'form-check'),
-)
+import * as types from '../../types'
+import { createComponent, $c } from '../../utils'
 
 export interface InputProps extends types.CommonProps<'input'> {
   size: types.Size
@@ -35,14 +25,4 @@ export const Input = createComponent<'input', InputProps>(
 
     return $c(className, size && 'form-control-' + size)
   },
-)
-
-export interface LabelProps {
-  check?: boolean
-}
-
-export const Label = createComponent<'label', LabelProps>(
-  'Label',
-  'label',
-  ({ check }) => $c(check && 'form-check-label'),
 )

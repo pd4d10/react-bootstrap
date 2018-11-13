@@ -44,9 +44,9 @@
     A simple primary alert with{' '}
     <Alert.Link
       render={props => (
-        <a {...props} to="/">
+        <Link to="/" {...props}>
           a router link
-        </a>
+        </Link>
       )}
     />
     . Give it a click if you like.

@@ -1,6 +1,5 @@
-import * as React from 'react'
-import * as types from '../types'
-import { createComponent, $c } from '../utils'
+import * as types from '../../types'
+import { createComponent, $c } from '../../utils'
 
 export interface ButtonGroupProps {
   size?: types.Size
@@ -17,5 +16,3 @@ export const ButtonGroup = createComponent<'div', ButtonGroupProps>(
       vertical && 'btn-group-vertical',
     ),
 )
-
-export const ButtonToolbar = createComponent('ButtonToolbar')

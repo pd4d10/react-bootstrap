@@ -1,5 +1,6 @@
 ### Themes
 
+<!-- prettier-ignore -->
 ```js
 <>
   <Button theme="primary">Primary</Button>{' '}
@@ -16,6 +17,7 @@
 
 ### Custom render
 
+<!-- prettier-ignore -->
 ```js
 <>
   <Button
@@ -39,6 +41,7 @@
 
 ### Outline buttons
 
+<!-- prettier-ignore -->
 ```js
 <>
   <Button outline theme="primary">Primary</Button>{' '}
@@ -68,6 +71,7 @@
 
 ### Block
 
+<!-- prettier-ignore -->
 ```js
 <>
   <Button size="lg" block theme="primary">Block level button</Button>
@@ -77,6 +81,7 @@
 
 ### Active state
 
+<!-- prettier-ignore -->
 ```js
 <>
   <Button active theme="primary" size="lg">Primary link</Button>{' '}
@@ -86,6 +91,7 @@
 
 ### Disabled state
 
+<!-- prettier-ignore -->
 ```js
 <>
   <Button disabled theme="primary" size="lg">Primary link</Button>{' '}
@@ -95,6 +101,7 @@
 
 ### Loading state
 
+<!-- prettier-ignore -->
 ```js
 <>
   <Button loading disabled>Loading...</Button>{' '}

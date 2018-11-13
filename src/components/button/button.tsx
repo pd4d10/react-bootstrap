@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Icon from '@mdi/react'
 import { mdiLoading } from '@mdi/js'
-import * as types from '../types'
-import { getStyle, $c } from '../utils'
+import * as types from '../../types'
+import { getStyle, $c } from '../../utils'
 
 export interface ButtonProps extends types.CommonProps<'button'> {
   theme?: types.ButtonTheme

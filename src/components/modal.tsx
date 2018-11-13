@@ -4,7 +4,7 @@ import $ from 'jquery'
 import 'bootstrap/js/dist/modal'
 import { renderToBody, $c } from '../utils'
 import * as types from '../types'
-import { Button } from './button'
+import { Button } from './button/button'
 
 declare global {
   interface JQuery {

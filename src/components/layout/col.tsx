@@ -1,6 +1,6 @@
 import * as React from 'react'
-import * as types from '../types'
-import { $c, createComponent } from '../utils'
+import * as types from '../../types'
+import { $c, createComponent } from '../../utils'
 
 type OffsetValue = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
 
@@ -25,18 +25,6 @@ interface ColProps extends types.CommonProps {
   offset?: OffsetValue | Offset
   order?: number | 'last' | 'first'
 }
-
-export interface ContainerProps extends types.CommonProps {
-  fluid?: boolean
-}
-
-export const Container = createComponent<'div', ContainerProps>(
-  'Container',
-  'div',
-  ({ fluid }) => $c(fluid ? 'container-fluid' : 'container'),
-)
-
-export const Row = createComponent('Row')
 
 const getClassNameFromSize = (value: SizeValue) => {
   if (value === 'auto') {

@@ -103,13 +103,15 @@ export class Alert extends React.Component<AlertProps, AlertState> {
       p.attrs && p.attrs.className,
     )
 
+    const divProps = { ...p.attrs, role: 'alert', className }
+
     if (p.render) {
-      return p.render({ ...p.attrs, className })
+      return p.render(divProps)
     }
 
     return (
       this.state.visible && (
-        <div role="alert">
+        <div {...divProps}>
           {p.children}
           {p.dismissible && (
             <button

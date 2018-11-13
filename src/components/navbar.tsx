@@ -24,10 +24,6 @@ interface NavItemProps extends types.CommonProps {
   active?: boolean
 }
 
-interface NavLinkProps extends types.CommonProps {
-  tag?: string
-}
-
 export class NavbarBrand extends React.Component<NavbarBrandProps> {
   static defaultProps: Partial<NavbarBrandProps> = {
     component: 'a',
@@ -89,9 +85,3 @@ export const NavbarNav = ({ className, ...rest }: NavProps) => (
 export const NavItem = ({ className, active, ...rest }: NavItemProps) => (
   <li className={$c('nav-item', className, { active })} {...rest} />
 )
-
-export const NavLink = ({
-  className,
-  tag: Tag = 'a',
-  ...rest
-}: NavLinkProps) => <Tag className={$c('nav-link', className)} {...rest} />
