@@ -37,12 +37,12 @@
 <>
   <Alert theme="primary">
     A simple primary alert with{' '}
-    <AlertLink href="javascript:">an example link</AlertLink>. Give it a click
-    if you like.
+    <AlertAnchor href="javascript:">an example link</AlertAnchor>. Give it a
+    click if you like.
   </Alert>
   <Alert theme="primary">
-    A simple primary alert with <AlertRouterLink>a router link</AlertRouterLink>.
-    Give it a click if you like.
+    A simple primary alert with <AlertLink to="/alert">a router link</AlertLink>
+    . Give it a click if you like.
   </Alert>
 </>
 ```
