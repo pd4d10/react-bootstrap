@@ -1,5 +1,3 @@
-import * as React from 'react'
-import * as types from '../../types'
 import { createComponent, $c } from '../../utils'
 
 export interface NavProps {

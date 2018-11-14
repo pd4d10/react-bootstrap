@@ -9,5 +9,5 @@ export const NavLink = createComponent<'a', NavLinkProps>(
   'NavLink',
   'a',
   ({ active, disabled }) =>
-    $c('nav-link', active && 'active', disabled && 'disabled'),
+    $c('nav-link', 'nav-item', active && 'active', disabled && 'disabled'),
 )

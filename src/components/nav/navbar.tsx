@@ -1,87 +1,32 @@
-import React, { Component } from 'react'
+import React from 'react'
 import * as types from '../../types'
 import { $c } from '../../utils'
 
-interface NavbarBrandProps extends types.CommonProps {
-  href?: string
-  to?: string
-  component?: React.ReactType
-}
-
-interface NavbarProps extends types.CommonProps {
+export interface NavbarProps extends types.CommonProps {
   theme: 'light' | 'dark'
-  brand: JSX.Element
-  items: {
-    component?: React.ReactType
-    active?: boolean
-    disabled?: boolean
-  }[]
+  bg: 'light' | 'dark'
+  brand?: JSX.Element
+  right?: JSX.Element
 }
 
-interface NavProps extends types.CommonProps {}
-
-interface NavItemProps extends types.CommonProps {
-  active?: boolean
-}
-
-export class NavbarBrand extends React.Component<NavbarBrandProps> {
-  static defaultProps: Partial<NavbarBrandProps> = {
-    component: 'a',
-  }
-
+export class Navbar extends React.Component<NavbarProps> {
   render() {
-    const { component, ...rest } = this.props
-    rest.className = $c(rest.className, 'navbar-brand')
-    return React.createElement(component!, rest)
-  }
-}
-
-export class Navbar extends Component<NavbarProps> {
-  static defaultProps = {
-    // renderBrand: () => <div />,
-    renderItem: ({ component, active, disabled }) => (
-      <li
-        className={$c('nav-item', active && 'active', disabled && 'disabled')}
-      >
-        <a className="nav-link" href="#">
-          Features
-        </a>
-      </li>
-    ),
-  }
-
-  render() {
-    const { className, theme = 'light', brand, items, ...rest } = this.props
+    const { theme, bg, brand, right, children } = this.props
     return (
-      <nav className={$c('navbar', `navbar-${theme}`, className)}>
-        {brand && <NavbarBrand>{brand}</NavbarBrand>}
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            {items.map(({ component = 'a', active, disabled }, index) => (
-              <li
-                className={$c(
-                  'nav-item',
-                  active && 'active',
-                  disabled && 'disabled',
-                )}
-              >
-                {React.createElement(component, {
-                  className: 'nav-link',
-                  ...props,
-                })}
-              </li>
-            ))}
-          </ul>
+      <nav
+        className={$c(
+          'navbar',
+          'navbar-expand-lg',
+          theme && `navbar-${theme}`,
+          bg && `bg-${bg}`,
+        )}
+      >
+        {brand}
+        <div className="collapse navbar-collapse">
+          <div className="navbar-nav">{children}</div>
         </div>
+        {right}
       </nav>
     )
   }
 }
-
-export const NavbarNav = ({ className, ...rest }: NavProps) => (
-  <ul className={$c('navbar-nav', className)} {...rest} />
-)
-
-export const NavItem = ({ className, active, ...rest }: NavItemProps) => (
-  <li className={$c('nav-item', className, { active })} {...rest} />
-)
