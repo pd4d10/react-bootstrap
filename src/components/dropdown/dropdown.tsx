@@ -13,7 +13,7 @@ export interface DropdownProps extends types.CommonProps {
 }
 
 interface DropdownState {
-  visible: boolean
+  open: boolean
 }
 
 export class Dropdown extends React.Component<DropdownProps, DropdownState> {
@@ -22,11 +22,11 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
   }
 
   state = {
-    visible: false,
+    open: false,
   }
 
   render() {
-    const { visible } = this.state
+    const { open } = this.state
     const { text, overlay, theme, size, split, direction, ...rest } = this.props
 
     const ToggleButton = () => (
@@ -35,12 +35,13 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
         size={size}
         attrs={{
           className: $c('dropdown-toggle', split && 'dropdown-toggle-split'),
+          onBlur: () => {
+            this.setState({ open: false })
+          },
         }}
         data-toggle="dropdown"
         onClick={() => {
-          this.setState(({ visible }) => ({
-            visible: !visible,
-          }))
+          this.setState(({ open }) => ({ open: !open }))
         }}
       >
         {split ? <span className="sr-only">{text}</span> : text}
@@ -50,8 +51,8 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     return (
       <div
         className={$c(
-          direction && `drop${direction}`,
-          visible && 'show',
+          `drop${direction}`,
+          open && 'show',
           // split ? 'btn-group' : 'dropdown',
         )}
         {...rest}
@@ -66,7 +67,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
         ) : (
           <ToggleButton />
         )}
-        {overlay}
+        {<div className={$c('dropdown-menu', open && 'show')}>{overlay}</div>}
       </div>
     )
   }

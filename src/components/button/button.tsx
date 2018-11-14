@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import Icon from '@mdi/react'
 import { mdiLoading } from '@mdi/js'
 import * as types from '../../types'
@@ -18,7 +18,7 @@ export interface ButtonProps extends types.CommonProps<'button'> {
 /**
  * Button desc
  */
-export class Button extends Component<ButtonProps> {
+export class Button extends React.Component<ButtonProps> {
   static defaultProps: ButtonProps = {
     theme: 'primary',
   }
