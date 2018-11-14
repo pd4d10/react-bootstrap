@@ -2,10 +2,13 @@
   "name": "relaunch",
   "version": "0.0.1",
   "description": "",
-  "main": "lib/index.js",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "esm/index.d.ts",
   "scripts": {
     "start": "styleguidist server",
     "build": "styleguidist build",
+    "watch": "tsc --watch | tsc --watch --project tsconfig-cjs.json",
     "test": "exit 0"
   },
   "files": [
