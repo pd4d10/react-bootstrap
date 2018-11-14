@@ -1,10 +1,11 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
-import { NavLink } from './nav-link'
+import { NavLink, NavLinkProps } from 'react-router-dom'
+import { $c } from '../../utils'
 
-export const NavRouterLink = ({ active, ...rest }) => (
+export const NavRouterLink: React.SFC<NavLinkProps> = props => (
   <NavLink
-    active={active}
-    render={({ className }) => <Link className={className} {...rest} />}
+    {...props}
+    activeClassName="active"
+    className={$c('nav-item', 'nav-link', props.className)}
   />
 )
