@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as types from '../../types'
 import { $c } from '../../utils'
 
-interface CarouselProps extends types.CommonProps {
+export interface CarouselProps extends types.CommonProps {
   items: any[]
   interval?: number
   direction?: 'left' | 'right'

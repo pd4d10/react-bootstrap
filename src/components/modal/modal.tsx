@@ -5,7 +5,7 @@ import { renderToBody, $c, include } from '../../utils'
 import * as types from '../../types'
 import { Button } from '../button/button'
 
-interface ModalProps extends types.CommonProps {
+export interface ModalProps extends types.CommonProps {
   visible?: boolean
   onFinish?: (e: React.MouseEvent) => void
   onCancel?: (e: React.MouseEvent) => void

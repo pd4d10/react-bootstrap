@@ -20,7 +20,7 @@ type Size = {
   xl?: OffsetValue
 }
 
-interface ColProps extends types.CommonProps {
+export interface ColProps extends types.CommonProps {
   size?: SizeValue | Size
   offset?: OffsetValue | Offset
   order?: number | 'last' | 'first'
