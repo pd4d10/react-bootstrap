@@ -4,7 +4,6 @@ const pkg = require('./package.json')
 
 module.exports = {
   title: `Relaunch v${pkg.version}`,
-  // components: 'src/components/alert.tsx',
   getComponentPathLine: componentPath => {
     const componentName = upperFirst(
       camelCase(path.basename(componentPath, '.tsx')),
@@ -32,4 +31,22 @@ module.exports = {
   context: {
     utils: path.resolve(__dirname, 'src/utils'),
   },
+  pagePerSection: true,
+  sections: [
+    {
+      name: 'components',
+      components: 'src/components/**/*.tsx',
+      exampleMode: 'expand', // 'hide' | 'collapse' | 'expand'
+      usageMode: 'expand',
+      // sections: [
+      //   {
+      //     name: 'Buttons',
+      //     href: 'button',
+      //     content: 'src/components/button/button.md',
+      //   },
+      // ],
+      // Will show "Components" as single page, filtering its children
+      sectionDepth: 2,
+    },
+  ],
 }
