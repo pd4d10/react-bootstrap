@@ -7,6 +7,10 @@ export function $c(...classes: (string | boolean | undefined)[]) {
   return classes.filter(c => c).join(' ')
 }
 
+export function include<T>(item: T, arr: T[]) {
+  return arr.indexOf(item) !== -1
+}
+
 // ButtonGroup -> button-group
 function kebabCase(str: string) {
   return str.replace(/(?<!^)([A-Z])/g, '-$1').toLowerCase()
