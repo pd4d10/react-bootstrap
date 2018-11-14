@@ -1,24 +1,23 @@
-import React from 'react'
+import * as React from 'react'
 import * as types from '../../types'
-import { $c } from '../../utils'
+import { $c, getStyle } from '../../utils'
 
 export interface NavbarProps extends types.CommonProps {
-  theme: 'light' | 'dark'
-  bg: 'light' | 'dark'
+  color: 'light' | 'dark'
   brand?: JSX.Element
   right?: JSX.Element
 }
 
 export class Navbar extends React.Component<NavbarProps> {
   render() {
-    const { theme, bg, brand, right, children } = this.props
+    const { color, brand, right, children, bsStyle, ...rest } = this.props
     return (
       <nav
         className={$c(
           'navbar',
           'navbar-expand-lg',
-          theme && `navbar-${theme}`,
-          bg && `bg-${bg}`,
+          color && `navbar-${color}`,
+          getStyle(bsStyle),
         )}
       >
         {brand}

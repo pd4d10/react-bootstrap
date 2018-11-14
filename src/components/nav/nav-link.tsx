@@ -1,13 +1,11 @@
-import { createComponent, $c } from '../../utils'
+import * as React from 'react'
+import { NavLink as RouterNavLink, NavLinkProps } from 'react-router-dom'
+import { $c } from '../../utils'
 
-export interface NavLinkProps {
-  active?: boolean
-  disabled?: boolean
-}
-
-export const NavLink = createComponent<'a', NavLinkProps>(
-  'NavLink',
-  'a',
-  ({ active, disabled }) =>
-    $c('nav-link', 'nav-item', active && 'active', disabled && 'disabled'),
+export const NavLink: React.SFC<NavLinkProps> = props => (
+  <RouterNavLink
+    {...props}
+    activeClassName="active"
+    className={$c('nav-item', 'nav-link', props.className)}
+  />
 )

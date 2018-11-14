@@ -39,7 +39,7 @@ export * from './components/modal/modal'
 export * from './components/nav/nav'
 export * from './components/nav/nav-item'
 export * from './components/nav/nav-link'
-export * from './components/nav/nav-router-link'
+export * from './components/nav/nav-anchor'
 
 export * from './components/nav/navbar'
 export * from './components/nav/navbar-brand'
