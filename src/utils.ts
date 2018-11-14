@@ -76,22 +76,26 @@ export function createComponent<
     kebabCase(displayName),
 ) {
   const component: React.SFC<types.CommonProps<T> & K> = props => {
-    const { attrs = {}, bsStyle, render } = props
+    const { bsStyle, render, ...rest } = props
 
-    attrs.className = $c(
-      attrs.className,
+    rest.className = $c(
+      rest.className,
       getStyle(bsStyle),
-      typeof getClassNameFromProps === 'string'
-        ? getClassNameFromProps
-        : getClassNameFromProps(props),
+      typeof getClassNameFromProps === 'function'
+        ? getClassNameFromProps(props)
+        : getClassNameFromProps,
     )
 
     if (props.component) {
-      return React.createElement(props.component, attrs, props.children)
+      return React.createElement(
+        props.component,
+        { className: rest.className },
+        props.children,
+      )
     } else if (render) {
-      return render(attrs)
+      return render({ className: rest.className })
     } else {
-      return React.createElement(tag, attrs, props.children)
+      return React.createElement(tag, rest)
     }
   }
   component.displayName = displayName

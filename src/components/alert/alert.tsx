@@ -55,11 +55,9 @@ export class Alert extends React.Component<AlertProps, AlertState> {
             <Alert
               key={key}
               {...params}
-              attrs={{
-                style: {
-                  ...(params.attrs ? params.attrs.style : {}),
-                  transition: 'all .15s linear',
-                },
+              style={{
+                ...params.style,
+                transition: 'all .15s linear',
               }}
               onDismiss={() => {
                 params.onDismiss && params.onDismiss()
@@ -98,10 +96,10 @@ export class Alert extends React.Component<AlertProps, AlertState> {
       this.state.isDismissing || 'show',
       'fade',
       getStyle(p.bsStyle),
-      p.attrs && p.attrs.className,
+      p.className,
     )
 
-    const divProps = { ...p.attrs, role: 'alert', className }
+    const divProps = { role: 'alert', className }
 
     if (p.render) {
       return p.render(divProps)

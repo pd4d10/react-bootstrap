@@ -12,7 +12,6 @@ export interface ButtonProps extends types.CommonProps<'button'> {
   active?: boolean
   disabled?: boolean
   loading?: boolean
-  onClick?: React.ButtonHTMLAttributes<HTMLButtonElement>['onClick']
 }
 
 /**
@@ -32,7 +31,7 @@ export class Button extends React.Component<ButtonProps> {
       p.block && 'btn-block',
       p.active && 'active',
       getStyle(p.bsStyle),
-      p.attrs && p.attrs.className,
+      p.className,
     )
 
     if (p.render) {
@@ -40,7 +39,6 @@ export class Button extends React.Component<ButtonProps> {
     }
 
     const buttonProps = {
-      ...p.attrs,
       disabled: p.disabled,
       onClick: p.onClick,
       className,

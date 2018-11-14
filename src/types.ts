@@ -69,10 +69,6 @@ export type AttrsOfTag<
 
 export type CommonProps<T extends keyof React.ReactHTML = 'div'> = {
   /**
-   * HTML Attributes
-   */
-  attrs?: AttrsOfTag<T>
-  /**
    * Bootstrap style
    */
   bsStyle?: BsStyle
@@ -84,4 +80,4 @@ export type CommonProps<T extends keyof React.ReactHTML = 'div'> = {
    * Custom render component
    */
   component?: React.ReactType
-}
+} & AttrsOfTag<T>

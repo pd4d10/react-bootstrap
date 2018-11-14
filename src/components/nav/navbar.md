@@ -7,10 +7,7 @@
   brand={<NavbarBrand>Navbar</NavbarBrand>}
   right={
     <Form inline>
-      <Input
-        attrs={{ type: 'search', placeholder: 'Search' }}
-        bsStyle={{ mr: 2 }}
-      />
+      <Input type="search" placeholder="Search" bsStyle={{ mr: 2 }} />
       <Button
         theme="success"
         outline
@@ -42,10 +39,7 @@
   brand={<NavbarBrand>Navbar</NavbarBrand>}
   right={
     <Form inline>
-      <Input
-        attrs={{ type: 'search', placeholder: 'Search' }}
-        bsStyle={{ mr: 2 }}
-      />
+      <Input type="search" placeholder="Search" bsStyle={{ mr: 2 }} />
       <Button
         theme="success"
         outline

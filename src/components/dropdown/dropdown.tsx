@@ -33,11 +33,9 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       <Button
         theme={theme}
         size={size}
-        attrs={{
-          className: $c('dropdown-toggle', split && 'dropdown-toggle-split'),
-          onBlur: () => {
-            this.setState({ open: false })
-          },
+        className={$c('dropdown-toggle', split && 'dropdown-toggle-split')}
+        onBlur={() => {
+          this.setState({ open: false })
         }}
         data-toggle="dropdown"
         onClick={() => {
