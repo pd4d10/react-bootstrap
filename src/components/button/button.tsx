@@ -19,34 +19,40 @@ export interface ButtonProps extends types.CommonProps<'button'> {
  */
 export class Button extends React.Component<ButtonProps> {
   static defaultProps: ButtonProps = {
-    theme: 'primary',
+    // theme: 'primary',
   }
 
   render() {
-    const { props: p } = this
-    const className = $c(
+    const {
+      theme,
+      outline,
+      size,
+      block,
+      active,
+      loading,
+      bsStyle,
+      render,
+      children,
+      ...rest
+    } = this.props
+
+    rest.className = $c(
+      rest.className,
       'btn',
-      `btn-${p.outline ? 'outline-' : ''}${p.theme}`,
-      p.size && `btn-${p.size}`,
-      p.block && 'btn-block',
-      p.active && 'active',
-      getStyle(p.bsStyle),
-      p.className,
+      theme && `btn-${outline ? 'outline-' : ''}${theme}`,
+      size && `btn-${size}`,
+      block && 'btn-block',
+      active && 'active',
+      getStyle(bsStyle),
     )
 
-    if (p.render) {
-      return p.render({ className })
-    }
-
-    const buttonProps = {
-      disabled: p.disabled,
-      onClick: p.onClick,
-      className,
+    if (render) {
+      return render({ className: rest.className })
     }
 
     return (
-      <button {...buttonProps}>
-        {p.loading && (
+      <button {...rest}>
+        {loading && (
           <Icon
             path={mdiLoading}
             color="#fff"
@@ -58,7 +64,7 @@ export class Button extends React.Component<ButtonProps> {
             }}
           />
         )}
-        {p.children}
+        {children}
       </button>
     )
   }

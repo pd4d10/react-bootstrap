@@ -9,7 +9,7 @@ export interface TableProps<T> extends types.CommonProps<'table'> {
   schema: {
     title: string
     key: string
-    render: (item: T, index: number) => React.ReactElement<any>
+    render?: (item: T, index: number) => React.ReactElement<any>
   }[]
   rows: T[]
 }
@@ -32,9 +32,9 @@ export class Table<T> extends React.Component<TableProps<T>> {
             <tr key={index}>
               {schema.map(({ key, render }) => {
                 if (render) {
-                  return <td>{render(item, index)}</td>
+                  return <td key={key}>{render(item, index)}</td>
                 } else if (typeof item[key] !== 'undefined') {
-                  return <td>{item[key]}</td>
+                  return <td key={key}>{item[key]}</td>
                 } else {
                   throw new Error('')
                 }

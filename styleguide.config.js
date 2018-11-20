@@ -37,7 +37,7 @@ module.exports = {
       name: 'components',
       components: 'src/components/**/*.tsx',
       exampleMode: 'expand', // 'hide' | 'collapse' | 'expand'
-      usageMode: 'expand',
+      usageMode: 'collapse',
       // sections: [
       //   {
       //     name: 'Buttons',

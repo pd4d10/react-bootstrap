@@ -3,8 +3,9 @@
 ```js
 <>
   <Dropdown
+    theme="primary"
     text="Dropdown"
-    overlay={
+    popup={
       <>
         <DropdownItem href="javascript:">Action</DropdownItem>
         <DropdownItem href="javascript:">Another action</DropdownItem>
@@ -24,7 +25,7 @@
   <Dropdown
     theme="warning"
     text="Dropdown"
-    overlay={
+    popup={
       <>
         <DropdownItem href="javascript:">Action</DropdownItem>
         <DropdownItem href="javascript:">Another action</DropdownItem>
@@ -44,7 +45,7 @@
   <Dropdown
     size="lg"
     text="Large button"
-    overlay={
+    popup={
       <>
         <DropdownItem>
           <a href="#">Action</a>
@@ -65,7 +66,7 @@
   <Dropdown
     size="lg"
     text="Large split button"
-    overlay={
+    popup={
       <>
         <DropdownItem>
           <a href="#">Action</a>
@@ -93,7 +94,7 @@
   <Dropdown
     direction="up"
     text="Dropup"
-    overlay={
+    popup={
       <>
         <DropdownItem>
           <a href="#">Action</a>
@@ -114,7 +115,7 @@
   <Dropdown
     direction="left"
     text="Dropup"
-    overlay={
+    popup={
       <>
         <DropdownItem>
           <a href="#">Action</a>
@@ -135,7 +136,7 @@
   <Dropdown
     direction="right"
     text="Dropup"
-    overlay={
+    popup={
       <>
         <DropdownItem>
           <a href="#">Action</a>
